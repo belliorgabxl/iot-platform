@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// import Navbar from "@/components/navbar/Navbar";
-// import Footer from "@/components/footer";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -24,9 +24,9 @@ export default function RootLayout({
           hideProgressBar
           className="z-50"
         />
-        {/* <Navbar /> */}
+        <Navbar />
           <div className="mt-14">{children}</div>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );

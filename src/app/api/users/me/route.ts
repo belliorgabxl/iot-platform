@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     } else {
       return NextResponse.json({ message: "Unauthorized" }, { status: 200 });
     }
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 401 }
