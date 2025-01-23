@@ -17,15 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-      >
+      <body>
         <ToastContainer
           position="bottom-right"
           hideProgressBar
           className="z-50"
         />
         <Navbar />
-          <div className="mt-14">{children}</div>
+        <div className="mt-14">{children}</div>
         <Footer />
       </body>
     </html>
