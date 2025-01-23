@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const token = request.cookies.get("token")?.value || "";
-  
+
   if (
     path.startsWith("/_next/") || // Next.js assets
     path.startsWith("/static/") || // Static folder (if used)
@@ -51,7 +51,7 @@ export const config = {
     "/aboutus",
     "/devices",
     "/products",
-    "/products/car/[deviceId]",
+    "/products/car/",
     "/documents", 
   ],
 };
