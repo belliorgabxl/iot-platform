@@ -56,7 +56,7 @@ export default function Homepage_article() {
           <hr className="my-5" />
           <p className="text-white">
             &nbsp;&nbsp;&nbsp;&nbsp;Due to the rapid growth of IoT (Internet of
-            Things) technology in today's era, which helps connect various
+            Things) technology in today is era, which helps connect various
             devices to work together through the internet, developing
             applications that can control these devices is a key factor in
             increasing convenience and efficiency. This thesis aims to control
@@ -131,7 +131,7 @@ export default function Homepage_article() {
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;Multiple protocols make the remote control
             and management of IoT devices possible. But when controlling
-            devices, it's essential to consider security issues. How do you
+            devices, its essential to consider security issues. How do you
             usually control and manage your IoT devices? Do you have your way to
             maximize their effectiveness? Please share this article with your
             friends, and tell us your ideas in the comments section below!
