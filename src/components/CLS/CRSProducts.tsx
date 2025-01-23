@@ -3,7 +3,7 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./styles.css";
-import Image from "next/image";
+
 type Props = {
   isLoading: boolean;
 };
@@ -27,19 +27,19 @@ export default function CRSProducts({ isLoading }: Props) {
         
       >
         <div>
-          <Image alt="image" src="/cls/slideProduct01.jpg" className="rounded-lg" />
+          <img alt="image" src="/cls/slideProduct01.jpg" className="rounded-lg" />
           <p className="legend">Develop moment</p>
         </div>
         <div>
-          <Image alt="image" src="/cls/slideProduct02.jpg" className="rounded-lg " />
+          <img alt="image" src="/cls/slideProduct02.jpg" className="rounded-lg " />
           <p className="legend">Develop moment</p>
         </div>
         <div>
-          <Image alt="image" src="/cls/slideProduct03.jpg" className="rounded-lg" />
+          <img alt="image" src="/cls/slideProduct03.jpg" className="rounded-lg" />
           <p className="legend">Develop moment</p>
         </div>
         <div>
-          <Image alt="image" src="/cls/slideProduct04.jpg" className="rounded-lg" />
+          <img alt="image" src="/cls/slideProduct04.jpg" className="rounded-lg" />
           <p className="legend">Develop moment</p>
         </div>
       </Carousel>

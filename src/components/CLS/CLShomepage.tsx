@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -31,23 +30,23 @@ export default function CLShomepage() {
         stopOnHover={false}
       >
         <div>
-          <Image src="./cls/slide01.jpg" alt="slide1" />
+          <img src="./cls/slide01.jpg" alt="slide1" />
           <p className="legend">Beyond to new technology</p>
         </div>
         <div>
-          <Image src="./cls/slide02.jpg" alt="slide2" />
+          <img src="./cls/slide02.jpg" alt="slide2" />
           <p className="legend">Our Service</p>
         </div>
         <div>
-          <Image src="./cls/slide03.jpg" alt="slide3" />
+          <img src="./cls/slide03.jpg" alt="slide3" />
           <p className="legend">You never seen before</p>
         </div>
         <div>
-          <Image src="./cls/slide04.jpg" alt="slide4" />
+          <img src="./cls/slide04.jpg" alt="slide4" />
           <p className="legend">5G planning</p>
         </div>
         <div>
-          <Image src="./cls/slide05.jpg" alt="slide5" />
+          <img src="./cls/slide05.jpg"  alt="slide5" />
           <p className="legend">IoT Everywhere</p>
         </div>
       </Carousel>
