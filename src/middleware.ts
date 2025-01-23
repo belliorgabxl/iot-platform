@@ -4,6 +4,15 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const token = request.cookies.get("token")?.value || "";
+  
+  if (
+    path.startsWith("/_next/") || // Next.js assets
+    path.startsWith("/static/") || // Static folder (if used)
+    path.startsWith("/favicon.ico") || // Favicon
+    path.startsWith("/images/") // Images in public folder
+  ) {
+    return NextResponse.next();
+  }
 
   const isPublicPath =
     path === "/authentication/login" ||
@@ -43,6 +52,6 @@ export const config = {
     "/devices",
     "/products",
     "/products/car/[deviceId]",
-    "/documents",
+    "/documents", 
   ],
 };
