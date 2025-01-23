@@ -342,7 +342,7 @@ export default function FormPage({ device_id }: Props) {
               {buttons.length > 0 ? (
                 <div className="border-2 border-dashed grid grid-cols-2 px-10 py-5 rounded-lg gap-2  w-full ">
                   {buttons.map((item) => (
-                    <div>
+                    <div key={item.id}>
                       {item.buttonType == "transmitter" ? (
                         <div className="animate-fastFade grid place-items-center w-full">
                           {item.buttonCategory == "press" ? (
