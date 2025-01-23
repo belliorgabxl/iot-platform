@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Session } from "@/resource/model";
 import Body from "./Body";
 import { useRouter } from "next/navigation";
-export default function page() {
+export default function Page() {
   const router = useRouter();
   const [session, setSession] = useState<Session | null>(null);
   const getUserSession = async () => {
