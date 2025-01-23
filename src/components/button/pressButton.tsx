@@ -15,8 +15,8 @@ interface ButtonProps {
 
 const PressButton = ({
   label,
-  // type,
-  // category,
+  type,
+  category,
   cmd,
   topic,
   client,

@@ -16,8 +16,8 @@ interface ButtonProps {
 
 const ToggelButton = ({
   label,
-  // type,
-  // category,
+  type,
+  category,
   cmd,
   client,
   isConnected,
@@ -41,9 +41,9 @@ const ToggelButton = ({
     }
   };
 
-  // const handlePush = () => {
-  //   setToggle(!toggle);
-  // };
+  const handlePush = () => {
+    setToggle(!toggle);
+  };
   return (
     <button
       onClick={() => {
