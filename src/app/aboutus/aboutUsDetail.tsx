@@ -44,12 +44,12 @@ export default function AboutUsDetail({ isLoading }: Props) {
           width={200}
           height={200}
           alt="gabel"
-          className="rounded-r-lg w-[150px] lg:w-[200px] object-cover group-hover:opacity-80 lg:h-auto "
+           className="rounded-r-lg w-[150px] lg:w-[200px] object-cover group-hover:opacity-80 lg:h-auto "
         />
       </div>
 
       <div
-        className={`duration-1000 bg-gray-900 lg:translate-x-[600px]   lg:w-fit flex justify-between group lg:justify-end  hover:scale-[102%] rounded-lg ${
+        className={`duration-1000 bg-gray-900 lg:translate-x-[300px] lg:w-fit flex justify-between group lg:justify-center  hover:scale-[102%] rounded-lg ${
           isLoading ? "" : "opacity-0  px-0"
         }`}
       >
@@ -60,15 +60,13 @@ export default function AboutUsDetail({ isLoading }: Props) {
           <p className="text-sm lg:text-lg">Studen ID : 64010027</p>
           <p className="text-sm lg:text-lg">Faculty Of Engineering</p>
         </div>
-        <div className="">
           <img
             src="/aboutus/aboutus_por.jpg"
             width={200}
             height={200}
             alt="por"
-            className="rounded-r-lg w-[150px] lg:w-[200px] object-cover group-hover:opacity-80 lg:h-auto "
+             className="rounded-r-lg w-[150px] lg:w-[200px] object-cover group-hover:opacity-80 lg:h-auto "
           />
-        </div>
       </div>
     </div>
   );

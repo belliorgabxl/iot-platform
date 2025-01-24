@@ -47,27 +47,27 @@ export default function AboutUsForm() {
               isLoading ? "" : "opacity-0  px-0"
             }`}
           >
-            <div className=" space-y-1  text-white px-5 lg:px-10 lg:py-5 py-3  duration-1000 ">
+            <div className=" space-y-1  text-white px-2 lg:px-10 lg:py-5 py-3  duration-1000 ">
               <p className=" text-sm lg:text-2xl">
                 Assoc.Prof.Dr. Watid Phakphisut
               </p>
-              <p className="text-lg lg:text-3xl mt-2">รศ.ดร.เวธิต ภาคย์พิสุทธิ์</p>
+              <p className="text-sm lg:text-3xl mt-2">รศ.ดร.เวธิต ภาคย์พิสุทธิ์</p>
               <hr className="" />
-              <p className="text-sm lg:text-lg">Telecommunication</p>
+              <p className="text-sm lg:text-lg line-clamp-1">Telecommunication</p>
               <p className="text-sm lg:text-lg">Faculty Of Engineering</p>
             </div>
             <img
               src="/aboutus/watid.jpg"
-              width={220}
+
               alt="watid"
-              className="rounded-r-lg h-40 object-cover group-hover:opacity-80 lg:h-auto "
+              className="rounded-r-lg  lg:w-[220px] w-[170px] object-cover group-hover:opacity-80 lg:h-auto "
             />
           </div>
         </div>
-        <div className="mt-5 px-10 flex justify-center">
+        <div className="mt-5 flex justify-center">
           <h1
             className={`text-lg lg:text-3xl duration-1000 text-white py-4  rounded-lg bg-gray-900   ${
-              isLoading ? "px-20" : "px-4 bg-gray-950"
+              isLoading ? "px-10 lg:px-20" : "px-4 bg-gray-950"
             }`}
           >
             Telecommunication
