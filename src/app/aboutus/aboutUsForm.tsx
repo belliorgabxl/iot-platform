@@ -12,67 +12,61 @@ export default function AboutUsForm() {
     setLoading(true);
   }, []);
   return (
-    <div className="w-full pb-10  bg-gray-700">
-      <div className="grid place-items-center pb-20">
-        <div className="">
+    <div className="w-full   bg-gray-700">
+      <div className="grid w-full place-items-center ">
+        <div className="flex justify-center">
           <CRSAboutUs isLoading={isLoading} />
         </div>
-        <h1
-          className={` duration-1000 my-3 bg-black px-10 rounded-md py-2 justify-center flex items-center font-extrabold text-gray-900 dark:text-white  text-6xl ${
-            isLoading ? "animate-fadeIn" : ""
-          }`}
-        >
-          <span className="text-transparent bg-clip-text bg-gradient-to-r to-blue-500 via-emerald-200 from-sky-400">
-            About us
-          </span>
-        </h1>
-        <div className="w-full px-10 flex justify-start">
+
+        <div className="w-full flex justify-start">
           <h1
-            className={`text-3xl my-5 duration-1000 text-white py-4 shadow-md shadow-gray-900 rounded-lg bg-blue-950  ${
-              isLoading ? "px-60" : "px-4 bg-gray-950"
+            className={`text-3xl font-bold w-full my-5 duration-1000 text-white py-4  rounded-sm bg-gray-900  ${
+              isLoading ? "px-10 lg:px-20" : "px-4 bg-gray-950"
             }`}
           >
-            Developer
+            <span className="text-transparent bg-clip-text bg-gradient-to-r to-blue-500 via-blue-200 from-blue-400">
+              Developer
+            </span>
           </h1>
         </div>
         <AboutUsDetail isLoading={isLoading} />
-        <div className="w-full px-10 flex justify-start">
+        <div className="w-full flex text-center">
           <h1
-            className={`text-3xl my-5 duration-1000 text-white py-4 shadow-md shadow-gray-900 rounded-lg bg-blue-950   ${
-              isLoading ? "px-60" : "px-4 bg-gray-950"
+            className={`text-3xl font-bold w-full my-5 duration-1000 text-white py-4  rounded-sm bg-gray-900  ${
+              isLoading ? "" : "px-4 bg-gray-950"
             }`}
           >
-            Advisor
+            <span className="text-transparent  bg-clip-text bg-gradient-to-r to-blue-500 via-blue-200 from-blue-400">
+              Advisor
+            </span>
           </h1>
         </div>
-        <div>
+        <div className="grid lg:place-items-center">
           <div
-            className={`duration-1000 flex w-full justify-center my-5 ${
-              isLoading ? "px-10" : "opacity-0 h-10 px-0"
+            className={`duration-1000 bg-gray-900 w-fit flex h-fit  group  hover:scale-[102%] rounded-lg ${
+              isLoading ? "" : "opacity-0  px-0"
             }`}
           >
-            <div className="bg-gray-900 w-3/4 text-white px-10 duration-1000 hover:px-40 py-5 rounded-lg">
-              <p className="text-3xl ">Assoc.Prof.Dr. Watid Phakphisut</p>
-              <p className="text-3xl mt-2">รศ.ดร.เวธิต ภาคย์พิสุทธิ์</p>
-              <hr className="my-4" />
-              <p className="my-4 text-2xl">Telecommunication</p>
-              <p className="my-4 text-2xl">Faculty Of Engineering</p>
+            <div className=" space-y-1  text-white px-5 lg:px-10 lg:py-5 py-3  duration-1000 ">
+              <p className=" text-sm lg:text-2xl">
+                Assoc.Prof.Dr. Watid Phakphisut
+              </p>
+              <p className="text-lg lg:text-3xl mt-2">รศ.ดร.เวธิต ภาคย์พิสุทธิ์</p>
+              <hr className="" />
+              <p className="text-sm lg:text-lg">Telecommunication</p>
+              <p className="text-sm lg:text-lg">Faculty Of Engineering</p>
             </div>
-            <div className="">
-              <img
-                src="/aboutus/watid.jpg"
-                width={"full"}
-                height={"full"}
-                alt="gabel"
-                className="rounded-xl shadow-md shadow-gray-800"
-              />
-            </div>
+            <img
+              src="/aboutus/watid.jpg"
+              alt="watid"
+              className="rounded-r-lg h-40 object-cover group-hover:opacity-80 lg:h-auto "
+            />
           </div>
         </div>
-        <div className="w-full px-10 flex justify-start">
+        <div className="mt-5 px-10 flex justify-center">
           <h1
-            className={`text-3xl my-5 duration-1000 text-white py-4 shadow-md shadow-gray-900 rounded-lg bg-blue-950   ${
-              isLoading ? "px-60" : "px-4 bg-gray-950"
+            className={`text-lg lg:text-3xl duration-1000 text-white py-4  rounded-lg bg-gray-900   ${
+              isLoading ? "px-10 lg:px-40" : "px-4 bg-gray-950"
             }`}
           >
             Telecommunication

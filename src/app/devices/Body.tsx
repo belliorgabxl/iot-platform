@@ -238,13 +238,13 @@ export default function Body({ session }: Props) {
   return (
     <div>
       <div className={`bg-gray-800  w-full pb-10`}>
-        <div className="absolute  text-white bg-gray-900 px-20 py-4 text-3xl my-3 rounded-xl  md:left-1/2 sm:left-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 sm:-translate-x-1/2   left-5 ">
+        <div className="absolute  text-white bg-gray-900 px-10 lg:px-20 py-4 text-3xl my-3 rounded-md  md:left-1/2 sm:left-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 sm:-translate-x-1/2   left-5 ">
           <div
             className={` ${
               isLoading ? "animate-fadeIn" : "opacity-0"
             } flex justify-center items-center `}
           >
-            <h1 className=" text-5xl font-extrabold text-gray-900 ">
+            <h1 className=" md:text-4xl font-bold text-2xl lg:text-5xl  text-gray-900 ">
               <span className="text-transparent bg-clip-text tracking-wide bg-gradient-to-tr to-blue-800 via-blue-400 from-sky-300 line-clamp-1 ">
                 Devices
               </span>
@@ -278,11 +278,11 @@ export default function Body({ session }: Props) {
         </div>
         <div className="flex justify-center pt-5 mb-20">
           {devices.length > 0 && isLoading == true ? (
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 lg:w-11/12  lg:px-10 px-4 py-10 md:w-9/12 sm:w-9/12 w-full sm:px-10 bg-gray-700 border-2 border-dotted border-gray-500">
+            <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-4 lg:w-11/12  lg:px-10 px-4 py-10 md:w-9/12 sm:w-9/12 w-11/12 sm:px-10 bg-gray-700 border-2 border-dotted border-gray-500">
               {devices?.map((item: DeviceData) => (
                 <div
                   key={item.deviceId}
-                  className="px-7 py-5 bg-gradient-to-tl from-gray-800 via-indigo-900 to-blue-600 text-white rounded-2xl shadow-lg shadow-gray-800 duration-500  hover:bg-blue-800 hover:shadow-gray-900 hover:shadow-xl hover:scale-[101%] w-full group "
+                  className="px-5 lg:px-7 lg:py-5 py-3 bg-gradient-to-tl from-gray-800 via-indigo-900 to-blue-600 text-white rounded-2xl shadow-lg shadow-gray-800 duration-500  hover:bg-blue-800 hover:shadow-gray-900 hover:shadow-xl hover:scale-[101%] lg:w-full md:w-full sm:w-full w-fit group "
                 >
                   <div
                     className="absolute w-12 h-12 rounded-full z-10 right-0 -top-5 shadow-md shadow-black bg-gray-300 animate-fastFade hidden group-hover:block hover:bg-gray-500 "
@@ -319,7 +319,7 @@ export default function Body({ session }: Props) {
                       <span className="font-bold text-xl w-[80px] text-white ">
                         IoT ID :
                       </span>
-                      <span className="text-white mx-4 bg-gray-500 rounded-md  h-fit py-1  text-xl w-[250px] line-clamp-1 px-6">
+                      <span className="text-white mx-4 bg-gray-500 rounded-md  h-fit py-1  text-xl w-[180px] lg:w-[250px] line-clamp-1 px-6">
                         {item.deviceId ?? "Loading"}
                       </span>
                     </div>

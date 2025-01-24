@@ -15,13 +15,15 @@ export default function CRSAboutUs({ isLoading }: Props) {
     >
       <Carousel
         autoPlay={true}
-        interval={4000}
+        interval={2600}
         width="full"
+        autoFocus={false}
         infiniteLoop={true}
         showArrows={false}
         showThumbs={false}
         dynamicHeight={false}
-        swipeable={false}
+        swipeable={true}
+        stopOnHover={false}
       >
         <div>
           <img alt="image" src="aboutus/telecom.jpg" />

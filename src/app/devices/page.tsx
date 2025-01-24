@@ -30,7 +30,7 @@ export default function Page() {
         <Body session={session} />
       ) : (
         <div className="bg-gray-700 py-20 px-5 lg:px-20 grid place-items-center">
-          <div className="my-10 border-2 lg:w-3/5 border-dotted rounded-md border-white grid place-items-center py-20">
+          <div className="my-10 border-2 lg:w-3/5 border-dotted rounded-md border-white grid px-10 place-items-center py-20">
             <div className="text-xl lg:text-5xl font-bold text-gray-300 animate-pulse">
               Loading...
             </div>
