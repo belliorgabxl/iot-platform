@@ -18,13 +18,13 @@ export default function AboutUsForm() {
           <CRSAboutUs isLoading={isLoading} />
         </div>
 
-        <div className="w-full flex justify-start">
+        <div className="w-full flex text-center lg:text-start">
           <h1
             className={`text-3xl font-bold w-full my-5 duration-1000 text-white py-4  rounded-sm bg-gray-900  ${
-              isLoading ? "px-10 lg:px-20" : "px-4 bg-gray-950"
+              isLoading ? "lg:pl-10" : "px-4 bg-gray-950"
             }`}
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r to-blue-500 via-blue-200 from-blue-400">
+            <span className="text-transparent  bg-clip-text bg-gradient-to-r to-blue-500 via-blue-200 from-blue-400">
               Developer
             </span>
           </h1>
@@ -33,7 +33,7 @@ export default function AboutUsForm() {
         <div className="w-full flex text-center">
           <h1
             className={`text-3xl font-bold w-full my-5 duration-1000 text-white py-4  rounded-sm bg-gray-900  ${
-              isLoading ? "" : "px-4 bg-gray-950"
+              isLoading ? "" : " bg-gray-950"
             }`}
           >
             <span className="text-transparent  bg-clip-text bg-gradient-to-r to-blue-500 via-blue-200 from-blue-400">

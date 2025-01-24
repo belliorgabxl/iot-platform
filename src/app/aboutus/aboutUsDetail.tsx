@@ -6,7 +6,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
   return (
     <div className="grid px-5 gap-4 w-full">
       <div
-        className={`duration-1000 bg-gray-900 w-fit flex justify-center group lg:justify-start  hover:scale-[102%] rounded-lg ${
+        className={`duration-1000 bg-gray-900 lg:w-fit flex justify-between group lg:justify-start  hover:scale-[102%] rounded-lg ${
           isLoading ? "" : "opacity-0  px-0"
         }`}
       >
@@ -28,7 +28,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
 
       {/* bam */}
       <div
-        className={`duration-1000 bg-gray-900 lg:translate-x-[300px] w-fit flex justify-center group lg:justify-center  hover:scale-[102%] rounded-lg ${
+        className={`duration-1000 bg-gray-900 lg:translate-x-[300px] lg:w-fit flex justify-between group lg:justify-center  hover:scale-[102%] rounded-lg ${
           isLoading ? "" : "opacity-0  px-0"
         }`}
       >
@@ -49,7 +49,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
       </div>
 
       <div
-        className={`duration-1000 bg-gray-900 lg:translate-x-[600px] w-fit flex justify-center group lg:justify-end  hover:scale-[102%] rounded-lg ${
+        className={`duration-1000 bg-gray-900 lg:translate-x-[600px]   lg:w-fit flex justify-between group lg:justify-end  hover:scale-[102%] rounded-lg ${
           isLoading ? "" : "opacity-0  px-0"
         }`}
       >
