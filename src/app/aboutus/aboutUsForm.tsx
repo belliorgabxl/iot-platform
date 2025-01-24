@@ -58,6 +58,7 @@ export default function AboutUsForm() {
             </div>
             <img
               src="/aboutus/watid.jpg"
+              width={220}
               alt="watid"
               className="rounded-r-lg h-40 object-cover group-hover:opacity-80 lg:h-auto "
             />
@@ -66,7 +67,7 @@ export default function AboutUsForm() {
         <div className="mt-5 px-10 flex justify-center">
           <h1
             className={`text-lg lg:text-3xl duration-1000 text-white py-4  rounded-lg bg-gray-900   ${
-              isLoading ? "px-10 lg:px-40" : "px-4 bg-gray-950"
+              isLoading ? "px-20" : "px-4 bg-gray-950"
             }`}
           >
             Telecommunication
