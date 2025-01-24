@@ -74,9 +74,9 @@ export default function ProductDetail({ isLoading }: Props) {
           <div className="text-sm lg:text-xl  bg-gray-900 h-fit px-2 lg:px-5 grid place-items-center py-1 overflow-hidden text-ellipsis whitespace-nowrap line-clamp-1 rounded-md">
             Product : Auto Pump
           </div>
-          <p className=" text-sm lg:text-lg">Board : ESP32</p>
-          <p className="text-sm lg:text-lg">Connection Type : Wi-fi 2.4 GHz</p>
-          <p className=" grid place-content-center rounded-md py-1 w-fit px-2 lg:px-10 bg-gray-500 text-white  text-sm lg:text-xl">
+          <p className=" text-sm lg:text-lg sm:text-lg">Board : ESP32</p>
+          <p className="text-sm lg:text-lg sm:text-lg">Connection Type : Wi-fi 2.4 GHz</p>
+          <p className=" grid place-content-center rounded-md py-1 w-fit px-2 lg:px-10 bg-gray-500 text-white  text-sm sm:text-lg lg:text-xl">
             Inventory : 1 pc.
           </p>
         </div>
