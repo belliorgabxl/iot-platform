@@ -22,7 +22,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
           width={200}
           height={200}
           alt="gabel"
-          className="rounded-r-lg h-40 object-cover group-hover:opacity-80 lg:h-auto "
+          className="rounded-r-lg w-[150px] lg:w-[200px] object-cover group-hover:opacity-80 lg:h-auto "
         />
       </div>
 
@@ -44,7 +44,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
           width={200}
           height={200}
           alt="gabel"
-          className="rounded-r-lg h-40 object-cover group-hover:opacity-80 lg:h-auto "
+          className="rounded-r-lg w-[150px] lg:w-[200px] object-cover group-hover:opacity-80 lg:h-auto "
         />
       </div>
 
@@ -66,7 +66,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
             width={200}
             height={200}
             alt="por"
-            className="rounded-r-lg h-40 object-cover group-hover:opacity-80 lg:h-auto "
+            className="rounded-r-lg w-[150px] lg:w-[200px] object-cover group-hover:opacity-80 lg:h-auto "
           />
         </div>
       </div>

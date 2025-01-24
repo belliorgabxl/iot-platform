@@ -9,7 +9,7 @@ export default function AboutUsPage_article({isLoading}:Props) {
     <div
         className={`grid   ${
           isLoading
-            ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md shadow-black my-5 py-10 px-10 lg:w-[1000px] w-fit"
+            ? "bg-gray-900 hover:bg-gray-700 duration-1000  mx-5 rounded-md shadow-md  my-5 py-10 px-10 lg:w-[1000px] w-fit"
             : "opacity-0 w-2/5"
         }`}
       >
