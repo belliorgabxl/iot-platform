@@ -54,10 +54,10 @@ export default function Navbar() {
         {/* Middle: Navigation */}
         <div className="flex justify-center items-center">
           <NavLink href="/documents" label="Document" isActive={pathname === "/documents"} />
-          <NavLink href="/production" label="Products" isActive={pathname === "/production"} />
+          <NavLink href="/production" label="Product" isActive={pathname === "/production"} />
           <NavLink href="/devices" label="Device" isActive={pathname === "/devices"} />
           {/* <NavLink href="/dashboard" label="Dashboard" isActive={pathname === "/dashboard"} /> */}
-          <NavLink href="/aboutus" label="About Us" isActive={pathname === "/aboutus"} />
+          <NavLink href="/aboutus" label="About" isActive={pathname === "/aboutus"} />
         </div>
   
         {/* Right Side: Authentication or Profile */}
