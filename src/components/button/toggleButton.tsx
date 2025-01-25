@@ -58,27 +58,27 @@ const ToggelButton = ({
       {label == "Up" || label == "Forward" ? (
         <img
           src={`${
-            toggle ? "/images/forwardblack.png" : "/images/forwardwhite.png"
+            toggle ? "/png_icon/forwardblack.png" : "/png_icon/forwardwhite.png"
           } `}
           width={50}
           height={50}
         />
       ) : label == "Down" || label == "Backward" ? (
         <img
-          src={`${toggle ? "/images/backblack.png" : "/images/backwhite.png"} `}
+          src={`${toggle ? "/png_icon/backblack.png" : "/png_icon/backwhite.png"} `}
           width={50}
           height={50}
         />
       ) : label == "Left" ? (
         <img
-          src={`${toggle ? "/images/leftblack.png" : "/images/leftwhite.png"} `}
+          src={`${toggle ? "/png_icon/leftblack.png" : "/png_icon/leftwhite.png"} `}
           width={50}
           height={50}
         />
       ) : label == "Right" ? (
         <img
           src={`${
-            toggle ? "/images/rightblack.png" : "/images/rightwhite.png"
+            toggle ? "/png_icon/rightblack.png" : "/png_icon/rightwhite.png"
           } `}
           width={50}
           height={50}

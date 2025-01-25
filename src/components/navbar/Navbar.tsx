@@ -51,16 +51,15 @@ export default function Navbar() {
           <div className="font-extrabold text-5xl lg:block md:block hidden">IoT</div>
         </Link>
   
-        {/* Middle: Navigation */}
+  
         <div className="flex justify-center items-center">
           <NavLink href="/documents" label="Document" isActive={pathname === "/documents"} />
           <NavLink href="/production" label="Product" isActive={pathname === "/production"} />
           <NavLink href="/devices" label="Device" isActive={pathname === "/devices"} />
-          {/* <NavLink href="/dashboard" label="Dashboard" isActive={pathname === "/dashboard"} /> */}
+ 
           <NavLink href="/aboutus" label="About" isActive={pathname === "/aboutus"} />
         </div>
-  
-        {/* Right Side: Authentication or Profile */}
+
         {session === null && pathname !== "/devices" ? (
           <div className="lg:flex justify-end items-center gap-2 md:block hidden">
             <button className="px-10 rounded-md py-1 hover:text-white hover:bg-opacity-0 border bg-white text-blue-800 duration-300 border-white"
@@ -74,8 +73,9 @@ export default function Navbar() {
           </div>
         ) : session || pathname === "/devices" ?  (
           <div className="flex justify-center items-center text-white text-xl">
-            <img src="assets/user_gabel.jpg" className="object-cover h-12 w-12 rounded-full" 
-              onClick={() => setDropmenu(!dropmenu)} />
+            <img src={"assets/user_gabel.jpg"} className="object-cover h-12 w-12 rounded-full" 
+              onClick={() => setDropmenu(!dropmenu)} 
+              alt="User Profile"/>
             
             {dropmenu && (
               <div className="duration-300 shadow-md shadow-gray-800 absolute translate-y-20 rounded-md px-1 py-2 bg-white grid">

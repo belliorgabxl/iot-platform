@@ -737,7 +737,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
               className="px-2 py-1 rounded-md bg-gray-500 text-white"
               onChange={(e) => setButtonCommand(e.target.value)}
             >
-              <option selected>select command</option>
+              <option defaultValue={'None'}>select-command</option>
               <option value={"on"}>On</option>
               <option value={"off"}>Off</option>
               <option value={"up"}>Up</option>
