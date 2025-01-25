@@ -15,6 +15,7 @@ export async function POST(request) {
     status,
     wifiId,
     wifiConnect,
+    productId,
   } = await request.json();
 
   await Device.create({
@@ -27,6 +28,7 @@ export async function POST(request) {
     status,
     wifiId,
     wifiConnect,
+    productId
   });
 
   return NextResponse.json({ message: "Device Created" }, { status: 201 });

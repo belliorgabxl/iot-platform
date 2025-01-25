@@ -31,9 +31,8 @@ export default function Page() {
 
         await getUserSession();
 
-        setTimeout(() => {
-          router.push("/devices");
-        }, 500);
+        window.location.reload();
+
       } else {
         toast.error("Login failed");
       }

@@ -5,7 +5,7 @@ import { Session } from "@/resource/model";
 import AddDevicePopUp from "@/components/popup/AddDevicePopUp";
 import EditDevicePopUp from "@/components/popup/EditDevicePopUp";
 import Link from "next/link";
-import { CirclePlus, Settings, Wrench } from "lucide-react";
+import { CirclePlus, Cpu,  Settings } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
@@ -17,6 +17,7 @@ type Props = {
   session: Session;
 };
 interface DeviceData {
+  _id:string;
   deviceId: string;
   userId: string;
   name: string;
@@ -85,6 +86,8 @@ export default function Body({ session }: Props) {
   const [loading_state, setLoadings] = useState<boolean>(false);
   const [popUp_click, setPopUpClick] = useState<boolean>(false);
   const [edit_popup, setEditPopUp] = useState<boolean>(false);
+  const [edit_id , setEditId] = useState<string|null>()
+  const [edit_deviceId , setEditDeviceId] = useState<string|null>()
   const [triggerSubmit, setTriggerSubmit] = useState<boolean>(false);
 
   useEffect(() => {
@@ -94,8 +97,10 @@ export default function Body({ session }: Props) {
     });
   }, []);
 
-  const onClickEditPopUp = () => {
+  const onClickEditPopUp = (id:string,deviceId:string) => {
     setEditPopUp(true);
+    setEditId(id)
+    setEditDeviceId(deviceId)
   };
 
   const onClickPopUp = () => {
@@ -143,6 +148,7 @@ export default function Body({ session }: Props) {
             let status = "owner";
             let wifiId = wifiUUID;
             let wifiConnect = "none";
+            let productId = product_id
             const res = await fetch("/api/devices", {
               method: "POST",
               headers: {
@@ -158,6 +164,7 @@ export default function Body({ session }: Props) {
                 status,
                 wifiId,
                 wifiConnect,
+                productId
               }),
             });
 
@@ -266,10 +273,10 @@ export default function Body({ session }: Props) {
           <button
             className="flex gap-2 justify-center items-center font-semibold bg-white rounded-md hover:bg-slate-600 hover:text-white  shadow-md shadow-black text-gray-700 w-[180px]  text-lg px-4 py-2 group"
             onClick={() => {
-              router.push("/import");
+              router.push("/externalDevice");
             }}
           >
-            <Wrench
+            <Cpu
               style={{ width: "2.0rem", height: "1.8rem" }}
               className="relative  text-gray-700 group-hover:text-white"
             />
@@ -287,7 +294,7 @@ export default function Body({ session }: Props) {
                   <div
                     className="absolute w-12 h-12 rounded-full z-10 right-0 -top-5 shadow-md shadow-black bg-gray-300 animate-fastFade hidden group-hover:block hover:bg-gray-500 "
                     onClick={() => {
-                      onClickEditPopUp();
+                      onClickEditPopUp(item._id , item.deviceId);
                     }}
                   >
                     <button className=" w-full h-full grid place-items-center ">
@@ -353,8 +360,10 @@ export default function Body({ session }: Props) {
           onSave={getAddDevicePopUp}
         />
       )}
-      {edit_popup && (
+      {edit_popup && edit_id && edit_deviceId && (
         <EditDevicePopUp
+          id={edit_id}
+          deviceId={edit_deviceId}
           onClosePopUp={() => {
             setEditPopUp(false);
           }}

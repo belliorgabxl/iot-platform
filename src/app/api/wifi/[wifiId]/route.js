@@ -9,6 +9,13 @@ export async function GET(request, { params }) {
 
   return NextResponse.json(wifi, { status: 200 });
 }
+export async function DELETE(request, { params }) {
+  await connect();
+  const { wifiId } = await params;
+  await Wifi.deleteOne({ wifiId: wifiId });
+
+  return NextResponse.json({message:"Delete Wi-fi Success"}, { status: 200 });
+}
 
 export async function PUT(request, { params }) {
   await connect();
