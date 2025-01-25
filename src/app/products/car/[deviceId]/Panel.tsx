@@ -18,12 +18,20 @@ export default function CarPanel({ isLoading, topic, device_log }: Props) {
   const { connectionStatus, deviceStatus } = useContext(MqttContext);
   return (
     <div
-      className={`duration-1000 gap-2  ml-5 shadow-md shadow-gray-900 bg-gradient-to-tr px-5 w-full from-blue-950 to-gray-800 rounded-lg ${
+      className={`duration-1000 gap-2  ml-5 shadow-md  bg-gradient-to-tr px-5 w-full from-blue-950 to-gray-800 rounded-lg ${
         isLoading ? " py-5 " : "py-0"
       }`}
     >
-      <div className={` ${isLoading ? "animate-fadeIn" : "opacity-0"} flex justify-center items-center `}>
-      <h1 className=" text-5xl font-extrabold text-gray-900 "><span className="text-transparent bg-clip-text bg-gradient-to-r to-blue-600  from-sky-400 line-clamp-1 ">Car IoT</span></h1>
+      <div
+        className={` ${
+          isLoading ? "animate-fadeIn" : "opacity-0"
+        } flex justify-center items-center `}
+      >
+        <h1 className=" text-5xl font-extrabold text-gray-900 ">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r to-blue-600  from-sky-400 line-clamp-1 ">
+            Car IoT
+          </span>
+        </h1>
       </div>
       <div
         className={`my-5 flex justify-between ${

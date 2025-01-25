@@ -2,49 +2,20 @@
 import { useState, useEffect } from "react";
 import mqtt, { MqttClient } from "mqtt";
 import { toast } from "react-toastify";
-import CarJoyStick from "./carJoyStick";
-import CarPanel from "./carPanel";
+import CarJoyStick from "./Controller";
+import CarPanel from "./Panel";
 import React from "react";
 import PressButton from "@/components/button/pressButton";
 import ToggelButton from "@/components/button/toggleButton";
 import ToggleRecieve from "@/components/button/toggleRecieve";
 import { CirclePlus, Wrench } from "lucide-react";
+import {  ButtonModel, DeviceModel, WifiModel } from "@/resource/model";
+import PopUpAddButton from "./AddButtonPopUp";
 
 type Props = {
   device_id: string;
 };
 
-type ButtonProps = {
-  id: number;
-  type: string;
-  category: string;
-  label: string;
-  command: string;
-  deviceId: string;
-};
-
-interface DeviceData {
-  deviceId: string;
-  deviceName: string;
-  devicePath: string;
-  deviceType: string;
-  deviceOwner: string;
-  productPassword: string;
-  productId: number;
-  status: string;
-  wifiId: string;
-  wifiConnect: string;
-  description: string;
-  actionId: number;
-}
-
-interface WifiData {
-  _id: string;
-  wifiId: string;
-  wifiName: string;
-  wifiPassword: string;
-  status: string;
-}
 const fetchDeviceId = async (deviceId: string) => {
   const response = await fetch(`/api/devices/${deviceId}`);
   return response.json();
@@ -71,11 +42,11 @@ export default function FormPage({ device_id }: Props) {
   const [popUp_click, setPopUpClick] = useState<boolean>();
   const [wifiName, setWifiName] = useState<string>();
   const [wifiPW, setWifiPW] = useState<string>();
-  const [wifiData, setWifiData] = useState<WifiData>();
+  const [wifiData, setWifiData] = useState<WifiModel>();
   const [popUp_clearWifi, setPopUpclearWifi] = useState<boolean>();
-  const [deviceData, setDeviceData] = useState<DeviceData>();
+  const [deviceData, setDeviceData] = useState<DeviceModel>();
   const [deviceConnected, setDeviceConnected] = useState<boolean>(false);
-  const [buttons, setButtons] = useState<ButtonProps[]>([]);
+  const [buttons, setButtons] = useState<ButtonModel[]>([]);
 
   useEffect(() => {
     fetchDeviceId(deviceId).then((item: any) => {
@@ -293,7 +264,7 @@ export default function FormPage({ device_id }: Props) {
         </div>
       </div>
       <div className=" grid gap-10 place-items-center px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
-        <div className="lg:flex md:flex justify-center hidden    w-full lg:w-fit lg:py-5  ">
+        <div className="lg:flex md:flex justify-center hidden    w-full lg:w-fit lg:py-5">
           {topic && (
             <CarPanel
               isConnected={isConnected}
@@ -504,7 +475,7 @@ export default function FormPage({ device_id }: Props) {
         </div>
       )}
       {popup_btn && (
-        <PopUpBtn
+        <PopUpAddButton
           setPopUpBtn={() => {
             setPopUpBtn(!popup_btn);
           }}
@@ -516,284 +487,3 @@ export default function FormPage({ device_id }: Props) {
   );
 }
 
-type CustomizeBtnType = {
-  transmitter: {
-    press: {
-      label: any[];
-    };
-    toggle: {
-      label: any[];
-    };
-    joy: {
-      label: any[];
-    };
-  };
-  reciever: {
-    chart: any[];
-  };
-};
-
-type PopUpBtnProps = {
-  setPopUpBtn: (value: boolean) => void;
-  setButtons: React.Dispatch<React.SetStateAction<ButtonProps[]>>;
-  deviceId: string;
-};
-
-const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
-  const [category, setButtonCategory] = React.useState<string>("");
-  const [label, setButtonLabel] = React.useState<string>("");
-  const [command, setButtonCommand] = React.useState<string>("");
-  const [type, setButtonType] = React.useState<string>("");
-  const customizeBtn: CustomizeBtnType = {
-    transmitter: {
-      press: {
-        label: [
-          { label: "Dot", icon: "⚫" },
-        { label: "Up", icon: "⬆" },
-        { label: "Down", icon: "⬇" },
-        { label: "Left", icon: "⬅" },
-        { label: "Right", icon: "➡" },
-        ],
-      },
-      toggle: {
-        label: [{ label: "Forward", icon: "⬆" },
-          { label: "Backward", icon: "⬇" },
-          { label: "Up", icon: "⬆" },
-          { label: "Down", icon: "⬇" },
-          { label: "Left", icon: "⬅" },
-          { label: "Right", icon: "➡" },],
-      },
-      joy: { label: ["normol joy stick"] },
-    },
-    reciever: {
-      chart: ["donut", "candle"],
-    },
-  };
-  const [selectedType, setSelectedType] = useState<
-    keyof CustomizeBtnType | null
-  >(null);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
-
-  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedType(event.target.value as keyof CustomizeBtnType);
-    setButtonType(event.target.value as keyof CustomizeBtnType);
-    setSelectedCategory(null);
-    setSelectedLabel(null);
-  };
-
-  const handleCategoryChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedCategory(event.target.value);
-    setButtonCategory(event.target.value);
-    setSelectedLabel(null);
-  };
-
-  const handleLabelChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedLabel(event.target.value);
-    setButtonLabel(event.target.value);
-  };
-
-  const getCategoryOptions = (): string[] => {
-    if (!selectedType) return [];
-    return Object.keys(customizeBtn[selectedType]) as string[];
-  };
-
-  const getLabelOptions = (): string[] => {
-    if (!selectedType || !selectedCategory) return [];
-
-    let selectedData: string[] | { label: string[] } | undefined;
-
-    if (selectedType in customizeBtn) {
-      const selectedTypeData =
-        customizeBtn[selectedType as keyof CustomizeBtnType];
-
-      if (
-        selectedType === "transmitter" &&
-        selectedCategory in selectedTypeData
-      ) {
-        selectedData =
-          selectedTypeData[selectedCategory as keyof typeof selectedTypeData];
-      } else if (
-        selectedType === "reciever" &&
-        selectedCategory in selectedTypeData
-      ) {
-        selectedData =
-          selectedTypeData[selectedCategory as keyof typeof selectedTypeData];
-      }
-    }
-
-    return Array.isArray(selectedData)
-      ? selectedData
-      : selectedData?.label || [];
-  };
-  const id = Date.now();
-  const handleSave = async () => {
-    const newButton: ButtonProps = {
-      id,
-      type,
-      category,
-      label,
-      command,
-      deviceId,
-    };
-
-    const resAddButton = await fetch("/api/button", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        id,
-        type,
-        category,
-        label,
-        command,
-        deviceId,
-      }),
-    });
-    if (resAddButton.ok) {
-      toast.success("Add buttom success");
-    } else {
-      toast.error("Failed");
-    }
-
-    setButtons((prevButtons) => [...prevButtons, newButton]);
-    setButtonCategory("");
-    setButtonLabel("");
-    setButtonCommand("");
-    setButtonType("");
-    setPopUpBtn(false);
-  };
-
-  const [config_cmd, setConfigCMD] = useState<boolean>(false);
-
-  return (
-    <div
-      className="fixed duration-1000 animate-appearance-in inset-0 flex items-center justify-center bg-gray-800 bg-opacity-45"
-      onClick={() => setPopUpBtn(false)}
-    >
-      <div
-        className="z-100 w-2/5  rounded-md bg-gray-600 px-16 pt-10 pb-5 grid place-items-start"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex flex-wrap my-2 gap-4">
-          <select
-            className="px-4 py-1 border rounded mb-2"
-            value={selectedType || ""}
-            onChange={handleTypeChange}
-          >
-            <option value="">--Type--</option>
-            {Object.keys(customizeBtn).map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
-
-          <select
-            className="px-4 py-1 border rounded mb-2"
-            value={selectedCategory || ""}
-            onChange={handleCategoryChange}
-            disabled={!selectedType}
-          >
-            <option value="">--Category--</option>
-            {getCategoryOptions().map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-
-          <select
-            className="px-4 py-1 border rounded mb-2"
-            value={label || ""}
-            onChange={handleLabelChange}
-            disabled={!selectedCategory}
-          >
-            <option value="">--Label--</option>
-            {getLabelOptions().map((option: any) => (
-              <option key={option.label || option} value={option.label || option}>
-                {option.icon ? `${option.icon} ${option.label}` : option}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div
-          className={` ${
-            selectedType == "transmitter" ? "animate-fastFade" : "hidden"
-          } lg:flex  grid my-2 w-full  gap-5  `}
-        >
-          <button
-            className={`${selectedType == "transmitter" ? "flex" : "hidden"} ${
-              config_cmd
-                ? " bg-blue-700 hover:bg-blue-600 text-white"
-                : " hover:bg-gray-400 bg-white "
-            } py-1 px-6 text-black rounded-lg shadow-md shadow-gray-700  hover:text-white line-clamp-1 h-fit `}
-            onClick={() => setConfigCMD(!config_cmd)}
-          >
-            {config_cmd ? (
-              <div>Config Command</div>
-            ) : (
-              <div>Default Command</div>
-            )}
-          </button>
-          <div
-            className={` ${
-              !config_cmd && selectedType == "transmitter"
-                ? "animate-fastFade"
-                : "hidden"
-            }`}
-          >
-            <select
-              className="px-2 py-1 rounded-md bg-gray-500 text-white"
-              onChange={(e) => setButtonCommand(e.target.value)}
-            >
-              <option defaultValue={"None"}>select-command</option>
-              <option value={"on"}>On</option>
-              <option value={"off"}>Off</option>
-              <option value={"up"}>Up</option>
-              <option value={"down"}>Down</option>
-              <option value={"left"}>Left</option>
-              <option value={"right"}>Right</option>
-              <option value={"forward"}>Forward</option>
-              <option value={"backward"}>Backward</option>
-            </select>
-          </div>
-        </div>
-
-        <div
-          className={` ${
-            config_cmd ? "animate-fastFade" : "hidden"
-          } flex my-2 w-full justify-start gap-2`}
-        >
-          <label className="text-white">Command: </label>
-          <input
-            type="text"
-            className="py-1 lg:w-[120px] bg-black text-green-400  w-[120px] rounded-sm  px-4"
-            placeholder=">/"
-            value={command}
-            onChange={(e) => setButtonCommand(e.target.value)}
-          />
-        </div>
-        <div className="my-4 w-full lg:flex grid lg:justify-center gap-2 items-start">
-          <button
-            className="px-8 py-1  enabled:opacity-100 opacity-60
-            bg-blue-600 rounded-md text-white enabled:hover:opacity-80"
-            onClick={handleSave}
-            disabled={!category && !label && !command && !type}
-          >
-            Save
-          </button>
-          <button
-            className="px-8 py-1 bg-red-500 rounded-md text-white hover:opacity-80"
-            onClick={() => setPopUpBtn(false)}
-          >
-            Cancel
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
