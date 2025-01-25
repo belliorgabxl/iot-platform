@@ -108,7 +108,7 @@ export default function CarJoyStick({
           >
             <img
               className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-              src="/png_icon/forwardWhite.png"
+              src="/png_icon/forwardwhite.png"
               height={50}
               width={50}
               alt="logo"
@@ -127,7 +127,7 @@ export default function CarJoyStick({
               <div>
                 <img
                   className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-                  src="/png_icon/leftBlack.png"
+                  src="/png_icon/leftblack.png"
                   height={50}
                   width={50}
                   alt="logo"
@@ -137,7 +137,7 @@ export default function CarJoyStick({
               <div>
                 <img
                   className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-                  src="/png_icon/leftWhite.png"
+                  src="/png_icon/leftwhite.png"
                   height={50}
                   width={50}
                   alt="logo"
@@ -155,7 +155,7 @@ export default function CarJoyStick({
               <div>
                 <img
                   className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-                  src="/png_icon/rightBlack.png"
+                  src="/png_icon/rightblack.png"
                   height={50}
                   width={50}
                   alt="logo"
@@ -165,7 +165,7 @@ export default function CarJoyStick({
               <div>
                 <img
                   className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-                  src="/png_icon/rightWhite.png"
+                  src="/png_icon/rightwhite.png"
                   height={50}
                   width={50}
                   alt="logo"
@@ -184,7 +184,7 @@ export default function CarJoyStick({
             <div>
               <img
                 className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-                src="/png_icon/backBlack.png"
+                src="/png_icon/backblack.png"
                 height={50}
                 width={50}
                 alt="logo"
@@ -194,7 +194,7 @@ export default function CarJoyStick({
             <div>
               <img
                 className={` ${isLoading ? "animate-fadeIn" : "opacity-0"}`}
-                src="/png_icon/backWhite.png"
+                src="/png_icon/backwhite.png"
                 height={50}
                 width={50}
                 alt="logo"

@@ -290,7 +290,7 @@ export default function FormPage({ device_id }: Props) {
           </button>
         </div>
       </div>
-      <div className=" grid gap-10 place-items-center px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-10 rounded-md lg:h-fit">
+      <div className=" grid gap-10 place-items-center px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
         <div className="lg:flex md:flex justify-center hidden    w-full lg:w-fit lg:py-5  ">
           {topic && (
             <CarPanel
