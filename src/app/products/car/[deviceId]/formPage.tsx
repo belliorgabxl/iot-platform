@@ -554,7 +554,12 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
         ],
       },
       toggle: {
-        label: ["Forward", "Backward", "Up", "Down", "Left", "Right"],
+        label: [{ label: "Forward", icon: "⬆" },
+          { label: "Backward", icon: "⬇" },
+          { label: "Up", icon: "⬆" },
+          { label: "Down", icon: "⬇" },
+          { label: "Left", icon: "⬅" },
+          { label: "Right", icon: "➡" },],
       },
       joy: { label: ["normol joy stick"] },
     },
@@ -677,7 +682,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
             value={selectedType || ""}
             onChange={handleTypeChange}
           >
-            <option value="">Select Type</option>
+            <option value="">--Type--</option>
             {Object.keys(customizeBtn).map((type) => (
               <option key={type} value={type}>
                 {type}
@@ -691,7 +696,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
             onChange={handleCategoryChange}
             disabled={!selectedType}
           >
-            <option value="">Select Category</option>
+            <option value="">--Category--</option>
             {getCategoryOptions().map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -705,7 +710,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
             onChange={handleLabelChange}
             disabled={!selectedCategory}
           >
-            <option value="">Select Label</option>
+            <option value="">--Label--</option>
             {getLabelOptions().map((option: any) => (
               <option key={option.label || option} value={option.label || option}>
                 {option.icon ? `${option.icon} ${option.label}` : option}
