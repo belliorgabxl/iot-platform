@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Session } from "@/resource/model";
 import axios from "axios";
 import { toast } from "react-toastify";
+import {  UserRound } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -72,10 +73,16 @@ export default function Navbar() {
             </button>
           </div>
         ) : session || pathname === "/devices" ?  (
-          <div className="flex justify-center items-center text-white text-xl">
-            <img src={"assets/user_gabel.jpg"} className="object-cover h-12 w-12 rounded-full" 
+          <div className="flex justify-center gap-3 items-center text-white text-xl">
+            <UserRound style={{width:"2.2rem" , height:"2.2rem"}} 
+            className="h-20 w-20 px-1 py-1 text-white bg-blue-500 rounded-full" onClick={() => setDropmenu(!dropmenu)} 
+            />
+            <div className="justify-center flex items-center text-white text-sm">
+              {session?.username.toUpperCase()}
+            </div>
+            {/* <img src={"assets/user_gabel.jpg"} className="object-cover h-12 w-12 rounded-full" 
               onClick={() => setDropmenu(!dropmenu)} 
-              alt="User Profile"/>
+              alt="User Profile"/> */}
             
             {dropmenu && (
               <div className="duration-300 shadow-md shadow-gray-800 absolute translate-y-20 rounded-md px-1 py-2 bg-white grid">
