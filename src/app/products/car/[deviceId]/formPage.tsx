@@ -16,10 +16,11 @@ type Props = {
 
 type ButtonProps = {
   id: number;
-  buttonType: string;
-  buttonCategory: string;
-  buttonLabel: string;
-  buttonCommand: string;
+  type: string;
+  category: string;
+  label: string;
+  command: string;
+  deviceId: string;
 };
 
 interface DeviceData {
@@ -54,6 +55,11 @@ const fetchWifiId = async (wifiId: string) => {
   return ressponse.json();
 };
 
+const fetchButton = async (id: string) => {
+  const response = await fetch(`/api/button/${id}`);
+  return response.json();
+};
+
 export default function FormPage({ device_id }: Props) {
   const deviceId = device_id;
   const [client, setClient] = useState<MqttClient | null>(null);
@@ -70,11 +76,15 @@ export default function FormPage({ device_id }: Props) {
   const [deviceData, setDeviceData] = useState<DeviceData>();
   const [deviceConnected, setDeviceConnected] = useState<boolean>(false);
   const [buttons, setButtons] = useState<ButtonProps[]>([]);
+
   useEffect(() => {
     fetchDeviceId(deviceId).then((item: any) => {
       setDeviceData(item);
       setLoading(true);
       setTopic(item.topic);
+    });
+    fetchButton(deviceId).then((item: any) => {
+      setButtons(item);
     });
     setLoading(true);
     const client = mqtt.connect(
@@ -343,14 +353,14 @@ export default function FormPage({ device_id }: Props) {
                 <div className="border-2 border-dashed grid grid-cols-2 px-10 py-5 rounded-lg gap-2  w-full ">
                   {buttons.map((item) => (
                     <div key={item.id}>
-                      {item.buttonType == "transmitter" ? (
+                      {item.type == "transmitter" ? (
                         <div className="animate-fastFade grid place-items-center w-full">
-                          {item.buttonCategory == "press" ? (
+                          {item.category == "press" ? (
                             <PressButton
-                              category={item.buttonCategory}
-                              cmd={item.buttonCommand}
-                              label={item.buttonLabel}
-                              type={item.buttonType}
+                              category={item.category}
+                              cmd={item.command}
+                              label={item.label}
+                              type={item.type}
                               isConnected={isConnected}
                               client={client}
                               topic={topic}
@@ -358,10 +368,10 @@ export default function FormPage({ device_id }: Props) {
                             />
                           ) : (
                             <ToggelButton
-                              category={item.buttonCategory}
-                              cmd={item.buttonCommand}
-                              label={item.buttonLabel}
-                              type={item.buttonType}
+                              category={item.category}
+                              cmd={item.command}
+                              label={item.label}
+                              type={item.type}
                               isConnected={isConnected}
                               client={client}
                               topic={topic}
@@ -372,10 +382,10 @@ export default function FormPage({ device_id }: Props) {
                       ) : (
                         <div className="grid place-items-center w-full">
                           <ToggleRecieve
-                            category={item.buttonCategory}
-                            cmd={item.buttonCommand}
-                            label={item.buttonLabel}
-                            type={item.buttonType}
+                            category={item.category}
+                            cmd={item.command}
+                            label={item.label}
+                            type={item.type}
                           />
                         </div>
                       )}
@@ -496,6 +506,7 @@ export default function FormPage({ device_id }: Props) {
           setPopUpBtn={() => {
             setPopUpBtn(!popup_btn);
           }}
+          deviceId={deviceId}
           setButtons={setButtons}
         />
       )}
@@ -523,13 +534,14 @@ type CustomizeBtnType = {
 type PopUpBtnProps = {
   setPopUpBtn: (value: boolean) => void;
   setButtons: React.Dispatch<React.SetStateAction<ButtonProps[]>>;
+  deviceId: string;
 };
 
-const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
-  const [buttonCategory, setButtonCategory] = React.useState<string>("");
-  const [buttonLabel, setButtonLabel] = React.useState<string>("");
-  const [buttonCommand, setButtonCommand] = React.useState<string>("");
-  const [buttonType, setButtonType] = React.useState<string>("");
+const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
+  const [category, setButtonCategory] = React.useState<string>("");
+  const [label, setButtonLabel] = React.useState<string>("");
+  const [command, setButtonCommand] = React.useState<string>("");
+  const [type, setButtonType] = React.useState<string>("");
   const customizeBtn: CustomizeBtnType = {
     transmitter: {
       press: {
@@ -603,15 +615,37 @@ const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
       ? selectedData
       : selectedData?.label || [];
   };
-
-  const handleSave = () => {
+  const id = Date.now()
+  const handleSave = async () => {
     const newButton: ButtonProps = {
-      id: Date.now(),
-      buttonType,
-      buttonCategory,
-      buttonLabel,
-      buttonCommand,
+      id,
+      type,
+      category,
+      label,
+      command,
+      deviceId,
     };
+
+    const resAddButton = await fetch("/api/button", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        type,
+        category,
+        label,
+        command,
+        deviceId,
+      }),
+    });
+    if (resAddButton.ok){
+      toast.success("Add buttom success")
+    }else{
+      toast.error("Failed")
+    }
+
     setButtons((prevButtons) => [...prevButtons, newButton]);
     setButtonCategory("");
     setButtonLabel("");
@@ -726,7 +760,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
             type="text"
             className="py-1 lg:w-[120px] bg-black text-green-400  w-[120px] rounded-sm  px-4"
             placeholder=">/"
-            value={buttonCommand}
+            value={command}
             onChange={(e) => setButtonCommand(e.target.value)}
           />
         </div>
@@ -736,7 +770,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons }: PopUpBtnProps) => {
             bg-blue-600 rounded-md text-white enabled:hover:opacity-80"
             onClick={handleSave}
             disabled={
-              !buttonCategory && !buttonLabel && !buttonCommand && !buttonType
+              !category && !label && !command && !type
             }
           >
             Save

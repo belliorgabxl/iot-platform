@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const buttonSchema = new Schema(
   {
+    id:String,
     deviceId:String,
     type:String,
     category:String,
