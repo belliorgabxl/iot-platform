@@ -49,7 +49,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
       </div>
 
       <div
-        className={`duration-1000 bg-gray-900 lg:translate-x-[300px] lg:w-fit flex justify-between group lg:justify-center  hover:scale-[102%] rounded-lg ${
+        className={`duration-1000 bg-gray-900 lg:translate-x-[600px] lg:w-fit flex justify-between group lg:justify-center  hover:scale-[102%] rounded-lg ${
           isLoading ? "" : "opacity-0  px-0"
         }`}
       >

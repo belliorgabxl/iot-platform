@@ -31,7 +31,7 @@ export default function CarPanel({ isLoading, topic, device_log }: Props) {
         }`}
       >
         <span className="text-xl text-white my-1">Action Type : </span>
-        <span className="bg-gray-600  mx-3 shadow-gray-950 text-center  text-xl rounded-lg text-white h-fit line-clamp-1 px-10 py-1">
+        <span className="bg-gray-600  shadow-gray-950 text-center  text-xl rounded-3xl text-white h-fit line-clamp-1 px-10 py-1 ">
           Transmitter
         </span>
       </div>
@@ -63,12 +63,12 @@ export default function CarPanel({ isLoading, topic, device_log }: Props) {
         )}
       </div>
       <div
-        className={`my-5 flex justify-between ${
+        className={`my-5 w-full gap-3 flex justify-between ${
           isLoading ? "animate-fadeIn " : "opacity-0"
         }`}
       >
         <span className="text-xl text-white my-1">Topic : </span>
-        <span className="bg-gray-600  mx-3 shadow-gray-950 text-center  text-xl rounded-lg text-white  px-10 py-1">
+        <span className="bg-gray-600   shadow-gray-950 text-center  text-xl rounded-3xl text-white  px-10 py-1">
           {topic}
         </span>
       </div>

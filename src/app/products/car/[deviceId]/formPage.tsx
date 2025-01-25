@@ -266,7 +266,7 @@ export default function FormPage({ device_id }: Props) {
             Car Controller
           </h1>
           <button
-            className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-xl rounded-2xl  shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
+            className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-xl rounded-lg  shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
               isLoading
                 ? "px-5 text-white bg-blue-600"
                 : "px-0 bg-blue-300 text-blue-300"
@@ -545,7 +545,13 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
   const customizeBtn: CustomizeBtnType = {
     transmitter: {
       press: {
-        label: ["Dot", "Up", "Down", "Left", "Right"],
+        label: [
+          { label: "Dot", icon: "⚫" },
+        { label: "Up", icon: "⬆" },
+        { label: "Down", icon: "⬇" },
+        { label: "Left", icon: "⬅" },
+        { label: "Right", icon: "➡" },
+        ],
       },
       toggle: {
         label: ["Forward", "Backward", "Up", "Down", "Left", "Right"],
@@ -615,7 +621,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
       ? selectedData
       : selectedData?.label || [];
   };
-  const id = Date.now()
+  const id = Date.now();
   const handleSave = async () => {
     const newButton: ButtonProps = {
       id,
@@ -640,10 +646,10 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
         deviceId,
       }),
     });
-    if (resAddButton.ok){
-      toast.success("Add buttom success")
-    }else{
-      toast.error("Failed")
+    if (resAddButton.ok) {
+      toast.success("Add buttom success");
+    } else {
+      toast.error("Failed");
     }
 
     setButtons((prevButtons) => [...prevButtons, newButton]);
@@ -695,14 +701,14 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
 
           <select
             className="px-4 py-1 border rounded mb-2"
-            value={selectedLabel || ""}
+            value={label || ""}
             onChange={handleLabelChange}
             disabled={!selectedCategory}
           >
             <option value="">Select Label</option>
-            {getLabelOptions().map((label: any) => (
-              <option key={label} value={label}>
-                {label}
+            {getLabelOptions().map((option: any) => (
+              <option key={option.label || option} value={option.label || option}>
+                {option.icon ? `${option.icon} ${option.label}` : option}
               </option>
             ))}
           </select>
@@ -737,7 +743,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
               className="px-2 py-1 rounded-md bg-gray-500 text-white"
               onChange={(e) => setButtonCommand(e.target.value)}
             >
-              <option defaultValue={'None'}>select-command</option>
+              <option defaultValue={"None"}>select-command</option>
               <option value={"on"}>On</option>
               <option value={"off"}>Off</option>
               <option value={"up"}>Up</option>
@@ -769,9 +775,7 @@ const PopUpBtn = ({ setPopUpBtn, setButtons, deviceId }: PopUpBtnProps) => {
             className="px-8 py-1  enabled:opacity-100 opacity-60
             bg-blue-600 rounded-md text-white enabled:hover:opacity-80"
             onClick={handleSave}
-            disabled={
-              !category && !label && !command && !type
-            }
+            disabled={!category && !label && !command && !type}
           >
             Save
           </button>
