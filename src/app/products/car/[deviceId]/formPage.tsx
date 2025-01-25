@@ -83,8 +83,10 @@ export default function FormPage({ device_id }: Props) {
       setLoading(true);
       setTopic(item.topic);
     });
+    
     fetchButton(deviceId).then((item: any) => {
       setButtons(item);
+      setAdjust(item.length > 0);
     });
     setLoading(true);
     const client = mqtt.connect(
@@ -314,7 +316,7 @@ export default function FormPage({ device_id }: Props) {
               } h-fit text-xl   w-[150px] shadow-md hover:bg-gray-500 shadow-gray-700  px-5 py-1 rounded-2xl`}
               onClick={handleChangeAdjust}
             >
-              {adjust ? (
+              {adjust  ? (
                 <div className="">Default</div>
               ) : (
                 <div className="flex items-center justify-center gap-2">
