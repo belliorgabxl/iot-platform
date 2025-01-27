@@ -21,7 +21,7 @@ export default function Home() {
         <h1 className="my-4 text-2xl lg:text-6xl text-white font-extrabold">
           IoT Device Management Platform
         </h1>
-        <div className="px-4 text-sm text-center lg:text-2xl text-white lg:w-full w-8/12">
+        <div className="px-4 text-sm text-center lg:text-2xl text-white w-full ">
           &nbsp;&nbsp;&nbsp;&nbsp; A Customizable Web Interface for Seamless Control and Monitoriing
           <br />
           Manage IoT Devices anytime and anywhere in the wolrd
