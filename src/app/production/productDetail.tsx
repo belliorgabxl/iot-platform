@@ -17,7 +17,7 @@ export default function ProductDetail({ isLoading }: Props) {
         <img
           src="/effect/product_car.jpeg"
           alt="car"
-          className="lg:w-[300px]  md:w-2/5 sm:w-[250px] w-1/3 rounded-l-lg object-cover "
+          className="lg:w-1/3  md:w-2/5 sm:w-[250px] w-1/3 rounded-l-lg object-cover "
         />
         <div className="lg:px-5 px-2 grid gap-2 py-2 w-full">
           <h1 className="lg:text-2xl text-sm  bg-gray-900 h-fit px-2 lg:px-5  grid place-items-center py-1 rounded-md">
