@@ -9,8 +9,9 @@ type CardProps = {
 
 export default function CardIotHomepage(props: CardProps) {
   return (
+    <div className="w-[90%]">
     <FadeInOnScroll>
-      <div className="group grid lg:w-[300px] w-[300px] rounded-md lg:h-[280px] bg-white gap-0 px-4 py-3 text-black overflow-hidden">
+      <div className="group grid lg:w-[300px] w-full  rounded-md lg:h-[280px] bg-white gap-0 px-4 py-3 text-black overflow-hidden">
         <p className="w-full line-clamp-2 lg:text-xl text-lg h-fit font-semibold">{props.topic}</p>
         <p className="w-full text-sm text-gray-600 line-clamp-4 h-fit overflow-hidden">
           &nbsp;&nbsp;&nbsp;&nbsp;{props.content}
@@ -22,6 +23,6 @@ export default function CardIotHomepage(props: CardProps) {
           />
         </div>
       </div>
-    </FadeInOnScroll>
+    </FadeInOnScroll></div>
   );
 }

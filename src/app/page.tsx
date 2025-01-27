@@ -43,17 +43,15 @@ export default function Home() {
           isLoading ? "animate-fadeStep1 opacity-100" : "opacity-0"
         } mt-5 lg:mt-8 grid w-full place-items-center overflow-hidden`}
       >
-        <FadeInOnScroll>
-          <div className="w-fit  grid lg:grid-cols-2 md:grid-cols-2 place-items-center gap-0">
+          <div className="w-full  grid lg:grid-cols-2 md:grid-cols-2 place-items-center gap-0 overflow-hidden">
             <CardImageHomepage lable="Welcom" imgURL="/aboutus/gabel.jpg" />
             <CardImageHomepage lable="To" imgURL="/aboutus/bam.jpg" />
             <CardImageHomepage lable="IoT" imgURL="/aboutus/por.jpg" />
             <CardImageHomepage lable="Platform" imgURL="/aboutus/watid.jpg" />
           </div>
-        </FadeInOnScroll>
       </div>
 
-      <div className="grid my-5 lg:mt-10 mb-5 gap-0 lg:grid-cols-[50%_50%]">
+      <div className="grid place-items-center my-5 lg:mt-10 mb-5 gap-0 lg:grid-cols-[50%_50%]">
         <div className="grid gap-16 place-items-center h-fit">
           <FadeInOnScroll>
             <Link
@@ -69,7 +67,7 @@ export default function Home() {
             <img src="/homepage/iot.png" className="w-[400px] h-[400px]" />
           </FadeInOnScroll>
         </div>
-        <div className="grid lg:grid-cols-2 lg:w-fit w-full gap-2 place-items-center lg:gap-4  ">
+        <div className=" grid  lg:grid-cols-2 lg:w-fit w-full gap-2  place-items-center  lg:gap-4  ">
           <CardIotHomepage
             imgURL="/homepage/dashboard.png"
             topic="Efficient Control and Monitoring"
