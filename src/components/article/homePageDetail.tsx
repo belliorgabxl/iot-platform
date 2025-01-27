@@ -9,9 +9,6 @@ export default function Homepage_article() {
   }, []);
   return (
     <div className="px-5">
-      <div className="flex justify-center">
-        <GetstartButton isLoading={isLoading} />
-      </div>
       <div
         className={`grid  ${
           isLoading
