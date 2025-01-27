@@ -32,7 +32,6 @@
 
 .banner .slider .item{
     box-shadow: black 1px 1px 7px 0px;
-    border: 2px solid gray;
     position: absolute;
     inset: 0 0 0 0;
         transform: rotateY(calc(( var(--position) - 1) * (360 / var(--quatity) )  *  1deg))
