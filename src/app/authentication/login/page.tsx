@@ -53,7 +53,7 @@ export default function Page() {
         <div className="lg:hidden md:hidden absolute mix-blend-multiply filter  blur-sm top-0 right-10 w-60 h-60  bg-blue-500 opacity-100 rounded-full  animate-blob animation-delay-2000"></div>
         <div className="lg:hidden md:hidden absolute mix-blend-multiply filter  blur-sm bottom-0 left-30 w-60 h-60 bg-gray-300 opacity-100 rounded-full  animate-blob animation-delay-4000"></div>
 
-        <div className="lg:w-fit w-[90%] grid z-10  bg-white  rounded-xl my-10 shadow-sm gap-5 ">
+        <div className="lg:w-fit w-[90%] grid z-10 overflow-hidden  bg-white  rounded-xl my-10 shadow-sm gap-5 ">
           <div className="text-3xl py-2 rounded-t-xl bg-gradient-to-l from-blue-600 to-gray-900 font-medium text-white mb-2 text-center w-full">
             Login
           </div>
