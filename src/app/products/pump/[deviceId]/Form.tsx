@@ -10,6 +10,7 @@ import React from "react";
 import DonutChartDirt from "@/components/chart/donutChartDirt";
 import CircleMonitor from "@/components/chart/circleMonitor";
 import PopUpAddChart from "./AddChartPopUp";
+import CircleChartDirt from "@/components/chart/circleChartDirt";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -305,28 +306,32 @@ export default function FormPage({ device_id }: Props) {
             </div>
             {charts.length > 0 ? (
               <div className="grid lg:grid-cols-2 gap-2">
-                {charts.map((item) =>(
+                {charts.map((item) => (
                   <div key={item.id}>
-                    {item.type == "donut"?(
+                    {item.type == "donut" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
-                        <DonutChartDirt value={"value1:20"}/>
+                        <DonutChartDirt value={"value1:24"} />
                       </div>
-                    ):item.type == "monitorcircle"?(
+                    ) : item.type == "circle" ? (
+                      <div className="animate-fastFade grid place-items-center w-full">
+                        <CircleChartDirt value={"value1:24"} />
+                      </div>
+                    ) : item.type == "monitorcircle" ? (
                       <div className="grid place-items-center">
                         <CircleMonitor
-                        bgcolor={item.bgcolor}
-                        fgcolor={item.fgcolor}
-                        unit={item.unit}
-                        value="68"
+                          bgcolor={item.bgcolor}
+                          fgcolor={item.fgcolor}
+                          unit={item.unit}
+                          value="68"
                         />
                       </div>
-                    ):(
+                    ) : (
                       <div>Error</div>
                     )}
                   </div>
                 ))}
               </div>
-            ):(
+            ) : (
               <div className="border-dashed border-2 border-white grid place-items-center px-20 py-10 text-2xl text-white">
                 Not Available.
               </div>
@@ -444,13 +449,15 @@ export default function FormPage({ device_id }: Props) {
           </div>
         </div>
       </div>
-      {popup_chart && <PopUpAddChart
-      setPopUpChart={()=>{
-        setPopUpChart(!popup_chart)
-      }}
-      deviceId={deviceId}
-      setChart={setChart}
-      />}
+      {popup_chart && (
+        <PopUpAddChart
+          setPopUpChart={() => {
+            setPopUpChart(!popup_chart);
+          }}
+          deviceId={deviceId}
+          setChart={setChart}
+        />
+      )}
     </div>
   );
 }
