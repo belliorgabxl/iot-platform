@@ -198,19 +198,19 @@ export default function Navbar() {
             <SideLink
               href="/"
               label="Help"
-              isActive={pathname === "/#"}
+              isActive={pathname === "/AA"}
               onClick={() => setToggleMenu(false)}
             />
             <SideLink
               href="/"
               label="Contact"
-              isActive={pathname === "/#"}
+              isActive={pathname === "/AA"}
               onClick={() => setToggleMenu(false)}
             />
             <SideLink
               href="/"
               label="Example SourceCode"
-              isActive={pathname === "/#"}
+              isActive={pathname === "/AA"}
               onClick={() => setToggleMenu(false)}
             />
           </div>

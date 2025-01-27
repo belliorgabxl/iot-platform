@@ -53,7 +53,7 @@ export default function Home() {
         </FadeInOnScroll>
       </div>
       <FadeInOnScroll>
-        <div className="grid my-5 lg:my-10 gap-0 lg:grid-cols-[50%_50%]">
+        <div className="grid my-5 lg:mt-10 mb-5 gap-0 lg:grid-cols-[50%_50%]">
           <div className="grid gap-16 place-items-center h-fit">
             <Link href={'/document'} className="text-3xl hover:text-blue-600 lg:text-5xl font-bold text-white text-center duration-700">
               What is this Device

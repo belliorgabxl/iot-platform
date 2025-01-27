@@ -144,7 +144,7 @@ type PopUpBtnProps = {
         onClick={() => setPopUpBtn(false)}
       >
         <div
-          className="z-100 w-2/5  rounded-md bg-gray-600 px-16 pt-10 pb-5 grid place-items-start"
+          className="z-100 w-full sm:w-3/5 md:w-2/5 lg:w-1/3 xl:w-1/4 rounded-md bg-gray-600 px-4 sm:px-8 md:px-16 pt-10 pb-5 grid place-items-start m-4 sm:m-8 md:m-12"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex flex-wrap my-2 gap-4">
