@@ -82,7 +82,7 @@ export default function DonutChartDirt(props:DonutProps) {
     ],
   };
   return (
-    <div className="lg:w-[270px] w-[200px] rounded-md  py-5 lg:h-[280px] h-[250px] grid place-items-center bg-black ">
+    <div className="lg:w-[270px] w-[220px] rounded-md  py-5 lg:h-[280px] h-[250px] grid place-items-center bg-black ">
       <Doughnut data={finalData} options={options} />
     </div>
   );

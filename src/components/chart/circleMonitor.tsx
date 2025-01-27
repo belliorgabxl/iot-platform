@@ -16,7 +16,7 @@ export default function CircleMonitor({
 }: CircleMonitorProps) {
   return (
     <div
-      className={`lg:w-[250px] w-[180px] lg:h-[250px] h-[180px] rounded-full overflow-hidden line-clamp-1 px-4 grid place-items-center ${bgcolor}`}
+      className={`lg:w-[250px] w-[150px] lg:h-[250px] h-[150px] rounded-full overflow-hidden line-clamp-1 px-4 grid place-items-center ${bgcolor}`}
     >
       <div className={`text-center ${fgcolor} text-xl lg:text-3xl  font-bold`}>
         {value}&nbsp;{unit}
