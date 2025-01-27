@@ -34,8 +34,8 @@ export default function Home() {
                <div className="w-fit grid grid-cols-2 place-items-center gap-0">
                <CardImageHomepage lable="Welcom" imgURL="/aboutus/aboutus_gabel.jpg"/>
                <CardImageHomepage lable="To" imgURL="/aboutus/aboutus_bam.jpg"/>
-               <CardImageHomepage lable="Our" imgURL="/aboutus/aboutus_por.jpg"/>
-               <CardImageHomepage lable="IoT-Platform" imgURL="/aboutus/watid.jpg"/>
+               <CardImageHomepage lable="ToT" imgURL="/aboutus/aboutus_por.jpg"/>
+               <CardImageHomepage lable="Platform" imgURL="/aboutus/watid.jpg"/>
              </div>
         </div>
       <Homepage_article />
