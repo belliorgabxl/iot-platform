@@ -30,7 +30,7 @@ export default function Home() {
       <div className="flex justify-center mb-4">
         <GetstartButton isLoading={isLoading} />
       </div>
-        <div className="mt-3 lg:mt-8 grid w-full place-items-center">
+        <div className={` ${isLoading? 'animate-fadeStep1 opacity-100':'opacity-0'} mt-3 lg:mt-8 grid w-full place-items-center`}>
                <div className="w-fit grid grid-cols-2 place-items-center gap-0">
                <CardImageHomepage lable="Welcom" imgURL="/aboutus/aboutus_gabel.jpg"/>
                <CardImageHomepage lable="To" imgURL="/aboutus/aboutus_bam.jpg"/>
