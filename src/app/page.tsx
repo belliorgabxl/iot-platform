@@ -62,11 +62,11 @@ export default function Home() {
             <img src="/homepage/iot.png" className="w-[400px] h-[400px]" />
           </div>
           <div className="grid lg:grid-cols-2 lg:gap-4  border border-white">
-          <CardIotHomepage
+          {/* <CardIotHomepage
           imgURL="/aboutus/gabel.jpg"
           topic="jalfjlajfldjfajfa;jfajfadjf"
           content="jal;fjaljfldjafljadlghajd;fjdalfhadkjfhdlajfadjf;aljfdlahflhdfk"
-          />
+          /> */}
           </div>
         </div>
       </FadeInOnScroll>
