@@ -1,4 +1,5 @@
 import React from "react";
+import FadeInOnScroll from "../FadInScroll";
 
 type CardProps = {
   lable: string;
@@ -8,6 +9,7 @@ type CardProps = {
 export default function CardImageHomepage(props: CardProps) {
   return (
     <div className="group w-full overflow-hidden">
+      <FadeInOnScroll>
       <div className="relative flex items-center justify-center sm:w-[400px] sm:h-[400px] lg:w-[100%] lg:h-[500px] w-full h-[220px] overflow-hidden">
         <img
           src={props.imgURL}
@@ -18,7 +20,7 @@ export default function CardImageHomepage(props: CardProps) {
         <div className="absolute text-white text-6xl lg:text-8xl font-bold">
           {props.lable}
         </div>
-      </div>
+      </div></FadeInOnScroll>
     </div>
   );
 }

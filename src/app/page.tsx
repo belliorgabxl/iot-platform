@@ -44,6 +44,7 @@ export default function Home() {
         } mt-5 lg:mt-8 grid w-full place-items-center overflow-hidden`}
       >
           <div className="w-full  grid lg:grid-cols-2 md:grid-cols-2 place-items-center gap-0 overflow-hidden">
+       
             <CardImageHomepage lable="Welcom" imgURL="/aboutus/gabel.jpg" />
             <CardImageHomepage lable="To" imgURL="/aboutus/bam.jpg" />
             <CardImageHomepage lable="IoT" imgURL="/aboutus/por.jpg" />
