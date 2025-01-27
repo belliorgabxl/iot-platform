@@ -169,7 +169,7 @@ export default function Navbar() {
           </div>
         )}
         {toggleMenu && (
-          <div className="absolute bg-gradient-to-tr from-gray-800  to to-blue-700 left-0 space-y-4 translate-y-14 min-h-[80vh] py-10 w-full">
+          <div className="absolute  bg-gradient-to-tr from-gray-800  to to-blue-700 left-0 space-y-4 translate-y-14  min-h-[80vh] py-10 w-full">
             <SideLink
               href="/documents"
               label="Document"

@@ -19,7 +19,7 @@ export default function CLShomepage() {
     >
       <Carousel
         autoPlay={true}
-        interval={2600}
+        interval={5000}
         width="full"
         autoFocus={false}
         infiniteLoop={true}
@@ -30,7 +30,7 @@ export default function CLShomepage() {
         stopOnHover={false}
       >
         <div>
-          <img src="./cls/slide01.jpg" alt="slide1" />
+          <img src="./cls/slide04.jpg" alt="slide1" />
           <p className="legend">Beyond to new technology</p>
         </div>
         <div>
@@ -42,7 +42,7 @@ export default function CLShomepage() {
           <p className="legend">You never seen before</p>
         </div>
         <div>
-          <img src="./cls/slide04.jpg" alt="slide4" />
+          <img src="./cls/slide01.jpg" alt="slide4" />
           <p className="legend">5G planning</p>
         </div>
         <div>
