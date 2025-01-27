@@ -21,13 +21,13 @@ export default function Home() {
         <h1 className="my-4 text-2xl lg:text-6xl text-white font-extrabold">
           IoT Device Management Platform
         </h1>
-        <div className=" text-sm text-center lg:text-2xl text-white">
-          A Customizable Web Interface for Seamless Control and Monitoriing
+        <div className=" text-sm text-center lg:text-2xl text-white lg:w-full w-8/12">
+          &nbsp;&nbsp;&nbsp;&nbsp; A Customizable Web Interface for Seamless Control and Monitoriing
           <br />
           Manage IoT Devices anytime and anywhere in the wolrd
         </div>
       </div>
-      <div className="flex justify-center my-4">
+      <div className="flex justify-center mb-4">
         <GetstartButton isLoading={isLoading} />
       </div>
         <div className="mt-3 lg:mt-8 grid w-full place-items-center">
