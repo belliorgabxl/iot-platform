@@ -56,7 +56,7 @@ export default function Home() {
         <div className="grid gap-16 place-items-center h-fit">
           <FadeInOnScroll>
             <Link
-              href={"/document"}
+              href={"/documents"}
               className="text-3xl hover:text-blue-600 lg:text-5xl font-bold text-white text-center duration-700"
             >
               What is this Device
@@ -101,7 +101,6 @@ export default function Home() {
           />
         </div>
       </div>
-
       <Homepage_article />
     </div>
   );
