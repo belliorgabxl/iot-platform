@@ -6,7 +6,8 @@ import Link from "next/link";
 import { Session } from "@/resource/model";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { UserRound } from "lucide-react";
+import { Menu, UserRound, X } from "lucide-react";
+import SideLink from "./SideLink";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -14,6 +15,7 @@ export default function Navbar() {
   const [session, setSession] = useState<Session | null>(null);
   const [dropmenu, setDropmenu] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -21,7 +23,7 @@ export default function Navbar() {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        setDropmenu(false); 
+        setDropmenu(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -73,7 +75,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className="flex justify-center items-center">
+        <div className=" hidden lg:flex md:flex justify-center items-center">
           <NavLink
             href="/documents"
             label="Document"
@@ -98,22 +100,22 @@ export default function Navbar() {
         </div>
 
         {session === null && pathname !== "/devices" ? (
-          <div className="lg:flex justify-end items-center gap-2 md:block hidden">
+          <div className="flex justify-end items-center gap-2 ">
             <button
-              className="px-10 rounded-md py-1 hover:text-white hover:bg-opacity-0 border bg-white text-blue-800 duration-300 border-white"
+              className="lg:px-10 px-4 rounded-md py-1 hover:text-white hover:bg-opacity-0 border bg-white text-blue-800 duration-300 border-white"
               onClick={() => router.push("/authentication/login")}
             >
               Login
             </button>
             <button
-              className="px-10 rounded-md duration-300 py-1  hover:bg-blue-800"
+              className="lg:px-10 px-4 rounded-md duration-300 py-1  hover:bg-blue-800"
               onClick={() => router.push("/authentication/signup")}
             >
               Sign-Up
             </button>
           </div>
         ) : session || pathname === "/devices" ? (
-          <div className="flex justify-center gap-3 items-center text-white text-xl">
+          <div className="flex justify-center gap-3 items-center text-white text-sm lg:text-xl">
             <UserRound
               style={{ width: "2.2rem", height: "2.2rem" }}
               className="h-20 w-20 px-1 py-1 text-white bg-blue-500 rounded-full"
@@ -144,6 +146,52 @@ export default function Navbar() {
           </div>
         ) : (
           <p className="text-white">Loading...</p>
+        )}
+        {toggleMenu ? (
+          <div
+            className=" lg:hidden h-full flex items-center justify-center   md:hidden"
+            onClick={() => setToggleMenu(false)}
+          >
+            <X
+              style={{ width: "1.8rem", height: "1.8rem" }}
+              className="text-white"
+            />
+          </div>
+        ) : (
+          <div
+            className=" lg:hidden h-full flex items-center justify-center  md:hidden"
+            onClick={() => setToggleMenu(true)}
+          >
+            <Menu
+              style={{ width: "1.8rem", height: "1.8rem" }}
+              className="text-white"
+            />
+          </div>
+        )}
+        {toggleMenu && (
+          <div className="absolute bg-gradient-to-tr from-gray-800  to to-blue-700 left-0 space-y-4 translate-y-14 min-h-[60vh] py-10 w-full">
+            <SideLink
+              href="/documents"
+              label="Document"
+              isActive={pathname === "/documents"}
+            />
+            <SideLink
+              href="/production"
+              label="Product"
+              isActive={pathname === "/production"}
+            />
+            <SideLink
+              href="/devices"
+              label="Device"
+              isActive={pathname === "/devices"}
+            />
+
+            <SideLink
+              href="/aboutus"
+              label="About"
+              isActive={pathname === "/aboutus"}
+            />
+          </div>
         )}
       </div>
     </div>
