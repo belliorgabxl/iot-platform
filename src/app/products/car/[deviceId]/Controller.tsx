@@ -93,16 +93,16 @@ export default function CarJoyStick({
   };
 
   return (
-    <div className={`grid w-full ${isLoading ? "" : ""}  `}>
+    <div className={`grid w-full place-items-center ${isLoading ? "" : ""}  `}>
       <div
-        className={`duration-1000 text-2xl shadow-md shadow-gray-900 text-white w-full rounded-2xl py-5 px-5 grid place-items-center ${
+        className={`duration-1000 text-2xl shadow-md shadow-gray-900 text-white w-fit rounded-2xl py-5 px-5 grid place-items-center ${
           isLoading ? " bg-blue-800" : "bg-gray-500"
         }  `}
       >
         <div className="flex">
           <button
             onClick={Forward}
-            className={`rounded-full mx-5 shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
+            className={`rounded-full  shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
               isLoading ? "bg-blue-700" : "bg-gray-500"
             } ${fw == true ? "bg-green-500" : ""}`}
           >
@@ -116,10 +116,10 @@ export default function CarJoyStick({
           </button>
         </div>
 
-        <div className="flex gap-5">
+        <div className="flex gap-10  w-full">
           <button
             onClick={Left}
-            className={`rounded-full mx-5 shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black   active:bg-purple-500  ${
+            className={`rounded-full w-[70px] h-[70px]  shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black   active:bg-purple-500  ${
               isLoading ? "bg-blue-700" : "bg-gray-500"
             } ${lf == true ? "bg-green-500" : ""}`}
           >
@@ -147,7 +147,7 @@ export default function CarJoyStick({
           </button>
           <button
             onClick={Right}
-            className={`rounded-full mx-5 shadow-md shadow-gray-800 px-3 py-3 active:bg-purple-500 active:shadow-inner active:shadow-black  ${
+            className={`rounded-full w-[70px] h-[70px] shadow-md shadow-gray-800 px-3 py-3 active:bg-purple-500 active:shadow-inner active:shadow-black  ${
               isLoading ? "bg-blue-700" : "bg-gray-500"
             } ${rt == true ? "bg-green-500" : ""}`}
           >
@@ -176,7 +176,7 @@ export default function CarJoyStick({
         </div>
         <button
           onClick={Backward}
-          className={`rounded-full mx-5 shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
+          className={`rounded-full  shadow-md shadow-gray-800 px-3 py-3 active:shadow-inner active:shadow-black  active:bg-purple-500  ${
             isLoading ? "bg-blue-700" : "bg-gray-500"
           } ${bw == true ? "bg-green-500" : ""}`}
         >

@@ -263,7 +263,7 @@ export default function FormPage({ device_id }: Props) {
           </button>
         </div>
       </div>
-      <div className=" grid gap-10 place-items-center px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
+      <div className=" grid gap-10 place-items-center px-1 lg:px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
         <div className="lg:flex md:flex justify-center hidden    w-full lg:w-fit lg:py-5">
           {topic && (
             <CarPanel
@@ -277,8 +277,8 @@ export default function FormPage({ device_id }: Props) {
             />
           )}
         </div>
-        <div className="grid gap-4   lg:h-fit px-10 lg:py-5 w-fit">
-          <div className="flex justify-start gap-3">
+        <div className="grid gap-2 lg:gap-4  place-items-center  lg:h-fit px-1 lg:px-10 lg:py-5 w-fit">
+          <div className="lg:flex grid place-items-center lg:justify-start gap-3">
             <button
               className={`${
                 adjust
@@ -323,7 +323,7 @@ export default function FormPage({ device_id }: Props) {
           ) : (
             <div className="animate-fastFade">
               {buttons.length > 0 ? (
-                <div className="border-2 border-dashed grid grid-cols-2 px-10 py-5 rounded-lg gap-2  w-full ">
+                <div className="border-2 border-dashed grid grid-cols-2 px1 lg:px-10 py-5 rounded-lg gap-2  w-full ">
                   {buttons.map((item) => (
                     <div key={item.id}>
                       {item.type == "transmitter" ? (
@@ -366,7 +366,7 @@ export default function FormPage({ device_id }: Props) {
                   ))}
                 </div>
               ) : (
-                <div className="border-2 border-dashed grid grid-cols-2 px-10 py-5 rounded-lg  w-full h-[250px]"></div>
+                <div className="border-2 border-dashed grid grid-cols-2 px-20 lg:px-10 py-5 rounded-lg  w-full h-[250px]"></div>
               )}
             </div>
           )}
