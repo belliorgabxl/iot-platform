@@ -17,7 +17,7 @@ const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({ children }) => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 } 
+      { threshold: 0.3 } 
     );
 
     if (ref.current) {
@@ -34,7 +34,7 @@ const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({ children }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }} 
+      initial={{ opacity: 0, y: 100 }} 
       animate={isVisible ? { opacity: 1, y: 0 } : {}} 
       transition={{ duration: 1.8, ease: 'easeOut' }}
     >

@@ -78,23 +78,23 @@ export default function Navbar() {
         <div className=" hidden lg:flex md:flex justify-center items-center">
           <NavLink
             href="/documents"
-            label="Document"
+            label="Documentation"
             isActive={pathname === "/documents"}
           />
           <NavLink
             href="/production"
-            label="Product"
+            label="Production"
             isActive={pathname === "/production"}
           />
           <NavLink
             href="/devices"
-            label="Device"
+            label="Devices"
             isActive={pathname === "/devices"}
           />
 
           <NavLink
             href="/aboutus"
-            label="About"
+            label="About Us"
             isActive={pathname === "/aboutus"}
           />
         </div>
@@ -169,30 +169,48 @@ export default function Navbar() {
           </div>
         )}
         {toggleMenu && (
-          <div className="absolute  bg-gradient-to-tr from-gray-800  to to-blue-700 left-0 space-y-4 translate-y-14  min-h-[80vh] py-10 w-full">
+          <div className="absolute  bg-gradient-to-tr from-gray-900  to to-gray-500 left-0 pl-4 space-y-4 translate-y-14  min-h-[80vh] py-10 w-full">
             <SideLink
               href="/documents"
-              label="Document"
+              label="Documentation"
               isActive={pathname === "/documents"}
               onClick={() => setToggleMenu(false)}
             />
             <SideLink
               href="/production"
-              label="Product"
+              label="Our Production"
               isActive={pathname === "/production"}
               onClick={() => setToggleMenu(false)}
             />
             <SideLink
               href="/devices"
-              label="Device"
+              label="Devices"
               isActive={pathname === "/devices"}
               onClick={() => setToggleMenu(false)}
             />
 
             <SideLink
               href="/aboutus"
-              label="About"
+              label="About Us"
               isActive={pathname === "/aboutus"}
+              onClick={() => setToggleMenu(false)}
+            />
+            <SideLink
+              href="/"
+              label="Help"
+              isActive={pathname === "/#"}
+              onClick={() => setToggleMenu(false)}
+            />
+            <SideLink
+              href="/"
+              label="Contact"
+              isActive={pathname === "/#"}
+              onClick={() => setToggleMenu(false)}
+            />
+            <SideLink
+              href="/"
+              label="Example SourceCode"
+              isActive={pathname === "/#"}
               onClick={() => setToggleMenu(false)}
             />
           </div>

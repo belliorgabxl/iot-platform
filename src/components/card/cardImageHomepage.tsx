@@ -9,7 +9,7 @@ type CardProps = {
 export default function CardImageHomepage(props:CardProps) {
   return (
     <div className="group">
-      <div className="relative  items-center justify-center flex sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] w-[400px] h-[200px] overflow-hidden">
+      <div className="relative  items-center justify-center flex sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] w-[320px] h-[200px] overflow-hidden">
         <img
           src={props.imgURL}
           className="absolute lg:w-[500px] lg:h-[500px] sm:w-[400px] sm:h-[400px] w-full h-[200px]  object-cover transition-transform duration-1000  group-hover:scale-[115%]"

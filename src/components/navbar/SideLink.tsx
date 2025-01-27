@@ -17,7 +17,7 @@ export default function SideLink({ href, label ,onClick  }: Props) {
   return (
     <Link 
       href={href} 
-      className={`text-white duration-1000  text-xl h-full grid place-items-center  px-5 line-clamp-1 lg:w-auto w-[120px] overflow-hidden  ${
+      className={`text-white duration-1000  text-xl h-full grid place-items-center  px-5 line-clamp-1 lg:w-auto w-fit overflow-hidden  ${
         isActive ? ' text-yellow-200 font-semibold' : 'font-normal'
       }`}
       onClick={()=>onClick(false)}
