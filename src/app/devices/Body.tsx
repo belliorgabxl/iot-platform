@@ -238,7 +238,7 @@ export default function Body({ session }: Props) {
   return (
     <div>
       <div className={`bg-gray-800  w-full pb-10`}>
-        <div className="lg:px-5 flex gap-4 justify-between  bg-gray-700 px-2 py-2 rounded-md items-center">
+        <div className="lg:px-5 grid lg:flex gap-4 justify-between  bg-gray-700 px-2 py-2 rounded-md items-center">
           <div className="lg:flex grid gap-3 lg:gap-8">
             <div
               className={` ${
@@ -252,12 +252,12 @@ export default function Body({ session }: Props) {
               </h1>
             </div>
             <div className="grid text-white">
-              <div className="lg:flex gap-3">
+              <div className="grid lg:flex lg:gap-3 gap-0">
                 <div className="text-white flex gap-2 lg:text-lg">
-                  <p className="font-semibold text-blue-500">User :</p>{" "}
+                  <p className="font-semibold text-blue-500">User :</p>
                   {session.username.toUpperCase()}
                 </div>
-                |
+                <div className="lg:block hidden">|</div>
                 <div className="text-white flex gap-2 lg:text-lg">
                   <p className="font-semibold text-blue-500">Email</p> :{" "}
                   {session.email}
@@ -274,7 +274,7 @@ export default function Body({ session }: Props) {
                 online
                 <div className="w-4 h-4 bg-green-400 rounded-full"></div>
                 
-              </div>|<GetIPComponent/>
+              </div><div className="lg:block hidden">|</div><GetIPComponent/>
               </div>
              
             </div>
@@ -337,24 +337,24 @@ export default function Body({ session }: Props) {
                       </div>
                     </div>
 
-                    <div className="my-4 flex">
-                      <span className="w-[80px] font-bold text-xl text-white">
+                    <div className="lg:my-4 my-2 lg:gap-4 flex">
+                      <span className="w-[80px] font-bold lg:text-xl text-lg text-white">
                         Name :
                       </span>
-                      <span className="text-white mx-4 bg-gray-500 rounded-md py-1 text-xl px-6">
+                      <span className="text-white  bg-gray-500 rounded-md py-1 lg:text-xl text-sm px-6">
                         {item.name ?? "Loading..."}
                       </span>
                     </div>
-                    <div className=" flex my-4">
-                      <span className="font-bold text-xl w-[80px] text-white ">
+                    <div className=" flex my-2 lg:gap-4    lg:my-4">
+                      <span className="font-bold lg:text-xl w-[80px] text-white ">
                         IoT ID :
                       </span>
-                      <span className="text-white mx-4 bg-gray-500 rounded-md  h-fit py-1  text-xl w-[180px] lg:w-[250px] line-clamp-1 px-6">
+                      <span className="text-white bg-gray-500 rounded-md  h-fit py-1  lg:text-xl w-[180px] lg:w-[250px] line-clamp-1 px-6">
                         {item.deviceId ?? "Loading"}
                       </span>
                     </div>
-                    <div className=" flex items-center my-4">
-                      <span className="font-bold text-xl w-[100px] text-white ">
+                    <div className=" flex items-center lg:my-4 my-2">
+                      <span className="font-bold lg:text-xl w-[100px] text-white ">
                         Status :
                       </span>
                       <MqttProvider topic_device={item.topic}>
