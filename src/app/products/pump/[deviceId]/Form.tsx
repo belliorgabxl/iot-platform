@@ -4,15 +4,13 @@ import mqtt, { MqttClient } from "mqtt";
 import { toast } from "react-toastify";
 import PumpJoyStick from "./Controller";
 import PumpPanel from "./Panel";
-import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import {
-  DeviceModel,
-  WifiModel,
-  ButtonModel,
-  CustomizeButtonModel,
-} from "@/resource/model";
+import { DeviceModel, WifiModel, ChartModel } from "@/resource/model";
 import React from "react";
+import DonutChartDirt from "@/components/chart/donutChartDirt";
+import CircleMonitor from "@/components/chart/circleMonitor";
+import PopUpAddChart from "./AddChartPopUp";
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 type Props = {
@@ -27,6 +25,11 @@ const fetchDeviceId = async (deviceId: string) => {
 const fetchWifiId = async (wifiId: string) => {
   const ressponse = await fetch(`/api/wifi/${wifiId}`);
   return ressponse.json();
+};
+
+const fetchChart = async (id: string) => {
+  const response = await fetch(`/api/chart/${id}`);
+  return response.json();
 };
 
 export default function FormPage({ device_id }: Props) {
@@ -44,56 +47,11 @@ export default function FormPage({ device_id }: Props) {
   const [popUp_clearWifi, setPopUpclearWifi] = useState<boolean>();
   const [deviceData, setDeviceData] = useState<DeviceModel>();
   const [deviceConnected, setDeviceConnected] = useState<boolean>(false);
-  const [buttons, setButtons] = useState<ButtonModel[]>([]);
+  const [charts, setChart] = useState<ChartModel[]>([]);
 
-  const [dirtValue, setDirtValue] = useState<string>("");
-
-  const chartA = 50;
-  const chartB = 0;
-  const chartC = 50;
-  // if (dirtValue.startsWith("value")){
-  //   Dvalue = dirtValue.split(": ")[1];
-  //   chartB = parseInt(Dvalue, 10);
-  // }
-  const data = [
-    {
-      label: "air",
-      value: chartA - (chartB - 20),
-      color: "rgba(83, 217, 217, 1)",
-      cutout: "50%",
-    },
-    {
-      label: "ค่าความชื้น",
-      value: chartB * 0.4,
-      color: "rgba(0, 103, 160, 1)",
-      cutout: "50%",
-    },
-    {
-      label: "dirt",
-      value: chartC - chartA * 0.05,
-      color: "rgba(0, 43, 73, 1)",
-      cutout: "50%",
-    },
-  ];
-
-  const options: any = {
-    plugins: {
-      responsive: true,
-    },
-    cutout: data.map((item) => item.cutout),
-  };
-  const finalData = {
-    labels: data.map((item) => item.label),
-    datasets: [
-      {
-        data: data.map((item) => Math.round(item.value)),
-        backgroundColor: data.map((item) => item.color),
-        borderColor: data.map((item) => item.color),
-        borderWidth: 1,
-        dataVisibility: new Array(data.length).fill(true),
-      },
-    ],
-  };
+  const [value1, setValue1] = useState<string | null>();
+  const [value2, setValue2] = useState<string | null>();
+  const [value3, setValue3] = useState<string | null>();
 
   useEffect(() => {
     fetchDeviceId(deviceId).then((item: any) => {
@@ -101,10 +59,9 @@ export default function FormPage({ device_id }: Props) {
       setLoading(true);
       setTopic(item.topic);
     });
-    // fetchButton(deviceId).then((item: any) => {
-    //   setButtons(item);
-    //   setAdjust(item.length > 0);
-    // });
+    fetchChart(deviceId).then((item: any) => {
+      setChart(item);
+    });
     setLoading(true);
     const client = mqtt.connect(
       "wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt",
@@ -160,6 +117,12 @@ export default function FormPage({ device_id }: Props) {
         console.log("Device is connected. Cleaning up...");
         client.unsubscribe(topic);
         client.end();
+      } else if (message.toString().startsWith("value1")) {
+        setValue1(message.toString());
+      } else if (message.toString().startsWith("value2")) {
+        setValue2(message.toString());
+      } else if (message.toString().startsWith("value3")) {
+        setValue3(message.toString());
       }
     });
     return () => {
@@ -263,11 +226,7 @@ export default function FormPage({ device_id }: Props) {
       toast.error("wait to connecting...");
     }
   };
-  const [adjust, setAdjust] = useState<boolean>(false);
-  const [popup_btn, setPopUpBtn] = useState<boolean>(false);
-  const handleChangeAdjust = () => {
-    setAdjust(!adjust);
-  };
+  const [popup_chart, setPopUpChart] = useState<boolean>(false);
   return (
     <div className={`bg-gray-700 pb-10 px-5`}>
       <div className="w-full py-2 ">
@@ -283,14 +242,16 @@ export default function FormPage({ device_id }: Props) {
             Auto Pump
           </h1>
           <button
-            className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-xl rounded-lg  shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
+            className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-lg rounded-3xl  shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
               isLoading
                 ? "px-5 text-white bg-blue-600"
                 : "px-0 bg-blue-300 text-blue-300"
             } `}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            onClick={onClickPopUp}
+            onClick={() => {
+              onClickPopUp();
+            }}
           >
             <img
               src={
@@ -307,8 +268,8 @@ export default function FormPage({ device_id }: Props) {
           </button>
         </div>
 
-        <div className=" grid gap-10 place-items-center px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
-          <div className="lg:flex md:flex justify-center hidden    w-full lg:w-fit lg:py-5">
+        <div className=" grid gap-4 lg:gap-8 place-items-center px-2 lg:px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
+          <div className="lg:flex md:flex justify-center  w-full lg:w-fit lg:py-0">
             {topic && (
               <PumpPanel
                 isConnected={isConnected}
@@ -318,216 +279,178 @@ export default function FormPage({ device_id }: Props) {
                 device_id={deviceId}
                 device_log={returnedLog}
                 device_connect={deviceConnected}
-                dirtValue={dirtValue}
+                dirtValue={value1 || "0"}
               />
             )}
           </div>
 
-          <div className="grid gap-4  lg:h-fit px-10 lg:py-5 w-fit">
-            <PumpJoyStick
-              isConnected={isConnected}
-              client={client}
-              topic={topic}
-              isLoading={isLoading}
-              device_id={deviceId}
-              onLogReturn={getLogReturned}
-            />
-            <div className="grid grid-cols-2 gap-2">
-              <div className="bg-black rounded-lg grid  place-items-center  ">
-                <Doughnut data={finalData} options={options} />
-              </div>
-              <div className="bg-black rounded-lg grid  place-items-center ">
-                <Doughnut data={finalData} options={options} />
-              </div>
-              <div className="bg-black rounded-lg grid  place-items-center">
-                <Doughnut data={finalData} options={options} />
-              </div>
+          <div className="grid gap-4  lg:h-fit lg:px-10 lg:py-0 w-fit">
+            <div className=" grid lg:flex gap-4 items-center">
+              <PumpJoyStick
+                isConnected={isConnected}
+                client={client}
+                topic={topic}
+                isLoading={isLoading}
+                device_id={deviceId}
+                onLogReturn={getLogReturned}
+              />
+              <button
+                className="lg:px-10 px-4 py-2 text-sm rounded-2xl bg-white text-blue-600 h-fit w-fit hover:bg-blue-600 hover:text-white"
+                onClick={() => {
+                  setPopUpChart(true);
+                }}
+              >
+                Add Monitor
+              </button>
             </div>
+            {charts.length > 0 ? (
+              <div className="grid lg:grid-cols-2 gap-2">
+                {charts.map((item) =>(
+                  <div key={item.id}>
+                    {item.type == "donut"?(
+                      <div className="animate-fastFade grid place-items-center w-full">
+                        <DonutChartDirt value={"value1:20"}/>
+                      </div>
+                    ):item.type == "monitorcircle"?(
+                      <div className="grid place-items-center">
+                        <CircleMonitor
+                        bgcolor={item.bgcolor}
+                        fgcolor={item.fgcolor}
+                        unit={item.unit}
+                        value="68"
+                        />
+                      </div>
+                    ):(
+                      <div>Error</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ):(
+              <div className="border-dashed border-2 border-white grid place-items-center px-20 py-10 text-2xl text-white">
+                Not Available.
+              </div>
+            )}
           </div>
-          <div></div>
-        </div>
-        {popUp_click == true && (
-          <div
-            className="fixed inset-0 flex items-center duration-1000 animate-appearance-in justify-center bg-gray-200 bg-opacity-45"
-            onClick={onClosePopUp}
-          >
-            <div
-              className="bg-gray-800 shadow-lg shadow-gray-950  px-12 py-10 rounded-lg w-3/10 z-100 grid place-items-center duration-500"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <h1 className="text-white text-3xl text-center shadow-md shadow-black bg-gray-900 rounded-md px-10 py-2 w-3/5">
-                Wi-fi Setup
-              </h1>
-              <div className="px-5 pt-10 grid space-y-10 w-4/5">
-                <div className="grid grid-cols-2">
-                  <label className="text-white text-xl ">Wi-fi Name : </label>
-                  <input
-                    type="text"
-                    className="pl-2 py-1 rounded-lg shadow-inner shadow-black bg-gray-500 text-white text-xl"
-                    name="wf_name"
-                    defaultValue={wifiData?.wifiName}
-                    onChange={(e) => {
-                      setWifiName(e.target.value);
-                    }}
-                    value={wifiName}
-                  />
-                </div>
-                <div className="grid grid-cols-2">
-                  <label className="text-white text-xl">Password : </label>
-                  <input
-                    name="wf_pw"
-                    type="text"
-                    className="pl-2 py-1 shadow-inner shadow-black rounded-lg bg-gray-500 text-white text-xl"
-                    defaultValue={wifiData?.wifiPassword}
-                    onChange={(e) => {
-                      setWifiPW(e.target.value);
-                    }}
-                    value={wifiPW}
-                  />
-                </div>
-                <div className="flex justify-center w-full gap-5">
-                  <button
-                    onClick={handleWifiEdit}
-                    className="text-white bg-blue-600 px-14 py-2 rounded-md hover:bg-gray-200 hover:text-black shadow-md  text-xl shadow-gray-900 duration-1000"
-                  >
-                    Change
-                  </button>
-                  <button
-                    onClick={onClosePopUp}
-                    className="bg-gray-600 shadow-md px-14 hover:bg-gray-800 py-2 rounded-md shadow-gray-900 text-white font-bold text-xl duration-1000 "
-                  >
-                    Cancel
-                  </button>
-                </div>
-                {wifiData?.status == "Change" && (
-                  <div className="flex justify-center">
-                    <button
-                      className="bg-gray-200 text-black text-lg px-5 py-2 rounded-md hover:bg-red-500 hover:text-white duration-500"
+          <div>
+            {popUp_click == true && (
+              <div
+                className="fixed inset-0 flex items-center duration-1000 animate-appearance-in justify-center bg-gray-200 bg-opacity-45"
+                onClick={onClosePopUp}
+              >
+                <div
+                  className="bg-gray-800 shadow-lg shadow-gray-950  px-12 py-10 rounded-lg w-3/10 z-100 grid place-items-center duration-500"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <h1 className="text-white text-3xl text-center shadow-md shadow-black bg-gray-900 rounded-lg px-10 py-2 w-3/5">
+                    Wi-fi Setup
+                  </h1>
+                  <div className="px-5 pt-10 grid space-y-10 w-4/5">
+                    <div className="grid grid-cols-2">
+                      <label className="text-white text-xl ">
+                        Wi-fi Name :{" "}
+                      </label>
+                      <input
+                        type="text"
+                        className="pl-2 py-1 rounded-lg shadow-inner shadow-black bg-gray-500 text-white text-xl"
+                        name="wf_name"
+                        defaultValue={wifiData?.wifiName}
+                        onChange={(e) => {
+                          setWifiName(e.target.value);
+                        }}
+                        value={wifiName}
+                      />
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <label className="text-white text-xl">Password : </label>
+                      <input
+                        name="wf_pw"
+                        type="text"
+                        className="pl-2 py-1 shadow-inner shadow-black rounded-lg bg-gray-500 text-white text-xl"
+                        defaultValue={wifiData?.wifiPassword}
+                        onChange={(e) => {
+                          setWifiPW(e.target.value);
+                        }}
+                        value={wifiPW}
+                      />
+                    </div>
+                    <div className="flex justify-center w-full gap-5">
+                      <button
+                        onClick={handleWifiEdit}
+                        className="text-white bg-blue-600 px-14 py-2 rounded-md hover:bg-gray-200 hover:text-black shadow-md  text-xl shadow-gray-900 duration-1000"
+                      >
+                        Change
+                      </button>
+                      <button
+                        onClick={onClosePopUp}
+                        className="bg-gray-600 shadow-md px-14 hover:bg-gray-800 py-2 rounded-md shadow-gray-900 text-white font-bold text-xl duration-1000 "
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                    {wifiData?.status == "Change" && (
+                      <div className="flex justify-center">
+                        <button
+                          className="bg-gray-200 text-black text-lg px-5 py-2 rounded-md hover:bg-red-500 hover:text-white duration-500"
+                          onClick={() =>
+                            setPopUpclearWifi(
+                              (popUp_clearWifi) => !popUp_clearWifi
+                            )
+                          }
+                        >
+                          Clear to default Wi-fi
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  {popUp_clearWifi == true && (
+                    <div
+                      className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-35"
                       onClick={() =>
                         setPopUpclearWifi((popUp_clearWifi) => !popUp_clearWifi)
                       }
                     >
-                      Clear to default Wi-fi
-                    </button>
-                  </div>
-                )}
-              </div>
-              {popUp_click == true && (
-                <div
-                  className="fixed inset-0 flex items-center duration-1000 animate-appearance-in justify-center bg-gray-200 bg-opacity-45"
-                  onClick={onClosePopUp}
-                >
-                  <div
-                    className="bg-gray-800 shadow-lg shadow-gray-950  px-12 py-10 rounded-lg w-3/10 z-100 grid place-items-center duration-500"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <h1 className="text-white text-3xl text-center shadow-md shadow-black bg-gray-900 rounded-md px-10 py-2 w-3/5">
-                      Wi-fi Setup
-                    </h1>
-                    <div className="px-5 pt-10 grid space-y-10 w-4/5">
-                      <div className="grid grid-cols-2">
-                        <label className="text-white text-xl ">
-                          Wi-fi Name :{" "}
-                        </label>
-                        <input
-                          type="text"
-                          className="pl-2 py-1 rounded-lg shadow-inner shadow-black bg-gray-500 text-white text-xl"
-                          name="wf_name"
-                          defaultValue={wifiData?.wifiName}
-                          onChange={(e) => {
-                            setWifiName(e.target.value);
-                          }}
-                          value={wifiName}
-                        />
-                      </div>
-                      <div className="grid grid-cols-2">
-                        <label className="text-white text-xl">
-                          Password :{" "}
-                        </label>
-                        <input
-                          name="wf_pw"
-                          type="text"
-                          className="pl-2 py-1 shadow-inner shadow-black rounded-lg bg-gray-500 text-white text-xl"
-                          defaultValue={wifiData?.wifiPassword}
-                          onChange={(e) => {
-                            setWifiPW(e.target.value);
-                          }}
-                          value={wifiPW}
-                        />
-                      </div>
-                      <div className="flex justify-center w-full gap-5">
-                        <button
-                          onClick={handleWifiEdit}
-                          className="text-white bg-blue-600 px-14 py-2 rounded-md hover:bg-gray-200 hover:text-black shadow-md  text-xl shadow-gray-900 duration-1000"
-                        >
-                          Change
-                        </button>
-                        <button
-                          onClick={onClosePopUp}
-                          className="bg-gray-600 shadow-md px-14 hover:bg-gray-800 py-2 rounded-md shadow-gray-900 text-white font-bold text-xl duration-1000 "
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                      {wifiData?.status == "Change" && (
-                        <div className="flex justify-center">
+                      <div
+                        className="bg-gray-800 px-12 py-5 rounded-lg w-1/5 z-110 duration-500  shadow-lg shadow-gray-950 "
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <h1 className="text-center text-white text-2xl py-4">
+                          Confirm set to default Wi-Fi
+                        </h1>
+                        <div className="flex justify-center w-full my-3 gap-5">
                           <button
-                            className="bg-gray-200 text-black text-lg px-5 py-2 rounded-md hover:bg-red-500 hover:text-white duration-500"
+                            onClick={handleClearDefaultWifi}
+                            className="text-white  bg-blue-600 px-6 py-2 rounded-md hover:bg-gray-200 shadow-md  text-xl hover:text-black shadow-gray-900 duration-1000"
+                          >
+                            Yes
+                          </button>
+                          <button
                             onClick={() =>
                               setPopUpclearWifi(
                                 (popUp_clearWifi) => !popUp_clearWifi
                               )
                             }
+                            className="bg-gray-600 shadow-md px-6 hover:bg-gray-800 py-2 rounded-md shadow-gray-900 text-white  text-xl duration-1000"
                           >
-                            Clear to default Wi-fi
+                            Cancel
                           </button>
                         </div>
-                      )}
-                    </div>
-                    {popUp_clearWifi == true && (
-                      <div
-                        className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-35"
-                        onClick={() =>
-                          setPopUpclearWifi(
-                            (popUp_clearWifi) => !popUp_clearWifi
-                          )
-                        }
-                      >
-                        <div
-                          className="bg-gray-800 px-12 py-5 rounded-lg w-1/5 z-110 duration-500  shadow-lg shadow-gray-950 "
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <h1 className="text-center text-white text-2xl py-4">
-                            Confirm set to default Wi-Fi
-                          </h1>
-                          <div className="flex justify-center w-full my-3 gap-5">
-                            <button
-                              onClick={handleClearDefaultWifi}
-                              className="text-white  bg-blue-600 px-6 py-2 rounded-md hover:bg-gray-200 shadow-md  text-xl hover:text-black shadow-gray-900 duration-1000"
-                            >
-                              Yes
-                            </button>
-                            <button
-                              onClick={() =>
-                                setPopUpclearWifi(
-                                  (popUp_clearWifi) => !popUp_clearWifi
-                                )
-                              }
-                              className="bg-gray-600 shadow-md px-6 hover:bg-gray-800 py-2 rounded-md shadow-gray-900 text-white  text-xl duration-1000"
-                            >
-                              Cancel
-                            </button>
-                          </div>
-                        </div>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
+      {popup_chart && <PopUpAddChart
+      setPopUpChart={()=>{
+        setPopUpChart(!popup_chart)
+      }}
+      deviceId={deviceId}
+      setChart={setChart}
+      />}
     </div>
   );
 }

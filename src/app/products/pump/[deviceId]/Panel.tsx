@@ -24,7 +24,7 @@ export default function PumpPanel({
 }: Props) {
   return (
     <div
-      className={`duration-1000 gap-2  ml-5 shadow-md bg-gradient-to-tr px-5 w-full from-blue-950 to-gray-800 rounded-lg ${
+      className={`duration-1000 gap-2  shadow-md bg-gradient-to-tr px-5 w-full from-blue-950 to-gray-800 rounded-lg ${
         isLoading ? " py-5 " : "py-0"
       }`}
     >

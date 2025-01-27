@@ -3,7 +3,7 @@ export type Session = {
   username: string;
   email: string;
   password: string;
-}
+};
 
 export type ButtonModel = {
   id: number;
@@ -14,8 +14,8 @@ export type ButtonModel = {
   deviceId: string;
 };
 
-export type  DeviceModel = {
-  _id:string
+export type DeviceModel = {
+  _id: string;
   deviceId: string;
   name: string;
   topic: string;
@@ -25,15 +25,15 @@ export type  DeviceModel = {
   status: string;
   wifiId: string;
   wifiConnect: string;
-}
+};
 
-export type WifiModel ={
+export type WifiModel = {
   _id: string;
   wifiId: string;
   wifiName: string;
   wifiPassword: string;
   status: string;
-}
+};
 
 export type CustomizeButtonModel = {
   transmitter: {
@@ -51,3 +51,29 @@ export type CustomizeButtonModel = {
     chart: any[];
   };
 };
+
+export type ChartModel = {
+  id: any;
+  deviceId: string;
+  type: string;
+  label: string;
+  bgcolor: string;
+  fgcolor: string;
+  unit:string;
+};
+
+export type CustomizeChartPumpModel = {
+  donut:string;
+  circlemonitor:string;
+};
+// export type CustomizeChartPumpModel = {
+//   donut: {
+//     value: string;
+//   };
+//   circlemonitor: {
+//     bgcolor: any[];
+//     ftcolor: any[];
+//     value: any[];
+//     unit: any[];
+//   };
+// };

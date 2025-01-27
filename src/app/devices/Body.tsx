@@ -5,19 +5,20 @@ import { Session } from "@/resource/model";
 import AddDevicePopUp from "@/components/popup/AddDevicePopUp";
 import EditDevicePopUp from "@/components/popup/EditDevicePopUp";
 import Link from "next/link";
-import { CirclePlus, Cpu,  Settings } from "lucide-react";
+import { CirclePlus, Cpu, Settings } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { MqttProvider } from "@/components/connect/MqttContext";
 import DeviceStatus from "@/components/statusconnect/DeviceStatus";
+import GetIPComponent from "@/components/getIP";
 
 type Props = {
   session: Session;
 };
 interface DeviceData {
-  _id:string;
+  _id: string;
   deviceId: string;
   userId: string;
   name: string;
@@ -48,14 +49,6 @@ const getDeviceByUser = async (id: string) => {
   }
 };
 
-// const getProductId = async (productId: string) => {
-//   try {
-//     const response = await axios.get<ProductData>(`/api/products/${productId}`);
-//     return response.data;
-//   } catch (error) {
-//     console.error(error instanceof Error ? error.message : "Unknown error");
-//   }
-// };
 const getProductId = async (productId: string): Promise<ProductData | null> => {
   try {
     const response = await axios.get<ProductData>(`/api/products/${productId}`);
@@ -86,8 +79,8 @@ export default function Body({ session }: Props) {
   const [loading_state, setLoadings] = useState<boolean>(false);
   const [popUp_click, setPopUpClick] = useState<boolean>(false);
   const [edit_popup, setEditPopUp] = useState<boolean>(false);
-  const [edit_id , setEditId] = useState<string|null>()
-  const [edit_deviceId , setEditDeviceId] = useState<string|null>()
+  const [edit_id, setEditId] = useState<string | null>();
+  const [edit_deviceId, setEditDeviceId] = useState<string | null>();
   const [triggerSubmit, setTriggerSubmit] = useState<boolean>(false);
 
   useEffect(() => {
@@ -97,10 +90,10 @@ export default function Body({ session }: Props) {
     });
   }, []);
 
-  const onClickEditPopUp = (id:string,deviceId:string) => {
+  const onClickEditPopUp = (id: string, deviceId: string) => {
     setEditPopUp(true);
-    setEditId(id)
-    setEditDeviceId(deviceId)
+    setEditId(id);
+    setEditDeviceId(deviceId);
   };
 
   const onClickPopUp = () => {
@@ -148,7 +141,7 @@ export default function Body({ session }: Props) {
             let status = "owner";
             let wifiId = wifiUUID;
             let wifiConnect = "none";
-            let productId = product_id
+            let productId = product_id;
             const res = await fetch("/api/devices", {
               method: "POST",
               headers: {
@@ -164,7 +157,7 @@ export default function Body({ session }: Props) {
                 status,
                 wifiId,
                 wifiConnect,
-                productId
+                productId,
               }),
             });
 
@@ -225,7 +218,7 @@ export default function Body({ session }: Props) {
           toast.error("product is already exist user.");
         }
       } catch (error) {
-        toast.error("Not found.")
+        toast.error("Not found.");
       }
     }
 
@@ -245,44 +238,74 @@ export default function Body({ session }: Props) {
   return (
     <div>
       <div className={`bg-gray-800  w-full pb-10`}>
-        <div className="absolute  text-white bg-gray-900 px-10 lg:px-20 py-4 text-3xl my-3 rounded-md  md:left-1/2 sm:left-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 sm:-translate-x-1/2   left-5 ">
-          <div
-            className={` ${
-              isLoading ? "animate-fadeIn" : "opacity-0"
-            } flex justify-center items-center `}
-          >
-            <h1 className=" md:text-4xl font-bold text-2xl lg:text-5xl  text-gray-900 ">
-              <span className="text-transparent bg-clip-text tracking-wide bg-gradient-to-tr to-blue-800 via-blue-400 from-sky-300 line-clamp-1 ">
-                Devices
-              </span>
-            </h1>
+        <div className="lg:px-5 flex gap-4 justify-between  bg-gray-700 px-2 py-2 rounded-md items-center">
+          <div className="lg:flex grid gap-3 lg:gap-8">
+            <div
+              className={` ${
+                isLoading ? "animate-fadeIn" : "opacity-0"
+              } bg-gray-800 rounded-md py-3 px-4 lg:px-10 w-fit `}
+            >
+              <h1 className=" md:text-4xl font-bold text-2xl lg:text-5xl  text-gray-900 ">
+                <span className="text-transparent bg-clip-text tracking-wide bg-white line-clamp-1 ">
+                  Devices
+                </span>
+              </h1>
+            </div>
+            <div className="grid text-white">
+              <div className="lg:flex gap-3">
+                <div className="text-white flex gap-2 lg:text-lg">
+                  <p className="font-semibold text-blue-500">User :</p>{" "}
+                  {session.username.toUpperCase()}
+                </div>
+                |
+                <div className="text-white flex gap-2 lg:text-lg">
+                  <p className="font-semibold text-blue-500">Email</p> :{" "}
+                  {session.email}
+                </div>
+              </div>
+
+              <div className="lg:text-lg  flex gap-2">
+                <p className="font-semibold text-blue-500">Device Owner :</p>{" "}
+                {devices.length} Items
+              </div>
+              <div className="lg:flex items-center text-white md:flex sm:flex grid gap-2">
+                 <div className="lg:text-lg flex gap-2 text-white items-center">
+                <p className="font-semibold text-blue-500">Status :</p> User
+                online
+                <div className="w-4 h-4 bg-green-400 rounded-full"></div>
+                
+              </div>|<GetIPComponent/>
+              </div>
+             
+            </div>
+          </div>
+
+          <div className="lg:flex lg:justify-end sm:grid sm:place-items-end grid place-items-end gap-3">
+            <button
+              className="flex gap-2 justify-center bg-blue-600 rounded-md items-center hover:bg-slate-600  shadow-md  h-fit text-white w-[180px] px-2 text-sm lg:px-4 py-2 "
+              onClick={onClickPopUp}
+            >
+              <CirclePlus
+                style={{ width: "1.8rem", height: "1.8rem" }}
+                className="relative  text-white"
+              />
+              Add Device
+            </button>
+            <button
+              className="flex gap-2 justify-center items-center font-semibold bg-white rounded-md hover:bg-slate-600 hover:text-white  shadow-md shadow-black text-gray-700 w-[180px]  px-2 lg:px-4 py-2 group"
+              onClick={() => {
+                router.push("/externalDevice");
+              }}
+            >
+              <Cpu
+                style={{ width: "2.0rem", height: "1.8rem" }}
+                className="relative  text-gray-700 group-hover:text-white"
+              />
+              Import
+            </button>
           </div>
         </div>
 
-        <div className="lg:flex lg:justify-end sm:grid sm:place-items-end grid place-items-end gap-3 py-5 px-5">
-          <button
-            className="flex gap-2 justify-center bg-blue-600 rounded-md items-center hover:bg-slate-600  shadow-md  h-fit text-white w-[180px] px-4 py-2 "
-            onClick={onClickPopUp}
-          >
-            <CirclePlus
-              style={{ width: "1.8rem", height: "1.8rem" }}
-              className="relative  text-white"
-            />
-            Add Device
-          </button>
-          <button
-            className="flex gap-2 justify-center items-center font-semibold bg-white rounded-md hover:bg-slate-600 hover:text-white  shadow-md shadow-black text-gray-700 w-[180px]  text-lg px-4 py-2 group"
-            onClick={() => {
-              router.push("/externalDevice");
-            }}
-          >
-            <Cpu
-              style={{ width: "2.0rem", height: "1.8rem" }}
-              className="relative  text-gray-700 group-hover:text-white"
-            />
-            Import
-          </button>
-        </div>
         <div className="flex justify-center pt-5 mb-20">
           {devices.length > 0 && isLoading == true ? (
             <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-4 lg:w-11/12  lg:px-10 px-4 py-10 md:w-9/12 sm:w-9/12 w-11/12 sm:px-10 bg-gray-700 border-2 border-dotted border-gray-500">
@@ -294,7 +317,7 @@ export default function Body({ session }: Props) {
                   <div
                     className="absolute w-12 h-12 rounded-full z-10 right-0 -top-5 shadow-md shadow-black bg-gray-300 animate-fastFade hidden group-hover:block hover:bg-gray-500 "
                     onClick={() => {
-                      onClickEditPopUp(item._id , item.deviceId);
+                      onClickEditPopUp(item._id, item.deviceId);
                     }}
                   >
                     <button className=" w-full h-full grid place-items-center ">

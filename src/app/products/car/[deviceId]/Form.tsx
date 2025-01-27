@@ -239,7 +239,7 @@ export default function FormPage({ device_id }: Props) {
             Car Controller
           </h1>
           <button
-            className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-xl rounded-lg  shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
+            className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-lg rounded-lg  shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
               isLoading
                 ? "px-5 text-white bg-blue-600"
                 : "px-0 bg-blue-300 text-blue-300"
