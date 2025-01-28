@@ -33,7 +33,7 @@ export default function CardMainImgHomepage() {
         <div className="lg:flex md:flex grid lg:gap-10 md:gap-10 gap-5 w-full lg:justify-center md:justify-center place-items-center">
           <FadeInHorizontal>
             <Link href={'/devices'} className="px-5 hover:scale-[105%] duration-500 hover:opacity-80 py-1.5 rounded-md bg-black text-white  lg:text-2xl md:text-2xl text-lg shadow-md shadow-gray-800 lg:w-[180px] md:w-[180px] w-[150px]">
-              Get Start
+              Get Started
             </Link>
           </FadeInHorizontal>
           <FadeInVHorizontal>
