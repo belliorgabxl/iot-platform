@@ -28,10 +28,10 @@ export default function Home() {
         <h1 className="my-5 lg:my-6 sm:text-5xl text-4xl lg:text-6xl text-center text-white font-extrabold">
           IoT Device<br className="lg:hidden md:hidden sm:block block"/> Management Platform
         </h1>
-        <div className="px-4  lg:my-4 text-lg font-semibold text-center lg:text-2xl text-white w-full ">
+        <div className="px-4  lg:my-4 text-lg font-semibold text-center lg:text-3xl md:text-2xl text-white w-full ">
           &nbsp;&nbsp;&nbsp;&nbsp; A Customizable Web Interface for Seamless
           Control and Monitoriing
-          <br className="hidden lg:block" />
+          <br className="hidden lg:block md:block" />
           Manage IoT Devices anytime and anywhere in the wolrd
         </div>
       </div>
@@ -52,7 +52,7 @@ export default function Home() {
           </div>
       </div>
 
-      <div className="grid place-items-center my-5 lg:mt-10 mb-5 gap-0 lg:bg-none md:grid-cols-1 lg:grid-cols-[45%_55%]">
+      <div className="w-full grid place-items-center my-5 lg:mt-10 mb-5 gap-0 lg:bg-none md:grid-cols-1 lg:grid-cols-[45%_55%]">
         <div className="grid sm:gap-10 gap-8 lg:gap-16 place-items-center h-fit">
           <FadeInOnScroll>
             <Link
@@ -68,7 +68,7 @@ export default function Home() {
             <img src="/homepage/iot.png" className="w-[400px] h-[400px]" />
           </FadeInOnScroll>
         </div>
-        <div className=" grid  lg:grid-cols-2 lg:w-fit w-full gap-2  place-items-center  lg:gap-4  ">
+        <div className=" grid  lg:grid-cols-2 md:grid-cols-2 md:w-fit  lg:w-fit w-full gap-2 sm:w-full place-items-center  lg:gap-4 md:gap-4  ">
           <CardIotHomepage
             imgURL="/homepage/dashboard.png"
             topic="Efficient Control and Monitoring"
