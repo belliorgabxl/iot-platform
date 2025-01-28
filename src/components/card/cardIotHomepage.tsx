@@ -9,7 +9,7 @@ type CardProps = {
 
 export default function CardIotHomepage(props: CardProps) {
   return (
-    <div className="w-[90%]">
+    <div className="w-[80%]">
     <FadeInOnScroll>
       <div className="group grid lg:w-[300px] w-full  rounded-md lg:h-[280px] bg-white gap-0 px-4 py-3 text-black overflow-hidden">
         <p className="w-full line-clamp-2 lg:text-xl text-lg h-fit font-semibold">{props.topic}</p>

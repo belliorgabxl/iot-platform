@@ -75,7 +75,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className=" hidden lg:flex md:flex justify-center items-center">
+        <div className=" hidden lg:flex  justify-center items-center">
           <NavLink
             href="/documents"
             label="Documentation"
@@ -149,7 +149,7 @@ export default function Navbar() {
         )}
         {toggleMenu ? (
           <div
-            className=" lg:hidden h-full flex items-center justify-center   md:hidden"
+            className=" lg:hidden h-full flex items-center justify-center"
             onClick={() => setToggleMenu(false)}
           >
             <X
@@ -159,7 +159,7 @@ export default function Navbar() {
           </div>
         ) : (
           <div
-            className=" lg:hidden h-full flex items-center justify-center  md:hidden"
+            className=" lg:hidden h-full flex items-center justify-center "
             onClick={() => setToggleMenu(true)}
           >
             <Menu
@@ -169,7 +169,7 @@ export default function Navbar() {
           </div>
         )}
         {toggleMenu && (
-          <div className="absolute  bg-gradient-to-tr from-gray-900  to to-gray-500 left-0  space-y-4 translate-y-14  min-h-[80vh] py-10 w-full">
+          <div className="lg:hidden block absolute  bg-gradient-to-tr from-gray-900  to to-gray-500 left-0  space-y-4 translate-y-14  min-h-[80vh] py-10 w-full">
             <SideLink
               href="/documents"
               label="Documentation"

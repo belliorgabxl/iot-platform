@@ -25,8 +25,8 @@ export default function Home() {
           isLoading ? "animate-fadeStep1 opacity-100" : "opacity-0"
         } w-full grid place-items-center`}
       >
-        <h1 className="my-5 lg:my-6 text-3xl lg:text-6xl text-center text-white font-extrabold">
-          IoT Device Management Platform
+        <h1 className="my-5 lg:my-6 sm:text-5xl text-4xl lg:text-6xl text-center text-white font-extrabold">
+          IoT Device<br className="lg:hidden md:hidden sm:block block"/> Management Platform
         </h1>
         <div className="px-4  lg:my-4 text-lg font-semibold text-center lg:text-2xl text-white w-full ">
           &nbsp;&nbsp;&nbsp;&nbsp; A Customizable Web Interface for Seamless
@@ -52,12 +52,12 @@ export default function Home() {
           </div>
       </div>
 
-      <div className="grid place-items-center my-5 lg:mt-10 mb-5 gap-0 lg:grid-cols-[50%_50%]">
-        <div className="grid gap-16 place-items-center h-fit">
+      <div className="grid place-items-center my-5 lg:mt-10 mb-5 gap-0 lg:bg-none md:grid-cols-1 lg:grid-cols-[45%_55%]">
+        <div className="grid sm:gap-10 gap-8 lg:gap-16 place-items-center h-fit">
           <FadeInOnScroll>
             <Link
               href={"/documents"}
-              className="text-3xl hover:text-blue-600 lg:text-5xl font-bold text-white text-center duration-700"
+              className="text-3xl hover:text-blue-600 lg:text-5xl md:text-5xl font-bold text-white grid place-items-center text-center duration-700"
             >
               What is this Device
               <br />
