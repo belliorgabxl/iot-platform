@@ -111,7 +111,7 @@ export default function Navbar() {
               className="lg:px-10 px-4 rounded-md duration-300 py-1  hover:bg-blue-800"
               onClick={() => router.push("/authentication/signup")}
             >
-              Sign-Up
+               <span className='line-clamp-1 overflow-hidden'>Sign-Up</span>
             </button>
           </div>
         ) : session || pathname === "/devices" ? (

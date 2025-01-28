@@ -26,7 +26,9 @@ export default function Home() {
         } w-full grid place-items-center`}
       >
         <h1 className="my-5 lg:my-6 sm:text-5xl text-4xl lg:text-6xl text-center text-white font-extrabold">
-          IoT Device<br className="lg:hidden md:hidden sm:block block"/> Management Platform
+          IoT Device
+          <br className="lg:hidden md:hidden sm:block block" /> Management
+          Platform
         </h1>
         <div className="px-4  lg:my-4 text-lg font-semibold text-center lg:text-3xl md:text-2xl text-white w-full ">
           &nbsp;&nbsp;&nbsp;&nbsp; A Customizable Web Interface for Seamless
@@ -43,13 +45,12 @@ export default function Home() {
           isLoading ? "animate-fadeStep1 opacity-100" : "opacity-0"
         } mt-5 lg:mt-8 grid w-full place-items-center overflow-hidden`}
       >
-          <div className="w-full  grid lg:grid-cols-2 md:grid-cols-2 place-items-center gap-0 overflow-hidden">
-       
-            <CardImageHomepage lable="Welcom" imgURL="/aboutus/gabel.jpg" />
-            <CardImageHomepage lable="To" imgURL="/aboutus/bam.jpg" />
-            <CardImageHomepage lable="IoT" imgURL="/aboutus/por.jpg" />
-            <CardImageHomepage lable="Platform" imgURL="/aboutus/watid.jpg" />
-          </div>
+        <div className="w-full  grid lg:grid-cols-2 md:grid-cols-2 place-items-center gap-0 overflow-hidden">
+          <CardImageHomepage lable="Welcom" imgURL="/aboutus/gabel.jpg" />
+          <CardImageHomepage lable="To" imgURL="/aboutus/bam.jpg" />
+          <CardImageHomepage lable="IoT" imgURL="/aboutus/por.jpg" />
+          <CardImageHomepage lable="Platform" imgURL="/aboutus/watid.jpg" />
+        </div>
       </div>
 
       <div className="w-full grid place-items-center my-5 lg:mt-10 mb-5 gap-0 lg:bg-none md:grid-cols-1 lg:grid-cols-[45%_55%]">
