@@ -20,8 +20,8 @@ export default function ProductDetail({ isLoading }: Props) {
           className="lg:w-1/3  md:w-2/5 sm:w-[250px] w-1/3 rounded-l-lg object-cover "
         />
         <div className="lg:px-5 px-2 grid gap-2 py-2 w-full">
-          <h1 className="lg:text-2xl text-lg  bg-gray-900 h-fit px-2 lg:px-5  grid place-items-center py-1 rounded-md">
-            Product : Car
+          <h1 className="lg:text-2xl text-lg font-semibold bg-gray-900 h-fit px-2 lg:px-5  grid place-items-center py-1 rounded-md">
+            Car
           </h1>
           <p className="lg:text-lg text-sm">Board : ESP32</p>
           <p className="lg:text-lg text-sm">Connection Type : Wi-fi 2.4 GHz</p>
@@ -45,8 +45,8 @@ export default function ProductDetail({ isLoading }: Props) {
         />
 
         <div className="lg:px-5 px-2 grid gap-2 py-2 w-full">
-          <div className="text-lg lg:text-xl  bg-gray-900 h-fit px-2 lg:px-5 grid place-items-center py-1 overflow-hidden text-ellipsis whitespace-nowrap line-clamp-1 rounded-md">
-            Product : Robotic Arm
+          <div className="text-lg lg:text-xl  bg-gray-900 h-fit px-2 lg:px-5 grid place-items-center font-semibol py-1 overflow-hidden text-ellipsis whitespace-nowrap line-clamp-1 rounded-md">
+            Robotic Arm
           </div>
           <p className="text-sm lg:text-lg">Board : ESP32</p>
           <p className="lg:text-lg text-sm">Connection Type : Wi-fi 2.4 GHz</p>
@@ -71,8 +71,8 @@ export default function ProductDetail({ isLoading }: Props) {
         />
 
         <div className="lg:px-5 px-2 grid gap-2 py-2 w-full">
-          <div className="text-lg lg:text-xl  bg-gray-900 h-fit px-2 lg:px-5 grid place-items-center py-1 overflow-hidden text-ellipsis whitespace-nowrap line-clamp-1 rounded-md">
-            Product : Auto Pump
+          <div className="text-lg lg:text-xl  bg-gray-900 h-fit px-2 lg:px-5 grid place-items-center py-1 overflow-hidden text-ellipsis whitespace-nowrap font-semibol line-clamp-1 rounded-md">
+            Auto Pump
           </div>
           <p className=" text-sm lg:text-lg sm:text-lg">Board : ESP32</p>
           <p className="text-sm lg:text-lg sm:text-lg">Connection Type : Wi-fi 2.4 GHz</p>
@@ -98,8 +98,8 @@ export default function ProductDetail({ isLoading }: Props) {
         />
 
         <div className="lg:px-5 px-2 grid gap-2 py-2 w-full">
-          <div className="text-lg lg:text-xl  bg-gray-900 h-fit px-2 lg:px-5 grid place-items-center py-1 overflow-hidden text-ellipsis whitespace-nowrap line-clamp-1 rounded-md">
-            Product : Smoke Detector
+          <div className="text-lg font-semibol lg:text-xl  bg-gray-900 h-fit px-2 lg:px-5 grid place-items-center py-1 overflow-hidden text-ellipsis whitespace-nowrap line-clamp-1 rounded-md">
+            Smoke Detector
           </div>
           <p className=" text-sm lg:text-lg sm:text-lg">Board : ESP32</p>
           <p className="text-sm lg:text-lg sm:text-lg">Connection Type : Wi-fi 2.4 GHz</p>
