@@ -19,7 +19,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
             <p className=" text-lg lg:text-2xl">Mr. Patarajarin Napakarn</p>
             <p className="font-bold text-xl ">Gabel</p>
             <hr />
-            <p className="text-sm lg:text-lg">Studen ID : 64011224</p>
+            <p className="text-sm lg:text-lg">Team-Leader & Developer</p>
             <p className="text-sm lg:text-lg">Faculty Of Engineering</p>
           </div>
           <img
@@ -42,7 +42,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
             <p className=" text-lglg:text-2xl">Ms. Chanidapha Chatsak</p>
             <p className="font-bold text-xl">Bam</p>
             <hr />
-            <p className="text-sm lg:text-lg">Studen ID : 64010153</p>
+            <p className="text-sm lg:text-lg">Bussiness Analysis & Design</p>
             <p className="text-sm lg:text-lg">Faculty Of Engineering</p>
           </div>
           <img
@@ -65,7 +65,7 @@ export default function AboutUsDetail({ isLoading }: Props) {
             <p className=" text-lg lg:text-2xl">Mr. Kasama Mingmuang</p>
             <p className="font-bold text-xl -3">Por</p>
             <hr />
-            <p className="text-sm lg:text-lg">Studen ID : 64010027</p>
+            <p className="text-sm lg:text-lg">Hardware & Product</p>
             <p className="text-sm lg:text-lg">Faculty Of Engineering</p>
           </div>
           <img
