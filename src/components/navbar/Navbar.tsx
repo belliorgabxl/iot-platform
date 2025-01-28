@@ -83,7 +83,7 @@ export default function Navbar() {
           />
           <NavLink
             href="/production"
-            label="Production"
+            label="Producs"
             isActive={pathname === "/production"}
           />
           <NavLink
@@ -178,7 +178,7 @@ export default function Navbar() {
             />
             <SideLink
               href="/production"
-              label="Our Production"
+              label="Our Products"
               isActive={pathname === "/production"}
               onClick={() => setToggleMenu(false)}
             />
