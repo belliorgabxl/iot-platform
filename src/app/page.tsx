@@ -3,6 +3,7 @@ import GetstartButton from "@/components/article/getstartButton";
 import Homepage_article from "@/components/article/homePageDetail";
 import CardImageHomepage from "@/components/card/cardImageHomepage";
 import CardIotHomepage from "@/components/card/cardIotHomepage";
+import CardMainImgHomepage from "@/components/card/cardMainImgHomepage";
 import CLShomepage from "@/components/CLS/CLShomepage";
 import FadeInOnScroll from "@/components/FadInScroll";
 import Link from "next/link";
@@ -15,35 +16,16 @@ export default function Home() {
   }, []);
   return (
     <div className=" w-full pb-40 bg-gradient-to-tr from-gray-900 via-gray-500 to-gray-900 ">
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <div className="bg-gray-800">
           <CLShomepage />
         </div>
-      </div>
+      </div> */}
+      <CardMainImgHomepage/>
       <div
         className={` ${
           isLoading ? "animate-fadeStep1 opacity-100" : "opacity-0"
-        } w-full grid place-items-center`}
-      >
-        <h1 className="my-5 lg:my-6 sm:text-5xl text-4xl lg:text-6xl text-center text-white font-extrabold">
-          IoT Device
-          <br className="lg:hidden md:hidden sm:block block" /> Management
-          Platform
-        </h1>
-        <div className="px-4  lg:my-4 text-lg font-semibold text-center lg:text-3xl md:text-2xl text-white w-full ">
-          &nbsp;&nbsp;&nbsp;&nbsp; A Customizable Web Interface for Seamless
-          Control and Monitoriing
-          <br className="hidden lg:block md:block" />
-          Manage IoT Devices anytime and anywhere in the wolrd
-        </div>
-      </div>
-      <div className="flex justify-center mb-4">
-        <GetstartButton isLoading={isLoading} />
-      </div>
-      <div
-        className={` ${
-          isLoading ? "animate-fadeStep1 opacity-100" : "opacity-0"
-        } mt-5 lg:mt-8 grid w-full place-items-center overflow-hidden`}
+        } grid w-full place-items-center overflow-hidden`}
       >
         <div className="w-full  grid lg:grid-cols-2 md:grid-cols-2 place-items-center gap-0 overflow-hidden">
           <CardImageHomepage lable="Welcom" imgURL="/aboutus/gabel.jpg" />
