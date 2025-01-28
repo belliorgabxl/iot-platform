@@ -44,7 +44,7 @@ export default function Homepage_article() {
           <div
             className={`grid  ${
               isLoading
-                ? "bg-gray-900 hover:scale-[102%] duration-1000  rounded-md shadow-md shadow-black my-5 py-10 px-10 w-full lg:w-3/5"
+                ? "bg-gray-900 hover:scale-[102%] duration-1000  rounded-md  my-5 py-10 px-10 w-full lg:w-3/5"
                 : "opacity-0 w-2/5"
             }`}
           >
@@ -79,7 +79,7 @@ export default function Homepage_article() {
         <div
           className={`grid  ${
             isLoading
-              ? "bg-gray-900 hover:scale-[102%] duration-1000  rounded-md shadow-md shadow-black my-5 py-10 px-10 w-full lg:w-3/5"
+              ? "bg-gray-900 hover:scale-[102%] duration-1000  rounded-md  my-5 py-10 px-10 w-full lg:w-3/5"
               : "opacity-0 w-2/5"
           }`}
         >
@@ -113,7 +113,7 @@ export default function Homepage_article() {
           <div
             className={`grid  ${
               isLoading
-                ? "bg-gray-900 hover:scale-[102%] duration-1000   rounded-md shadow-md shadow-black my-5 py-10 px-10 w-full lg:w-3/5"
+                ? "bg-gray-900 hover:scale-[102%] duration-1000   rounded-md  my-5 py-10 px-10 w-full lg:w-3/5"
                 : "opacity-0 w-2/5"
             }`}
           >

@@ -3,16 +3,17 @@ import React from "react";
 import FadeInOnScroll from "../FadInScroll";
 import FadeInHorizontal from "../FadInHorizontal";
 import FadeInVHorizontal from "../FadInVHorizontal";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function CardMainImgHomepage() {
+  const router = useRouter()
   return (
     <div className="relative group overflow-hidden  w-full h-[500px] flex  items-center justify-center">
       <img
         className="absolute object-cover w-full h-[500px] group-hover:scale-[105%] duration-1000"
         src="/homepage/circuit.jpg"
       />
-      <div className="absolute w-full h-full bg-gradient-to-t from-gray-950/95 to-gray-900/50"></div>
+      <div className="absolute w-full h-full bg-gradient-to-t lg:from-gray-950/95 from-gray-950/85 to-gray-900/50"></div>
 
       <div className="absolute space-y-10">
         <FadeInOnScroll>
@@ -32,14 +33,18 @@ export default function CardMainImgHomepage() {
         </FadeInOnScroll>
         <div className="lg:flex md:flex grid lg:gap-10 md:gap-10 gap-5 w-full lg:justify-center md:justify-center place-items-center">
           <FadeInHorizontal>
-            <Link href={'/devices'} className="px-5 hover:scale-[105%] duration-500 hover:opacity-80 py-1.5 rounded-md bg-black text-white  lg:text-2xl md:text-2xl text-lg shadow-md shadow-gray-800 lg:w-[180px] md:w-[180px] w-[150px]">
+            <button onClick={()=>{
+              router.push("/devices")
+            }} className="px-5 hover:scale-[108%] duration-500 hover:opacity-80 py-2 lg:py-1.5  rounded-md bg-black text-white  lg:text-2xl md:text-2xl text-lg shadow-md shadow-gray-800 lg:w-[180px] md:w-[180px] w-[150px]">
               Get Started
-            </Link>
+            </button>
           </FadeInHorizontal>
           <FadeInVHorizontal>
-            <Link href={'/documents'} className="px-5  hover:scale-[105%] duration-500 hover:opacity-80 py-1.5 rounded-md bg-white text-black lg:text-2xl md:text-2xl shadow-md shadow-gray-800 text-lg lg:w-[180px] md:w-[180px] w-[150px]">
+            <button onClick={()=>{
+              router.push("/documents")
+            }} className="px-5  hover:scale-[108%] duration-500 hover:opacity-80 py-1.5 rounded-md bg-white text-black lg:text-2xl md:text-2xl shadow-md shadow-gray-800 text-lg lg:w-[180px] md:w-[180px] w-[150px]">
               Document
-            </Link>
+            </button>
           </FadeInVHorizontal>
         </div>
       </div>
