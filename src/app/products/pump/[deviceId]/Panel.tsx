@@ -103,7 +103,7 @@ export default function PumpPanel({
         <div className="lg:text-xl text-white my-1">Device log</div>
         <div className="bg-gray   flex  lg:text-xl rounded-sm text-black font-semibold px-3 py-4 bg-gray-200 text-start">
           <p className=" duration-75 animate-pulse ">&gt;_&nbsp;&nbsp;&nbsp;</p>
-          Moisture {water} %
+          Moisture {water*5} %
         </div>
       </div>
       <div className={` ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>

@@ -21,7 +21,7 @@ export default function CircleChartDirt(props:DonutProps) {
   useEffect(()=>{
     const part =  props.value.split(":");
     if (part.length === 2 && part[0] === "value1" ){
-        const waterValue =  parseInt(part[1] , 10);
+        const waterValue =  parseInt(part[1] , 10) * 5;
         if(!isNaN(waterValue)){
             setWater(waterValue);
         }
@@ -45,7 +45,7 @@ export default function CircleChartDirt(props:DonutProps) {
     },
     {
       label: "ค่าความชื้น",
-      value: water*5,
+      value: water,
       color: waterRGB,
       cutout: "0%",
     },

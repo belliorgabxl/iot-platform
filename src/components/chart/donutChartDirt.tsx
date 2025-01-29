@@ -23,7 +23,7 @@ export default function DonutChartDirt(props:DonutProps) {
     if (part.length === 2 && part[0] === "value1" ){
         const waterValue =  parseInt(part[1] , 10);
         if(!isNaN(waterValue)){
-            setWater(waterValue);
+            setWater(waterValue*5);
         }
     }
   },[props.value]);
