@@ -77,7 +77,7 @@ export const LogProvider: FC<MqttProviderProps> = ({ children, topic_device, top
     return () => {
       mqttClient.end();
     };
-  }, [topic_device, topic_smoke]);
+  }, [topic_device, topic_smoke]);9
 
   return (
     <LogValueContext.Provider value={{ client, connectionStatus, lastMessage, deviceStatus, smokeValue }}>
