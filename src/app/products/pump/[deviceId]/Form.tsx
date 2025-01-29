@@ -310,11 +310,11 @@ export default function FormPage({ device_id }: Props) {
                   <div key={item.id}>
                     {item.type == "donut" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
-                        <DonutChartDirt value={"value1:24"} />
+                        <DonutChartDirt value={value1 || '0'} />
                       </div>
                     ) : item.type == "circle" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
-                        <CircleChartDirt value={"value1:24"} />
+                        <CircleChartDirt value={value1 || '0'} />
                       </div>
                     ) : item.type == "monitorcircle" ? (
                       <div className="grid place-items-center">
@@ -322,7 +322,7 @@ export default function FormPage({ device_id }: Props) {
                           bgcolor={item.bgcolor}
                           fgcolor={item.fgcolor}
                           unit={item.unit}
-                          value="68"
+                          value={value1 || '0'}
                         />
                       </div>
                     ) : (

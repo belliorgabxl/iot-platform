@@ -3,7 +3,7 @@ import { MqttProvider } from "@/components/connect/MqttContext";
 import ConnectBrokerStatus from "@/components/statusconnect/ConnectBrokerStatus";
 import ConnectDeviceStatus from "@/components/statusconnect/ConnectDeviceStatus";
 import mqtt, { MqttClient } from "mqtt";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   device_id: string;
@@ -22,6 +22,19 @@ export default function PumpPanel({
   device_connect,
   dirtValue,
 }: Props) {
+  const [water, setWater] = useState<number>(0);
+      useEffect(()=>{
+        if ( dirtValue){
+          const part =  dirtValue.split(":");
+        if (part.length === 2 && part[0] === "value1" ){
+            const waterValue =  parseInt(part[1] , 10);
+            if(!isNaN(waterValue)){
+                setWater(waterValue);
+            }
+        }
+        }
+        
+      },[dirtValue]);
   return (
     <div
       className={`duration-1000 gap-2  shadow-md bg-gradient-to-tr px-5 w-full from-blue-950 to-gray-800 rounded-lg ${
@@ -90,7 +103,7 @@ export default function PumpPanel({
         <div className="lg:text-xl text-white my-1">Device log</div>
         <div className="bg-gray   flex  lg:text-xl rounded-sm text-black font-semibold px-3 py-4 bg-gray-200 text-start">
           <p className=" duration-75 animate-pulse ">&gt;_&nbsp;&nbsp;&nbsp;</p>
-          Moisture {dirtValue}
+          Moisture {water} %
         </div>
       </div>
       <div className={` ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>

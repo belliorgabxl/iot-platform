@@ -45,7 +45,7 @@ export default function CircleChartDirt(props:DonutProps) {
     },
     {
       label: "ค่าความชื้น",
-      value: water,
+      value: water*5,
       color: waterRGB,
       cutout: "0%",
     },

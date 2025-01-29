@@ -67,7 +67,7 @@ export const MqttProvider: FC<MqttProviderProps> = ({ children, topic_device }) 
           timeout = setTimeout(() => {
             // setConnectionStatus("Disconnected");
             setDeviceStatus("Disconnect")
-          }, 6000); 
+          }, 4000); 
         }
       }
     });
