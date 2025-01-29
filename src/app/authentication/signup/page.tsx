@@ -17,7 +17,7 @@ export default function Page() {
       try {
         await axios.post(`/api/users/signup`, user);
         toast.success("Sign-Up success.");
-        router.push("/login");
+        router.push("/authentication/login");
       } catch (error) {
         console.log(error instanceof Error ? error.message : "Unknown error");
         toast.error("sign-up failed");
