@@ -1,5 +1,5 @@
-
-import CardImageHomepage from "@/components/card/cardImageHomepage";
+'use client'
+import DocumentSideBar from "@/components/sidebar/documentSideBar";
 import React from "react";
 
 export default function page() {
@@ -10,15 +10,11 @@ export default function page() {
           Test-Page
         </h1>
       </div>
-      <div className="grid w-full place-items-center">
-        <div className="w-fit grid grid-cols-2 place-items-center gap-0">
-        <CardImageHomepage lable="Welcom" imgURL="/aboutus/aboutus_gabel.jpg"/>
-        <CardImageHomepage lable="To" imgURL="/aboutus/aboutus_bam.jpg"/>
-        <CardImageHomepage lable="Our" imgURL="/aboutus/aboutus_por.jpg"/>
-        <CardImageHomepage lable="IoT-Platform" imgURL="/aboutus/watid.jpg"/>
+    
+     <DocumentSideBar/>
+      <div className=" mb-40 pb-40">
+        padding zone 
       </div>
-      </div>
-      
     </div>
   );
 }
