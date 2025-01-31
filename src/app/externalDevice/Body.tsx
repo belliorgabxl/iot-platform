@@ -20,6 +20,11 @@ export default function Body() {
     setLoading(true);
   }, []);
 
+  const onCancelImport = ()=>{
+    setOpenImport(false)
+    setBroker(null)
+    
+  }
   return (
     <div className="w-full bg-gray-700">
       <div className="w-full grid place-items-center ">
@@ -55,6 +60,7 @@ export default function Body() {
                   <input
                     type="radio"
                     name="broker"
+          
                     onChange={(e) => setBroker(e.target.value)}
                     value="hivemq"
                     className="w-4 h-4 shadow-none"
@@ -67,6 +73,7 @@ export default function Body() {
                     name="broker"
                     onChange={(e) => setBroker(e.target.value)}
                     value="adafruite"
+                    defaultValue={broker || ''}
                     className="w-4 h-4 shadow-none"
                   />
                 </div>
@@ -77,21 +84,21 @@ export default function Body() {
                   <h1 className="font-semibold text-blue-500 text-lg">
                     Hive-MQ Connection
                   </h1>
-                  <div className="flex gap-2 text-white">
+                  <div className="grid lg:flex gap-2 text-white">
                     <label className="w-[140px]">MQTT End point :</label>
                     <input
                       type="text"
-                      className="rounded-sm bg-gray-300 text-sm lg:w-[300px] md:w-[300px] text-gray-800 px-2"
+                      className="rounded-sm bg-gray-300 text-sm lg:w-[300px] md:w-[300px] text-gray-800 w-full px-2"
                     />
                   </div>
-                  <div className="flex gap-2 text-white">
+                  <div className="grid lg:flex gap-2 text-white">
                     <label className="w-[140px]">Username :</label>
                     <input
                       type="text"
                       className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
                     />
                   </div>
-                  <div className="flex gap-2 text-white">
+                  <div className="grid lg:flex gap-2 text-white">
                     <label className="w-[140px]">Password :</label>
                     <input
                       type="text"
@@ -105,21 +112,21 @@ export default function Body() {
                   <h1 className="font-semibold text-blue-500  text-lg">
                     Ada-Fruite Connection
                   </h1>
-                  <div className="flex gap-2 text-white">
+                  <div className="grid lg:flex gap-2 text-white">
                     <label className="w-[140px]">MQTT Broker :</label>
                     <input
                       type="text"
                       className="rounded-sm bg-gray-300 text-sm lg:w-[300px] md:w-[300px]  text-gray-800 px-2"
                     />
                   </div>
-                  <div className="flex gap-2 text-white">
+                  <div className="grid lg:flex gap-2 text-white">
                     <label className="w-[140px]">Username :</label>
                     <input
                       type="text"
                       className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
                     />
                   </div>
-                  <div className="flex gap-2 text-white">
+                  <div className="grid lg:flex gap-2 text-white">
                     <label className="w-[140px]">Key :</label>
                     <input
                       type="text"
@@ -132,26 +139,26 @@ export default function Body() {
                 <div className="hidden"></div>
               )}
             </div>
-            <div className="flex gap-2 text-white">
-              <label className="w-[100px] ">Topic :</label>
-              <input type="text" className=" px-3 bg-gray-600 rounded-sm" />
+            <div className="grid lg:flex gap-2 text-white">
+              <label className="lg:w-[100px] ">Topic :</label>
+              <input type="text" className=" px-3 bg-gray-600 lg:w-full w-[80%] rounded-sm" />
             </div>
             {/* <hr className="w-full text-white"/> */}
-            <div className="flex gap-2 text-white">
+            <div className="grid lg:flex gap-2 text-white">
               <label className="w-[100px] ">Port No :</label>
-              <input type="text" className=" px-3 bg-gray-600 rounded-sm" />
+              <input type="text" className=" px-3 bg-gray-600 lg:w-full w-[80%]  rounded-sm" />
             </div>
-            <div className="flex justify-center items-center  w-full  gap-4 text-white">
+            <div className="grid lg:flex justify-center items-center  w-full  gap-4 text-white">
               <label className="w-fit text-lg ">Your Device Name </label>
               <input
                 type="text"
-                className=" px-3 py-1 bg-gray-900 text-blue-600 rounded-sm"
+                className=" px-3 py-1 lg:w-full w-[80%]  bg-gray-900 text-blue-600 rounded-sm"
               />
             </div>
           </div>
-          <div className="lg:flex gap-2">
+          <div className="flex gap-2">
             <button className="px-10 bg-blue-500 h-fit rounded-sm py-1 text-white  hover:bg-blue-600">Add</button>
-            <button className="px-10 bg-white h-fit text-gray-800 rounded-sm py-1  hover:bg-gray-600 hover:text-white">Cancel</button>
+            <button className="px-10 bg-white h-fit text-gray-800 rounded-sm py-1  hover:bg-gray-600 hover:text-white" onClick={onCancelImport}>Cancel</button>
           </div>
         </div>
       )}
@@ -216,11 +223,11 @@ export default function Body() {
             ))}
           </div>
         ) : isLoading == true ? (
-          <div className="grid text-white text-3xl  place-items-center w-full px-80 py-20 bg-gray-700 mb-20 border-2 border-dashed border-gray-500">
+          <div className="grid text-white text-3xl  place-items-center w-full  py-20 bg-gray-700 mb-20 border-2 border-dashed border-gray-500">
             No Devices
           </div>
         ) : (
-          <div className="grid text-white text-3xl  place-items-center w-full px-80 py-20 bg-gray-700 mb-20 border-2 animate-pulse t border-dashed border-gray-500">
+          <div className="grid text-white text-3xl  place-items-center w-full  py-20 bg-gray-700 mb-20 border-2 animate-pulse t border-dashed border-gray-500">
             Loading...
           </div>
         )}

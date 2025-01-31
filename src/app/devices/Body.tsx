@@ -355,7 +355,7 @@ export default function Body({ session }: Props) {
               ))}
             </div>
           ) : devices.length <= 0 && isLoading == true ? (
-            <div className="grid text-white text-3xl  place-items-center w-full px-80 py-20 bg-gray-700 mb-20 border-2 border-dashed border-gray-500">
+            <div className="grid text-white text-3xl  place-items-center w-full py-20 bg-gray-700 mb-20 border-2 border-dashed border-gray-500">
               No Devices
             </div>
           ) : (
