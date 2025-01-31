@@ -238,7 +238,7 @@ export default function Body({ session }: Props) {
   return (
     <div>
       <div className={`bg-gray-800  w-full pb-10`}>
-        <div className="lg:px-5 grid lg:flex gap-4 justify-between  bg-gray-700 px-2 py-2 rounded-md items-center">
+        <div className="lg:px-5 grid lg:flex gap-4 justify-between  bg-gray-700 px-10 py-2 rounded-md items-center">
           <div className="lg:flex grid gap-3 lg:gap-8">
             <div
               className={` ${
@@ -269,18 +269,18 @@ export default function Body({ session }: Props) {
                 {devices.length} Items
               </div>
               <div className="lg:flex items-center text-white md:flex sm:flex grid gap-2">
-                 <div className="lg:text-lg flex gap-2 text-white items-center">
-                <p className="font-semibold text-blue-500">Status :</p> User
-                online
-                <div className="w-4 h-4 bg-green-400 rounded-full"></div>
-                
-              </div><div className="lg:block hidden">|</div><GetIPComponent/>
+                <div className="lg:text-lg flex gap-2 text-white items-center">
+                  <p className="font-semibold text-blue-500">Status :</p> User
+                  online
+                  <div className="w-4 h-4 bg-green-400 rounded-full"></div>
+                </div>
+                <div className="lg:block hidden">|</div>
+                <GetIPComponent />
               </div>
-             
             </div>
           </div>
 
-          <div className="lg:flex lg:justify-end sm:grid sm:place-items-end grid place-items-start gap-3">
+          <div className="lg:flex lg:justify-end sm:grid sm:place-items-start grid  place-items-start gap-3">
             <button
               className="flex gap-2 justify-center bg-blue-600 rounded-md items-center hover:bg-slate-600  shadow-md  h-fit text-white w-[180px] px-2 text-sm lg:px-4 py-2 "
               onClick={onClickPopUp}
