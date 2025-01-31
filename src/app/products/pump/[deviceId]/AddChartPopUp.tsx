@@ -114,7 +114,7 @@ const PopUpAddChart = ({
                   className="text-lg text-white lg:px-10 px-4 py-1 rounded-md bg-gray-500 hover:opacity-75 "
                   onClick={() => setPopUpChart(false)}
                 >
-                  Cancal
+                  Cancel
                 </button>
               </div>
             </div>
@@ -133,7 +133,7 @@ const PopUpAddChart = ({
                   className="text-lg text-white lg:px-10 px-4 py-1 rounded-md bg-gray-500 hover:opacity-75 "
                   onClick={() => setPopUpChart(false)}
                 >
-                  Cancal
+                  Cancel
                 </button>
               </div>
             </div>
@@ -233,7 +233,7 @@ const PopUpAddChart = ({
                   className="text-lg text-white lg:px-10 px-4 py-1 rounded-md bg-gray-500 hover:opacity-75 "
                   onClick={() => setPopUpChart(false)}
                 >
-                  Cancal
+                  Cancel
                 </button>
               </div>
             </div>

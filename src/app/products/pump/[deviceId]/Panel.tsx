@@ -48,7 +48,7 @@ export default function PumpPanel({
       >
         <h1 className=" text-4xl font-bold text-gray-900 ">
           <span className="text-transparent bg-clip-text bg-gradient-to-r to-blue-600  from-sky-400 line-clamp-1 ">
-            Auto Pum IoT
+            Auto Pump IoT
           </span>
         </h1>
       </div>

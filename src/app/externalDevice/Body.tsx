@@ -16,12 +16,14 @@ export default function Body() {
 
   const [isLoading, setLoading] = useState<boolean>(false);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setLoading(true);
+  }, []);
 
   return (
     <div className="w-full bg-gray-700">
       <div className="w-full grid place-items-center ">
-        <h1 className="py-2 bg-gray-900 px-10 text-3xl rounded-md text-white my-2">
+        <h1 className="py-2 bg-gray-800 px-10 text-3xl rounded-3xl text-white my-2">
           Import External Device
         </h1>
       </div>
@@ -41,109 +43,115 @@ export default function Body() {
       </div>
 
       {openImport && (
-        <div className=" py-5 mx-5 rounded-md grid gap-4  bg-gray-800 w-fit my-4 px-4">
-          <div className="grid gap-4">
-            <h1 className="text-white text-lg font-semibold px-5 bg-gray-900 py-1 w-fit  rounded-md">
-              Select Broker
-            </h1>
-            <div className="flex gap-4 ">
-              <div className="flex gap-2 items-center">
-                <label className="text-lg text-white ">HIVE MQ</label>
-                <input
-                  type="radio"
-                  name="broker"
-                  onChange={(e) => setBroker(e.target.value)}
-                  value="hivemq"
-                  className="w-4 h-4 shadow-none"
-                />
+        <div className=" lg:flex gap-5 my-2 px-5" >
+          <div className=" py-5  rounded-md grid gap-4  bg-gray-800 w-fit px-4">
+            <div className="grid gap-4">
+              <h1 className="text-white text-lg font-semibold px-5 bg-gray-900 py-1 w-fit  rounded-md">
+                Select Broker
+              </h1>
+              <div className="flex gap-4 ">
+                <div className="flex gap-2 items-center">
+                  <label className="text-lg text-white ">HIVE MQ</label>
+                  <input
+                    type="radio"
+                    name="broker"
+                    onChange={(e) => setBroker(e.target.value)}
+                    value="hivemq"
+                    className="w-4 h-4 shadow-none"
+                  />
+                </div>
+                <div className="flex gap-2 items-center">
+                  <label className="text-lg text-white ">Ada-fruite</label>
+                  <input
+                    type="radio"
+                    name="broker"
+                    onChange={(e) => setBroker(e.target.value)}
+                    value="adafruite"
+                    className="w-4 h-4 shadow-none"
+                  />
+                </div>
               </div>
-              <div className="flex gap-2 items-center">
-                <label className="text-lg text-white ">Ada-fruite</label>
-                <input
-                  type="radio"
-                  name="broker"
-                  onChange={(e) => setBroker(e.target.value)}
-                  value="adafruite"
-                  className="w-4 h-4 shadow-none"
-                />
-              </div>
+              <hr className="w-full text-white" />
+              {broker == "hivemq" ? (
+                <div className="grid gap-2">
+                  <h1 className="font-semibold text-blue-500 text-lg">
+                    Hive-MQ Connection
+                  </h1>
+                  <div className="flex gap-2 text-white">
+                    <label className="w-[140px]">MQTT End point :</label>
+                    <input
+                      type="text"
+                      className="rounded-sm bg-gray-300 text-sm lg:w-[300px] md:w-[300px] text-gray-800 px-2"
+                    />
+                  </div>
+                  <div className="flex gap-2 text-white">
+                    <label className="w-[140px]">Username :</label>
+                    <input
+                      type="text"
+                      className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
+                    />
+                  </div>
+                  <div className="flex gap-2 text-white">
+                    <label className="w-[140px]">Password :</label>
+                    <input
+                      type="text"
+                      className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
+                    />
+                  </div>
+                  <hr className="w-full mt-2 text-white" />
+                </div>
+              ) : broker == "adafruite" ? (
+                <div className="grid gap-2">
+                  <h1 className="font-semibold text-blue-500  text-lg">
+                    Ada-Fruite Connection
+                  </h1>
+                  <div className="flex gap-2 text-white">
+                    <label className="w-[140px]">MQTT Broker :</label>
+                    <input
+                      type="text"
+                      className="rounded-sm bg-gray-300 text-sm lg:w-[300px] md:w-[300px]  text-gray-800 px-2"
+                    />
+                  </div>
+                  <div className="flex gap-2 text-white">
+                    <label className="w-[140px]">Username :</label>
+                    <input
+                      type="text"
+                      className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
+                    />
+                  </div>
+                  <div className="flex gap-2 text-white">
+                    <label className="w-[140px]">Key :</label>
+                    <input
+                      type="text"
+                      className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
+                    />
+                  </div>
+                  <hr className="w-full mt-2 text-white" />
+                </div>
+              ) : (
+                <div className="hidden"></div>
+              )}
             </div>
-            <hr className="w-full text-white" />
-            {broker == "hivemq" ? (
-              <div className="grid gap-2">
-                <h1 className="font-semibold text-blue-500 text-lg">
-                  Hive-MQ Connection
-                </h1>
-                <div className="flex gap-2 text-white">
-                  <label className="w-[140px]">MQTT End point :</label>
-                  <input
-                    type="text"
-                    className="rounded-sm bg-gray-300 text-sm lg:w-[300px] md:w-[300px] text-gray-800 px-2"
-                  />
-                </div>
-                <div className="flex gap-2 text-white">
-                  <label className="w-[140px]">Username :</label>
-                  <input
-                    type="text"
-                    className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
-                  />
-                </div>
-                <div className="flex gap-2 text-white">
-                  <label className="w-[140px]">Password :</label>
-                  <input
-                    type="text"
-                    className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
-                  />
-                </div>
-                <hr className="w-full mt-2 text-white" />
-              </div>
-            ) : broker == "adafruite" ? (
-              <div className="grid gap-2">
-                <h1 className="font-semibold text-blue-500  text-lg">
-                  Ada-Fruite Connection
-                </h1>
-                <div className="flex gap-2 text-white">
-                  <label className="w-[140px]">MQTT Broker :</label>
-                  <input
-                    type="text"
-                    className="rounded-sm bg-gray-300 text-sm lg:w-[300px] md:w-[300px]  text-gray-800 px-2"
-                  />
-                </div>
-                <div className="flex gap-2 text-white">
-                  <label className="w-[140px]">Username :</label>
-                  <input
-                    type="text"
-                    className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
-                  />
-                </div>
-                <div className="flex gap-2 text-white">
-                  <label className="w-[140px]">Key :</label>
-                  <input
-                    type="text"
-                    className="rounded-sm bg-gray-300 text-sm lg:w-[200px] md:w-[200px]  text-gray-800 px-2"
-                  />
-                </div>
-                <hr className="w-full mt-2 text-white" />
-              </div>
-            ) : (
-              <div className="hidden"></div>
-            )}
+            <div className="flex gap-2 text-white">
+              <label className="w-[100px] ">Topic :</label>
+              <input type="text" className=" px-3 bg-gray-600 rounded-sm" />
+            </div>
+            {/* <hr className="w-full text-white"/> */}
+            <div className="flex gap-2 text-white">
+              <label className="w-[100px] ">Port No :</label>
+              <input type="text" className=" px-3 bg-gray-600 rounded-sm" />
+            </div>
+            <div className="flex justify-center items-center  w-full  gap-4 text-white">
+              <label className="w-fit text-lg ">Your Device Name </label>
+              <input
+                type="text"
+                className=" px-3 py-1 bg-gray-900 text-blue-600 rounded-sm"
+              />
+            </div>
           </div>
-          <div className="flex gap-2 text-white">
-            <label className="w-[100px] ">Topic :</label>
-            <input type="text" className=" px-3 bg-gray-600 rounded-sm" />
-          </div>
-          {/* <hr className="w-full text-white"/> */}
-          <div className="flex gap-2 text-white">
-            <label className="w-[100px] ">Port No :</label>
-            <input type="text" className=" px-3 bg-gray-600 rounded-sm" />
-          </div>
-          <div className="flex justify-center items-center  w-full  gap-4 text-white">
-            <label className="w-fit text-lg ">Your Device Name </label>
-            <input
-              type="text"
-              className=" px-3 py-1 bg-gray-900 text-blue-600 rounded-sm"
-            />
+          <div className="lg:flex gap-2">
+            <button className="px-10 bg-blue-500 h-fit rounded-sm py-1 text-white  hover:bg-blue-600">Add</button>
+            <button className="px-10 bg-white h-fit text-gray-800 rounded-sm py-1  hover:bg-gray-600 hover:text-white">Cancel</button>
           </div>
         </div>
       )}
@@ -207,10 +215,15 @@ export default function Body() {
               </div>
             ))}
           </div>
+        ) : isLoading == true ? (
+          <div className="grid text-white text-3xl  place-items-center w-full px-80 py-20 bg-gray-700 mb-20 border-2 border-dashed border-gray-500">
+            No Devices
+          </div>
         ) : (
-          <div></div>
+          <div className="grid text-white text-3xl  place-items-center w-full px-80 py-20 bg-gray-700 mb-20 border-2 animate-pulse t border-dashed border-gray-500">
+            Loading...
+          </div>
         )}
-        <div className="border rounded-md border-white border-dotted py-5 lg:px-5 px-2 w-full "></div>
       </div>
     </div>
   );
