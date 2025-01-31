@@ -48,7 +48,7 @@ export default function Body() {
       </div>
 
       {openImport && (
-        <div className=" lg:flex gap-5 my-2 px-5" >
+        <div className="animate-fastFade lg:flex grid gap-2 lg:gap-5 my-2 px-5" >
           <div className=" py-5  rounded-md grid gap-4  bg-gray-800 w-fit px-4">
             <div className="grid gap-4">
               <h1 className="text-white text-lg font-semibold px-5 bg-gray-900 py-1 w-fit  rounded-md">

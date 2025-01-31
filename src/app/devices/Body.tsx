@@ -359,7 +359,7 @@ export default function Body({ session }: Props) {
               No Devices
             </div>
           ) : (
-            <div className="grid text-white text-4xl  place-items-center w-full px-80 py-20 bg-gray-700 animate-pulse text-bold mb-20 border-2 border-dashed border-gray-500">
+            <div className="grid text-white text-4xl  place-items-center w-full py-20 bg-gray-700 animate-pulse text-bold mb-20 border-2 border-dashed border-gray-500">
               Loading...
             </div>
           )}
