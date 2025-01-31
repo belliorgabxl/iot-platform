@@ -12,7 +12,7 @@ export default function page() {
       </div>
     
      <DocumentSideBar/>
-      <div className=" mb-40 pb-40">
+      <div className="px-5 mb-40 pb-40">
         padding zone 
       </div>
     </div>
