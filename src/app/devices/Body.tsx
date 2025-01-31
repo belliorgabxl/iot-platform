@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Session } from "@/resource/model";
+import { Session , DeviceModel } from "@/resource/model";
 import AddDevicePopUp from "@/components/popup/AddDevicePopUp";
 import EditDevicePopUp from "@/components/popup/EditDevicePopUp";
 import Link from "next/link";
@@ -17,18 +17,7 @@ import GetIPComponent from "@/components/getIP";
 type Props = {
   session: Session;
 };
-interface DeviceData {
-  _id: string;
-  deviceId: string;
-  userId: string;
-  name: string;
-  topic: string;
-  type: string;
-  password: string;
-  status: string;
-  wifiId: string;
-  wifiConnect: string;
-}
+
 
 interface ProductData {
   _id: string;
@@ -70,7 +59,7 @@ export default function Body({ session }: Props) {
   const router = useRouter();
 
   const userId = session._id;
-  const [devices, setDevices] = useState<DeviceData[]>([]);
+  const [devices, setDevices] = useState<DeviceModel[]>([]);
   // const [device_type, setDevicType] = useState<string | null>();
   const [device_name, setDeviceName] = useState<string | null>();
   const [product_id, setProductId] = useState<string | null>();
@@ -309,7 +298,7 @@ export default function Body({ session }: Props) {
         <div className="flex justify-center pt-5 mb-20">
           {devices.length > 0 && isLoading == true ? (
             <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-4 lg:w-11/12  lg:px-10 px-4 py-10 md:w-9/12 sm:w-9/12 w-11/12 sm:px-10 bg-gray-700 border-2 border-dotted border-gray-500">
-              {devices?.map((item: DeviceData) => (
+              {devices?.map((item: DeviceModel) => (
                 <div
                   key={item.deviceId}
                   className="px-5 lg:px-7 lg:py-5 py-3 bg-gradient-to-tl from-gray-800 via-indigo-900 to-blue-600 text-white rounded-2xl shadow-lg shadow-gray-800 duration-500  hover:bg-blue-800 hover:shadow-gray-900 hover:shadow-xl hover:scale-[101%] lg:w-full md:w-full sm:w-full w-fit group "

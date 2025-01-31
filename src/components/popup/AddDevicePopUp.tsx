@@ -33,7 +33,7 @@ const AddDevicePopUp = ({
         <div className="w-full bg-gray-950 rounded-t-md py-2 text-white lg:text-xl text-lg text-center">
           Add You Device
         </div>
-        <div className="px-5  py-5 grid place-items-center  gap-4">
+        <div className="px-5  py-5 grid place-items-center  gap-3">
           <div className="lg:flex items-center md:flex grid lg:gap-2 md:gap-2  ">
             <label className="lg:text-lg  py-2 h-fit line-clamp-1 lg:w-[140px] text-white ">
               Device Name :
