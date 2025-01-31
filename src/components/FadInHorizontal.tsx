@@ -17,7 +17,7 @@ const FadeInHorizontal: React.FC<FadeInOnScrollProps> = ({ children }) => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 } // Adjust the threshold for when the animation starts
+      { threshold: 0.3 } 
     );
 
     if (ref.current) {
@@ -34,9 +34,9 @@ const FadeInHorizontal: React.FC<FadeInOnScrollProps> = ({ children }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
-      animate={isVisible ? { opacity: 1, x: 0 } : {}} // Slide in and fade in
-      transition={{ duration: 1.2, ease: 'easeOut' }} // Adjust animation timing
+      initial={{ opacity: 0, x: -100 }} 
+      animate={isVisible ? { opacity: 1, x: 0 } : {}} 
+      transition={{ duration: 1.2, ease: 'easeOut' }} 
     >
       {children}
     </motion.div>
