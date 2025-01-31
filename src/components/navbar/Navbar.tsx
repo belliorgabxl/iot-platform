@@ -196,21 +196,21 @@ export default function Navbar() {
               onClick={() => setToggleMenu(false)}
             />
             <SideLink
-              href="/"
+              href="/documents/help"
               label="Help"
-              isActive={pathname === "/AA"}
+              isActive={pathname === "/documents/help"}
               onClick={() => setToggleMenu(false)}
             />
             <SideLink
-              href="/"
+              href="/aboutus/contact"
               label="Contact"
-              isActive={pathname === "/AA"}
+              isActive={pathname === "/aboutus/contact"}
               onClick={() => setToggleMenu(false)}
             />
             <SideLink
-              href="/"
+              href="/documents/example"
               label="Example SourceCode"
-              isActive={pathname === "/AA"}
+              isActive={pathname === "/documents/example"}
               onClick={() => setToggleMenu(false)}
             />
           </div>
