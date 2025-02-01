@@ -127,16 +127,16 @@ export default function Navbar() {
             {dropmenu && (
               <div
                 ref={dropdownRef}
-                className="duration-300 shadow-md shadow-gray-800 absolute translate-y-20 rounded-md px-1 py-2 bg-white grid"
+                className="duration-300 shadow-md shadow-gray-800 absolute translate-y-20 rounded-md px-1 py-2 bg-white/30 backdrop-blur-sm grid"
               >
-                <button className="text-center text-sm py-1 rounded-md hover:bg-slate-200 text-gray-600">
+                <button className="text-center text-sm py-1 rounded-md hover:text-black hover:bg-white text-white">
                   Profile
                 </button>
-                <button className="text-center text-sm py-1 rounded-md hover:bg-slate-200 text-gray-600">
+                <button className="text-center text-sm py-1 rounded-md hover:text-black hover:bg-white text-white">
                   Edit
                 </button>
                 <button
-                  className="text-sm py-1 px-8 rounded-md text-center hover:bg-slate-200 w-full text-red-400"
+                  className="text-sm py-1 px-8 rounded-md text-center hover:bg-white w-full text-red-400"
                   onClick={logout}
                 >
                   Logout

@@ -5,14 +5,15 @@ import { DeviceModel } from "@/resource/model";
 import { ChevronRight, Link, Settings } from "lucide-react";
 import DeviceStatus from "@/components/statusconnect/DeviceStatus";
 import { MqttProvider } from "@/components/connect/MqttContext";
+import { useRouter } from "next/navigation";
 
 const getExternalDevice = async () => {};
 
 export default function Body() {
+  const router = useRouter();
   const [devices, setDevices] = useState<DeviceModel[] | null>();
-
-  const [openImport, setOpenImport] = useState<boolean>(false);
   const [broker, setBroker] = useState<string | null>();
+  const [openImport, setOpenImport] = useState<boolean>(false);
 
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -20,11 +21,10 @@ export default function Body() {
     setLoading(true);
   }, []);
 
-  const onCancelImport = ()=>{
-    setOpenImport(false)
-    setBroker(null)
-    
-  }
+  const onCancelImport = () => {
+    setOpenImport(false);
+    setBroker(null);
+  };
   return (
     <div className="w-full bg-gray-700">
       <div className="w-full grid place-items-center ">
@@ -45,10 +45,22 @@ export default function Body() {
             } duration-200 relative translate-y-0.5`}
           />
         </button>
+        <button
+          className="flex text-white items-center gap-2 px-8 py-2 rounded-3xl bg-blue-600 hover:bg-blue-500"
+          onClick={()=>{
+            router.push("/documents/example")
+          }}
+        >
+          .ino Source-Code
+          <ChevronRight
+            style={{ width: "1.5rem", height: "1.5rem" }}
+            className={` duration-200 relative translate-y-0.5`}
+          />
+        </button>
       </div>
 
       {openImport && (
-        <div className="animate-fastFade lg:flex grid gap-2 lg:gap-5 my-2 px-5" >
+        <div className="animate-fastFade lg:flex grid gap-2 lg:gap-5 my-2 px-5">
           <div className=" py-5  rounded-md grid gap-4  bg-gray-800 w-fit px-4">
             <div className="grid gap-4">
               <h1 className="text-white text-lg font-semibold px-5 bg-gray-900 py-1 w-fit  rounded-md">
@@ -60,7 +72,6 @@ export default function Body() {
                   <input
                     type="radio"
                     name="broker"
-          
                     onChange={(e) => setBroker(e.target.value)}
                     value="hivemq"
                     className="w-4 h-4 shadow-none"
@@ -73,7 +84,7 @@ export default function Body() {
                     name="broker"
                     onChange={(e) => setBroker(e.target.value)}
                     value="adafruite"
-                    defaultValue={broker || ''}
+                    defaultValue={broker || ""}
                     className="w-4 h-4 shadow-none"
                   />
                 </div>
@@ -141,12 +152,18 @@ export default function Body() {
             </div>
             <div className="grid lg:flex gap-2 text-white">
               <label className="lg:w-[100px] ">Topic :</label>
-              <input type="text" className=" px-3 bg-gray-600 lg:w-full w-[80%] rounded-sm" />
+              <input
+                type="text"
+                className=" px-3 bg-gray-600 lg:w-full w-[80%] rounded-sm"
+              />
             </div>
             {/* <hr className="w-full text-white"/> */}
             <div className="grid lg:flex gap-2 text-white">
               <label className="w-[100px] ">Port No :</label>
-              <input type="text" className=" px-3 bg-gray-600 lg:w-full w-[80%]  rounded-sm" />
+              <input
+                type="text"
+                className=" px-3 bg-gray-600 lg:w-full w-[80%]  rounded-sm"
+              />
             </div>
             <div className="grid lg:flex justify-center items-center  w-full  gap-4 text-white">
               <label className="w-fit text-lg ">Your Device Name </label>
@@ -157,8 +174,15 @@ export default function Body() {
             </div>
           </div>
           <div className="flex gap-2">
-            <button className="px-10 bg-blue-500 h-fit rounded-sm py-1 text-white  hover:bg-blue-600">Add</button>
-            <button className="px-10 bg-white h-fit text-gray-800 rounded-sm py-1  hover:bg-gray-600 hover:text-white" onClick={onCancelImport}>Cancel</button>
+            <button className="px-10 bg-blue-500 h-fit rounded-md py-1 text-white  hover:bg-blue-600">
+              Add
+            </button>
+            <button
+              className="px-10 bg-white h-fit text-gray-800 rounded-md py-1  hover:bg-gray-600 hover:text-white"
+              onClick={onCancelImport}
+            >
+              Cancel
+            </button>
           </div>
         </div>
       )}

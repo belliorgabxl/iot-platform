@@ -31,8 +31,8 @@ export default function DocumentSideBar() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="fixed top-14 py-5 left-0 h-full w-64 bg-gray-900 z-10 text-white shadow-lg p-4"
       >
-        <div className="flex justify-between items-center">
-          <h2 className="text-xl text-white text-center">Sidebar</h2>
+        <div className="px-10 w-full hover:bg-gray-500">
+          <h2 className="text-xl text-white text-center py-1">Sidebar</h2>
         </div>
       </motion.div>
     </div>

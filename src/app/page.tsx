@@ -6,6 +6,8 @@ import CardIotHomepage from "@/components/card/cardIotHomepage";
 import CardMainImgHomepage from "@/components/card/cardMainImgHomepage";
 import CLShomepage from "@/components/CLS/CLShomepage";
 import FadeInOnScroll from "@/components/FadInScroll";
+import EmialPocket from "@/components/pockets/email";
+import Question from "@/components/pockets/question";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -22,6 +24,8 @@ export default function Home() {
         </div>
       </div> */}
       <CardMainImgHomepage/>
+      <EmialPocket/>
+      <Question/>
       <div
         className={` ${
           isLoading ? "animate-fadeStep1 opacity-100" : "opacity-0"
