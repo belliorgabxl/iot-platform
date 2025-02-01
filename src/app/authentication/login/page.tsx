@@ -43,7 +43,7 @@ export default function Page() {
   };
 
   return (
-    <div className="w-full grid place-items-center bg-gray-600 lg:bg-gradient-to-r  py-5">
+    <div className="w-full grid place-items-center bg-gray-600 py-5">
       <div className="relative my-10  w-full max-w-3xl flex justify-center items-center">
         <div className="hidden lg:block md:block absolute mix-blend-multiply filter blur-sm top-0 left-10 w-72 h-72  bg-sky-300 opacity-90 rounded-full animate-blob"></div>
         <div className="hidden lg:block md:block absolute mix-blend-multiply filter blur-sm top-0 right-10 w-72 h-72  bg-yellow-300 opacity-90 rounded-full  animate-blob animation-delay-2000"></div>

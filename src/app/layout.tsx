@@ -24,7 +24,7 @@ export default function RootLayout({
           className="z-50"
         />
         <Navbar />
-        <div className="mt-14">{children}</div>
+        <div className="pt-14 bg-gradient-to-l from-blue-600 to-gray-900">{children}</div>
         <Footer />
       </body>
     </html>

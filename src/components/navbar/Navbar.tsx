@@ -60,7 +60,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="w-full top-0 left-0 z-40 fixed bg-gradient-to-l from-blue-600 to-gray-900 shadow-sm shadow-gray-900 px-5">
+    <div className="w-full top-0 left-0 z-40 fixed bg-gradient-to-l from-blue-600/40 to-gray-900/40 backdrop-blur-lg px-5">
       <div className="grid lg:grid-cols-[20%_50%_30%] grid-cols-[20%_70%_10%] text-white">
         {/* Left Side: Logo */}
         <Link href={"/"} className="flex gap-3 items-center lg:pl-10 py-1">
@@ -127,7 +127,7 @@ export default function Navbar() {
             {dropmenu && (
               <div
                 ref={dropdownRef}
-                className="duration-300 shadow-md shadow-gray-800 absolute translate-y-20 rounded-md px-1 py-2 bg-white/30 backdrop-blur-sm grid"
+                className="duration-300 shadow-md shadow-gray-800 absolute translate-y-20 rounded-md px-1 py-2 bg-white/40 backdrop-blur-xl grid"
               >
                 <button className="text-center text-sm py-1 rounded-md hover:text-black hover:bg-white text-white">
                   Profile
