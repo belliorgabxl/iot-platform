@@ -78,7 +78,7 @@ export default function DocumentSideBar() {
       <motion.div
         animate={isVisible ? { x: 0, opacity: 1 } : { x: -250, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed top-14 py-5 left-0 h-full w-64 bg-gray-900 z-10 text-white shadow-lg px-2 py-4"
+        className="fixed top-14 left-0 h-full w-64 bg-gray-900 z-10 text-white shadow-lg px-2 py-4"
       >
         <div className="grid gap-2">
           {sideBarLink.map((item) => (
