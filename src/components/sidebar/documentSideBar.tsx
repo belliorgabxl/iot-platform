@@ -83,6 +83,7 @@ export default function DocumentSideBar() {
         <div className="grid gap-2">
           {sideBarLink.map((item) => (
             <Link
+            key={item.title}
               href={item.link}
               className="lg:text-xl text-sm text-white text-start py-1 px-5 w-full hover:bg-gray-700 rounded-md"
             >
