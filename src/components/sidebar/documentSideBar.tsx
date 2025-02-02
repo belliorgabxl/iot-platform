@@ -81,9 +81,9 @@ export default function DocumentSideBar() {
         className="fixed top-14 left-0 h-full w-64 bg-gray-900 z-10 text-white shadow-lg px-2 py-4"
       >
         <div className="grid gap-2">
-          {sideBarLink.map((item) => (
+          {sideBarLink.map((item ,index) => (
             <Link
-            key={item.title}
+            key={index}
               href={item.link}
               className="lg:text-xl text-sm text-white text-start py-1 px-5 w-full hover:bg-gray-700 rounded-md"
             >

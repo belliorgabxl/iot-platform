@@ -83,7 +83,7 @@ export default function Navbar() {
           />
           <NavLink
             href="/production"
-            label="Producs"
+            label="Products"
             isActive={pathname === "/production"}
           />
           <NavLink
