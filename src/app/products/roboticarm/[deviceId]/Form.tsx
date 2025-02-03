@@ -9,6 +9,7 @@ import ToggelButton from "@/components/button/toggleButton";
 import PressButton from "@/components/button/pressButton";
 import ToggleRecieve from "@/components/button/toggleRecieve";
 import { CirclePlus, Wrench } from "lucide-react";
+import PopUpAddButton from "./AddButtonPopUp";
 
 type Props = {
   device_id: string;
@@ -478,6 +479,15 @@ export default function FormPage({ device_id }: Props) {
           </div>
         )}
       </div>
+      {popup_btn && (
+        <PopUpAddButton
+          setPopUpBtn={() => {
+            setPopUpBtn(!popup_btn);
+          }}
+          deviceId={deviceId}
+          setButtons={setButtons}
+        />
+      )}
     </div>
   );
 }
