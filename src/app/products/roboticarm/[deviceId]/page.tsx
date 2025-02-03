@@ -1,5 +1,5 @@
 import React from "react";
-import FormPage from "./formPage";
+import FormPage from "./Form";
 
 export default function page({ params }: { params: { deviceId: string } }) {
   return (

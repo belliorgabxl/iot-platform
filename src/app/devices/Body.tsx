@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Session , DeviceModel } from "@/resource/model";
+import { Session, DeviceModel } from "@/resource/model";
 import AddDevicePopUp from "@/components/popup/AddDevicePopUp";
 import EditDevicePopUp from "@/components/popup/EditDevicePopUp";
 import Link from "next/link";
@@ -17,7 +17,6 @@ import GetIPComponent from "@/components/getIP";
 type Props = {
   session: Session;
 };
-
 
 interface ProductData {
   _id: string;
@@ -271,7 +270,7 @@ export default function Body({ session }: Props) {
 
           <div className="lg:flex lg:justify-end sm:grid sm:place-items-start grid  place-items-start gap-3">
             <button
-              className="flex gap-2 justify-center bg-blue-600 rounded-md items-center hover:bg-slate-600  shadow-md  h-fit text-white w-[180px] px-2 text-sm lg:px-4 py-2 "
+              className="flex gap-2 justify-center bg-blue-600 rounded-3xl items-center hover:bg-slate-600  shadow-md  h-fit text-white w-[180px] px-2 text-sm lg:px-4 py-1 "
               onClick={onClickPopUp}
             >
               <CirclePlus
@@ -281,7 +280,7 @@ export default function Body({ session }: Props) {
               Add Device
             </button>
             <button
-              className="flex gap-2 justify-center items-center font-semibold bg-white rounded-md hover:bg-slate-600 hover:text-white  shadow-md shadow-black text-gray-700 w-[180px]  px-2 lg:px-4 py-2 group"
+              className="flex gap-2 justify-center items-center font-semibold bg-white rounded-3xl hover:bg-slate-600 hover:text-white  shadow-md text-gray-700 w-[180px]  px-2 lg:px-4 py-1 group"
               onClick={() => {
                 router.push("/externalDevice");
               }}
@@ -297,11 +296,11 @@ export default function Body({ session }: Props) {
 
         <div className="flex justify-center pt-5 mb-20">
           {devices.length > 0 && isLoading == true ? (
-            <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-4 lg:w-11/12  lg:px-10 px-4 py-10 md:w-9/12 sm:w-9/12 w-11/12 sm:px-10 bg-gray-700 border-2 border-dotted border-gray-500">
+            <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-4 lg:w-fit lg:px-10 px-4 py-10 md:w-[90%] sm:w-9/12 w-[90%] sm:px-10 bg-gray-700 border-2 border-dotted border-gray-500">
               {devices?.map((item: DeviceModel) => (
                 <div
                   key={item.deviceId}
-                  className="px-5 lg:px-7 lg:py-5 py-3 bg-gradient-to-tl from-gray-800 via-indigo-900 to-blue-600 text-white rounded-2xl shadow-lg shadow-gray-800 duration-500  hover:bg-blue-800 hover:shadow-gray-900 hover:shadow-xl hover:scale-[101%] lg:w-full md:w-full sm:w-full w-fit group "
+                  className="flex justify-center lg:px-0 lg:py-6 py-5 bg-gradient-to-tl from-gray-800 via-indigo-900 to-blue-600 text-white rounded-3xl px-6 shadow-lg shadow-gray-800 duration-500  hover:bg-blue-800 hover:shadow-gray-900 hover:shadow-xl hover:scale-[101%] lg:w-[320px] md:w-full sm:w-[300px] w-[280px] h-fit group "
                 >
                   <div
                     className="absolute w-12 h-12 rounded-full z-10 right-0 -top-5 shadow-md shadow-black bg-gray-300 animate-fastFade hidden group-hover:block hover:bg-gray-500 "
@@ -317,33 +316,26 @@ export default function Body({ session }: Props) {
                     </button>
                   </div>
                   <Link
-                    className=""
+                    className="grid gap-2 h-fit"
                     href={"/products/" + item.type + "/" + item.deviceId}
                   >
                     <div className="w-full flex justify-center">
-                      <div className="text-2xl  font-bold bg-gray-800 rounded-xl shadow-sm px-5 py-2 w-4/5 text-center text-slate-300">
+                      <div className="text-xl  font-bold bg-gray-800 rounded-xl shadow-sm px-5 py-1 w-4/5 text-center h-fit text-slate-300">
                         {item.type.toUpperCase()}
                       </div>
                     </div>
 
-                    <div className="lg:my-4 my-2 lg:gap-4 flex">
-                      <span className="w-[80px] font-bold lg:text-xl text-lg text-white">
+                    <div className=" lg:gap-4 flex">
+                      <span className="w-[80px] font-semibold lg:text-xl text-lg text-white">
                         Name :
                       </span>
-                      <span className="text-white  bg-gray-500 rounded-md py-1 lg:text-xl text-sm px-6">
+                      <span className="text-white  bg-gray-500 rounded-md py-1 lg:text-lg  text-sm px-6">
                         {item.name ?? "Loading..."}
                       </span>
                     </div>
-                    <div className=" flex my-2 lg:gap-4    lg:my-4">
-                      <span className="font-bold lg:text-xl w-[80px] text-white ">
-                        IoT ID :
-                      </span>
-                      <span className="text-white bg-gray-500 rounded-md  h-fit py-1  lg:text-xl w-[180px] lg:w-[250px] line-clamp-1 px-6">
-                        {item.deviceId ?? "Loading"}
-                      </span>
-                    </div>
-                    <div className=" flex items-center lg:my-4 my-2">
-                      <span className="font-bold lg:text-xl w-[100px] text-white ">
+
+                    <div className=" flex items-center  ">
+                      <span className="font-semibold lg:text-xl w-[100px] text-white ">
                         Status :
                       </span>
                       <MqttProvider topic_device={item.topic}>
