@@ -6,6 +6,7 @@ import { ChevronRight, Link, Settings } from "lucide-react";
 import DeviceStatus from "@/components/statusconnect/DeviceStatus";
 import { MqttProvider } from "@/components/connect/MqttContext";
 import { useRouter } from "next/navigation";
+import AddDevicePopUp from "@/components/popup/AddDevicePopUp";
 
 const getExternalDevice = async () => {};
 
@@ -258,4 +259,24 @@ export default function Body() {
       </div>
     </div>
   );
+}
+
+
+type externalImport = {
+  broker : string;
+  topic:string;
+  endPoint:string
+  name:string
+
+}
+
+const ImportExternalPopup = ()=>{
+
+  return (
+    <div>
+      <div>
+
+      </div>
+    </div>
+  )
 }
