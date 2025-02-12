@@ -6,6 +6,11 @@ import { ChevronRight, Settings } from "lucide-react";
 import DeviceStatus from "@/components/statusconnect/DeviceStatus";
 import { MqttProvider } from "@/components/connect/MqttContext";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+interface Props {
+  session:Session | null;
+}
 
 const getExternalDevice = async (userid: string) => {
   try {
