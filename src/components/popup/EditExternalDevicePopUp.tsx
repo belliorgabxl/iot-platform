@@ -1,4 +1,5 @@
 "use client";
+import { ExternalDeviceModel } from "@/resource/model";
 import { Pencil, Trash, X } from "lucide-react";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -24,6 +25,7 @@ export default function EditExternalDevicePopUp({
   deviceId,
 }: EditDevicePopUpProps) {
   const [name, setName] = useState<string>("");
+  const [devices , setDevices] = useState<ExternalDeviceModel>()
   const [wifiId, setWifiId] = useState<string>("");
   const [enable_edit, setEnableEdit] = useState<boolean>(false);
   const [confirmDeletePopUp, setComfirmDeletePopUp] = useState<boolean>(false);
@@ -31,16 +33,17 @@ export default function EditExternalDevicePopUp({
   useEffect(() => {
     getDevice(deviceId).then((item: any) => {
       setName(item.name);
+      setDevices(item);
       setWifiId(item.wifiId);
     });
   }, []);
   const reloadPage = () => {
     window.location.reload();
   };
-  console.log(name)
+  console.log(devices)
   const onDeleteDevice = async () => {
     try {
-      const response1 = await fetch(`api/importDeviceBydeviceId/${id}`, {
+      const response1 = await fetch(`api/importDeviceBydeviceId/${deviceId}`, {
         method: "DELETE",
       });
       const response3 = await fetch(`api/wifi/${wifiId}`, {
@@ -95,7 +98,7 @@ export default function EditExternalDevicePopUp({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="text-white text-2xl bg-gray-900 font-bold text-center w-full rounded-t-xl py-1">
-          Edit Device
+          Edit Device {name} this
         </div>
         <div className="px-10 py-5">
           <div className="flex gap-2 items-center ">

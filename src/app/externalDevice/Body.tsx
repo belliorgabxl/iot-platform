@@ -63,8 +63,6 @@ export default function Body({ session }: Props) {
     setEditId(id);
     setEditDeviceId(deviceId);
   };
-
-  console.log(devices);
   return (
     <div className="w-full bg-gray-700">
       <div className="w-full grid place-items-center ">
@@ -274,7 +272,7 @@ export default function Body({ session }: Props) {
            </div>
            <Link
              className="grid gap-2 h-fit"
-             href={"/products/" + item.broker + "/" + item.deviceId}
+             href={"/products/" + "external" + "/" + item.deviceId}
            >
              <div className="w-full flex justify-center">
                <div className="text-xl  font-bold bg-gray-800 rounded-xl shadow-sm px-5 py-1 w-4/5 text-center h-fit text-slate-300">
@@ -319,7 +317,7 @@ export default function Body({ session }: Props) {
           userId={userId}
           broker={newBroker}
           topic={newTopic}
-          endPoint={newEndPoint}
+          connectPath={newEndPoint}
           name={newDeviceName}
           username={newUsernameBroker}
           password={newPasswordBroker}
@@ -342,7 +340,7 @@ type ExternalImport = {
   broker: string;
   topic: string;
   userId: string;
-  endPoint: string;
+  connectPath: string;
   name: string;
   username: string;
   password: string;
@@ -354,7 +352,7 @@ const ImportExternalPopup = ({
   userId,
   broker,
   topic,
-  endPoint,
+  connectPath,
   name,
   username,
   password,
@@ -377,7 +375,7 @@ const ImportExternalPopup = ({
         name,
         topic,
         broker,
-        endPoint,
+        connectPath,
         username,
         password,
         status,

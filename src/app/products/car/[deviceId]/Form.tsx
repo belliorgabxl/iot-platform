@@ -328,7 +328,7 @@ export default function FormPage({ device_id }: Props) {
                   {buttons.map((item) => (
                     <div key={item.id}>
                       {item.type == "transmitter" ? (
-                        <div className="animate-fastFade grid place-items-center w-full">
+                        <div className="animate-fastFade h-full flex justify-center items-center  w-full">
                           {item.category == "press" ? (
                             <PressButton
                               category={item.category}
@@ -354,7 +354,7 @@ export default function FormPage({ device_id }: Props) {
                           )}
                         </div>
                       ) : (
-                        <div className="grid place-items-center w-full">
+                        <div className="h-full py-5 w-full">
                           <ToggleRecieve
                             category={item.category}
                             cmd={item.command}

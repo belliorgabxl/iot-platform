@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
   await connect();
   const { deviceId } = await params;
-  const devices = await ExternalDevice.find({ deviceId: deviceId });
+  const devices = await ExternalDevice.findOne({ deviceId: deviceId });
   if (!devices){
     return NextResponse.json({message:"Not Found"}, { status: 200 })
   }
@@ -14,7 +14,7 @@ export async function GET(request, { params }) {
 }
 export async function DELETE(request, { params }) {
     await connect();
-    const { id } = await params;
-    await ExternalDevice.deleteOne({ _id: id });
+    const { deviceId } = await params;
+    await ExternalDevice.deleteOne({ deviceId: deviceId });
     return NextResponse.json({ message: "Delete Success" }, { status: 200 });
   }

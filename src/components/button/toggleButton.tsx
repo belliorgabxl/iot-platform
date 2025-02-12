@@ -53,7 +53,7 @@ const ToggelButton = ({
         toggle == true
           ? "bg-pink-300 border-2 border-pink-500 text-black shadow-black shadow-inner  scale-[95%]"
           : "bg-pink-600 border-2 border-pink-500  shadow-md shadow-black text-white"
-      }  rounded-xl  px-5 py-5 text-center hover:opacity-90  `}
+      }  rounded-xl  px-3 py-3 text-center hover:opacity-90  `}
     >
       {label == "Up" || label == "Forward" ? (
         <img

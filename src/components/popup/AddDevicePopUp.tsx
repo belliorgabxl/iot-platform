@@ -36,6 +36,29 @@ const AddDevicePopUp = ({
         <div className="px-5  py-5 grid place-items-center  gap-3">
           <div className="lg:flex items-center md:flex grid lg:gap-2 md:gap-2  ">
             <label className="lg:text-lg  py-2 h-fit line-clamp-1 lg:w-[140px] text-white ">
+              Device IoT :
+            </label>
+            <select className="px-2 lg:w-[200px] w-[150px] py-1 rounded-sm bg-gray-500 text-white">
+              <option value="none">Select Device</option>
+              <option value="none">Car</option>
+              <option value="none">Arm</option>
+              <option value="none">Robotic</option>
+              <option value="none">Pump</option>
+              <option value="none">Smoke</option>
+            </select>
+          </div>
+          <div className="lg:flex items-center md:flex grid lg:gap-2 md:gap-2  ">
+            <label className="lg:text-lg  py-2 h-fit line-clamp-1 lg:w-[140px] text-white ">
+              Device Type :
+            </label>
+            <select className="px-2 lg:w-[200px] w-[150px] py-1 rounded-sm bg-gray-500 text-white">
+              <option value="none">Select Type</option>
+              <option value="none">Recieve</option>
+              <option value="none">Transmitter</option>
+            </select>
+          </div>
+          <div className="lg:flex items-center md:flex grid lg:gap-2 md:gap-2  ">
+            <label className="lg:text-lg  py-2 h-fit line-clamp-1 lg:w-[140px] text-white ">
               Device Name :
             </label>
             <input

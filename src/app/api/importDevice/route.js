@@ -5,33 +5,43 @@ import { NextResponse } from "next/server";
 connect();
 
 export async function POST(request) {
-  const {
-    deviceId,
+  const { deviceId,
     userId,
     name,
     topic,
     broker,
-    endPoint,
+    connectPath,
     username,
     password,
     status,
     wifiId,
-    wifiConnect,
-  } = await request.json();
+    wifiConnect,} = await request.json();
 
-  await ExternalDevice.create({
-    deviceId,
+  await ExternalDevice.create({deviceId,
     userId,
     name,
     topic,
     broker,
-    endPoint,
+    connectPath,
     username,
     password,
     status,
     wifiId,
-    wifiConnect,
-  });
+    wifiConnect,});
+    console.log("Request Body:", {
+        deviceId,
+        userId,
+        name,
+        topic,
+        broker,
+        connectPath,
+        username,
+        password,
+        status,
+        wifiId,
+        wifiConnect,
+      });
+      
 
   return NextResponse.json({ message: "Create Success" }, { status: 201 });
 }
