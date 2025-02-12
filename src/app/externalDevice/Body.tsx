@@ -8,6 +8,8 @@ import { MqttProvider } from "@/components/connect/MqttContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import EditExternalDevicePopUp from "@/components/popup/EditExternalDevicePopUp";
+import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 interface Props {
   session: Session;
 }
@@ -23,7 +25,7 @@ const getExternalDevice = async (userid: string) => {
 
 export default function Body({ session }: Props) {
   const router = useRouter();
-  const userId = session
+  const userId = session.toString();
   const [devices, setDevices] = useState<ExternalDeviceModel[] | null>([]);
 
   const [newBroker, setNewBroker] = useState<string>("");
@@ -39,8 +41,8 @@ export default function Body({ session }: Props) {
   const [addVerifyPopUp, setAddVerifyPopUp] = useState<boolean>(false);
 
   const [edit_popup, setEditPopUp] = useState<boolean>(false);
-    const [edit_id, setEditId] = useState<string | null>();
-    const [edit_deviceId, setEditDeviceId] = useState<string | null>();
+  const [edit_id, setEditId] = useState<string | null>();
+  const [edit_deviceId, setEditDeviceId] = useState<string | null>();
 
   useEffect(() => {
     getExternalDevice(String(userId)).then((item: any) => {
@@ -246,55 +248,55 @@ export default function Body({ session }: Props) {
       )}
 
       <div className="grid place-items-center lg:px-10 px-2 w-full py-2">
-        { devices && devices.length > 0 && isLoading == true ? (
+        {devices && devices.length > 0 && isLoading == true ? (
           <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-4 lg:w-full  lg:px-0 px-4 py-10 md:w-9/12 sm:w-9/12 w-full sm:px-10 bg-gray-700 border-2 border-dotted border-gray-500">
             {devices?.map((item: ExternalDeviceModel) => (
-           <div
-           key={item.deviceId}
-           className="flex justify-center lg:px-0 lg:py-6 py-5 bg-gradient-to-tl from-gray-800 via-indigo-900 to-blue-600 text-white rounded-3xl px-6 shadow-lg shadow-gray-800 duration-500  hover:bg-blue-800 hover:shadow-gray-900 hover:shadow-xl hover:scale-[101%] lg:w-[320px] md:w-full sm:w-[300px] w-[280px] h-fit group "
-         >
-           <div
-             className="absolute w-12 h-12 rounded-full z-10 right-0 -top-5 shadow-md shadow-black bg-gray-300 animate-fastFade hidden group-hover:block hover:bg-gray-500 "
-             onClick={() => {
-               onClickEditPopUp(item._id, item.deviceId);
-             }}
-           >
-             <button className=" w-full h-full grid place-items-center ">
-               <Settings
-                 style={{ width: "2.0rem", height: "2.5rem" }}
-                 className="text-black hover:scale-[105%] hover:text-white transition-colors"
-               />
-             </button>
-           </div>
-           <Link
-             className="grid gap-2 h-fit"
-             href={"/products/" + "external" + "/" + item.deviceId}
-           >
-             <div className="w-full flex justify-center">
-               <div className="text-xl  font-bold bg-gray-800 rounded-xl shadow-sm px-5 py-1 w-4/5 text-center h-fit text-slate-300">
-                 {item.broker.toUpperCase()}
-               </div>
-             </div>
+              <div
+                key={item.deviceId}
+                className="flex justify-center lg:px-0 lg:py-6 py-5 bg-gradient-to-tl from-gray-800 via-indigo-900 to-blue-600 text-white rounded-3xl px-6 shadow-lg shadow-gray-800 duration-500  hover:bg-blue-800 hover:shadow-gray-900 hover:shadow-xl hover:scale-[101%] lg:w-[320px] md:w-full sm:w-[300px] w-[280px] h-fit group "
+              >
+                <div
+                  className="absolute w-12 h-12 rounded-full z-10 right-0 -top-5 shadow-md shadow-black bg-gray-300 animate-fastFade hidden group-hover:block hover:bg-gray-500 "
+                  onClick={() => {
+                    onClickEditPopUp(item._id, item.deviceId);
+                  }}
+                >
+                  <button className=" w-full h-full grid place-items-center ">
+                    <Settings
+                      style={{ width: "2.0rem", height: "2.5rem" }}
+                      className="text-black hover:scale-[105%] hover:text-white transition-colors"
+                    />
+                  </button>
+                </div>
+                <Link
+                  className="grid gap-2 h-fit"
+                  href={"/products/" + "external" + "/" + item.deviceId}
+                >
+                  <div className="w-full flex justify-center">
+                    <div className="text-xl  font-bold bg-gray-800 rounded-xl shadow-sm px-5 py-1 w-4/5 text-center h-fit text-slate-300">
+                      {item.broker.toUpperCase()}
+                    </div>
+                  </div>
 
-             <div className=" lg:gap-4 flex">
-               <span className="w-[80px] font-semibold lg:text-xl text-lg text-white">
-                 Name :
-               </span>
-               <span className="text-white  bg-gray-500 rounded-md py-1 lg:text-lg  text-sm px-6">
-                 {item.name ?? "Loading..."}
-               </span>
-             </div>
+                  <div className=" lg:gap-4 flex">
+                    <span className="w-[80px] font-semibold lg:text-xl text-lg text-white">
+                      Name :
+                    </span>
+                    <span className="text-white  bg-gray-500 rounded-md py-1 lg:text-lg  text-sm px-6">
+                      {item.name ?? "Loading..."}
+                    </span>
+                  </div>
 
-             <div className=" flex items-center  ">
-               <span className="font-semibold lg:text-xl w-[100px] text-white ">
-                 Status :
-               </span>
-               <MqttProvider topic_device={item.topic}>
-                 <DeviceStatus />
-               </MqttProvider>
-             </div>
-           </Link>
-         </div>
+                  <div className=" flex items-center  ">
+                    <span className="font-semibold lg:text-xl w-[100px] text-white ">
+                      Status :
+                    </span>
+                    <MqttProvider topic_device={item.topic}>
+                      <DeviceStatus />
+                    </MqttProvider>
+                  </div>
+                </Link>
+              </div>
             ))}
           </div>
         ) : isLoading == true ? (
@@ -307,17 +309,119 @@ export default function Body({ session }: Props) {
           </div>
         )}
       </div>
-     
+      {addVerifyPopUp && (
+        <ImportExternalPopup
+          onClosePopUp={setAddVerifyPopUp}
+          userId={userId}
+          broker={newBroker}
+          topic={newTopic}
+          connectPath={newEndPoint}
+          name={newDeviceName}
+          username={newUsernameBroker}
+          password={newPasswordBroker}
+        />
+      )}
       {edit_popup && edit_id && edit_deviceId && (
-             <EditExternalDevicePopUp
-                 id={edit_id}
-                deviceId={edit_deviceId}
-                onClosePopUp={() => {
-                  setEditPopUp(false);
-                }}
-              />
-            )}
+        <EditExternalDevicePopUp
+          id={edit_id}
+          deviceId={edit_deviceId}
+          onClosePopUp={() => {
+            setEditPopUp(false);
+          }}
+        />
+      )}
     </div>
   );
-
 }
+type ExternalImport = {
+  broker: string;
+  topic: string;
+  userId: string;
+  connectPath: string;
+  name: string;
+  username: string;
+  password: string;
+  onClosePopUp: (value: boolean) => void;
+};
+const ImportExternalPopup = ({
+  onClosePopUp,
+  userId,
+  broker,
+  topic,
+  connectPath,
+  name,
+  username,
+  password,
+}: ExternalImport) => {
+  const [saveLoad, setSaveLoad] = useState<boolean>(false);
+  const onSaveNewDevice = async () => {
+    setSaveLoad(true);
+    const deviceId = uuidv4();
+    const status = "";
+    const wifiId = uuidv4();
+    const wifiConnect = "none";
+    const response = await fetch(`/api/importDevice`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        deviceId,
+        userId,
+        name,
+        topic,
+        broker,
+        connectPath,
+        username,
+        password,
+        status,
+        wifiId,
+        wifiConnect,
+      }),
+    });
+    if (response.ok) {
+      toast.success("Import Success.");
+      setSaveLoad(false);
+      onClosePopUp(false);
+    }
+  };
+
+  return (
+    <div
+      className="fixed duration-1000 animate-appearance-in inset-0 flex items-center justify-center bg-gray-800 bg-opacity-45"
+      onClick={() => onClosePopUp(false)}
+    >
+      <div
+        className="z-50 w-[90%] lg:w-[400px] md:w-[300px] rounded-md grid bg-gray-600"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="py-2 bg-gray-900 rounded-t-md text-white w-full flex justify-center">
+          <h1 className="text-xl font-semibold">Confirm </h1>
+        </div>
+        <div className="px-10 py-5">
+          <p className="text-sm text-white">
+            To Import Device please check and comfirm to sure is your data
+            connecton is correct information.
+          </p>
+        </div>
+        <div className="flex pb-4 lg:gap-5 gap-2 justify-center  text-white">
+          <button
+            className="rounded-md hover:bg-blue-600 bg-blue-500 text-white py-1 w-[120px]"
+            onClick={() => {
+              onSaveNewDevice();
+            }}
+          >
+            {saveLoad ? <p>Loading...</p> : <p>ConFirm</p>}
+          </button>
+          <button
+            className="rounded-md hover:bg-gray-700 bg-gray-500 text-white py-1 w-[120px]"
+            onClick={() => onClosePopUp(false)}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+

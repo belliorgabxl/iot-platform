@@ -186,7 +186,7 @@ export default function Form({ device_id }: Props) {
       client.unsubscribe(topic);
       client.end();
     };
-  }, [topic]);
+  }, [topic,broker]);
   const onClickPopUp = async () => {
     setPopUpClick(true);
     if (deviceData?.wifiId) {
