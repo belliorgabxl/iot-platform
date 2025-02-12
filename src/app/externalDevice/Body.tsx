@@ -7,7 +7,7 @@ import DeviceStatus from "@/components/statusconnect/DeviceStatus";
 import { MqttProvider } from "@/components/connect/MqttContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import EditExternalDevicePopUp from "@/components/popup/EditExternalDevicePopUp";
+// import EditExternalDevicePopUp from "@/components/popup/EditExternalDevicePopUp";
 interface Props {
   session: Session| null;
 }
