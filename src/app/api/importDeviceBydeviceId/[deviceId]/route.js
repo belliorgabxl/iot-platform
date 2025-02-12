@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
   await connect();
   const { deviceId } = await params;
-  const devices = await ExternalDevice.find({ deviceId: deviceId });
+  const devices = await ExternalDevice.findOne({ deviceId: deviceId });
   if (!devices){
     return NextResponse.json({message:"Not Found"}, { status: 200 })
   }
