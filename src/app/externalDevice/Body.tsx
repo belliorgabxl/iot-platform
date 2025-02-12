@@ -303,18 +303,7 @@ export default function Body({ session }: Props) {
           </div>
         )}
       </div>
-      {addVerifyPopUp && (
-        <ImportExternalPopup
-          onClosePopUp={setAddVerifyPopUp}
-          userId={userId}
-          broker={newBroker}
-          topic={newTopic}
-          connectPath={newEndPoint}
-          name={newDeviceName}
-          username={newUsernameBroker}
-          password={newPasswordBroker}
-        />
-      )}
+     
       {edit_popup && edit_id && edit_deviceId && (
               // <EditExternalDevicePopUp
               //   id={edit_id}
