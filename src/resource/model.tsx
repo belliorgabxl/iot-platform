@@ -27,6 +27,21 @@ export type DeviceModel = {
   wifiConnect: string;
 };
 
+export type ExternalDeviceModel = {
+  _id: string;
+  deviceId: string;
+  userId: string;
+  name: string;
+  topic: string;
+  broker: string;
+  endPiont: string;
+  username: string;
+  password: string;
+  status: string;
+  wifiId: string;
+  wifiConnect: string;
+};
+
 export type WifiModel = {
   _id: string;
   wifiId: string;
@@ -59,12 +74,12 @@ export type ChartModel = {
   label: string;
   bgcolor: string;
   fgcolor: string;
-  unit:string;
+  unit: string;
 };
 
 export type CustomizeChartPumpModel = {
-  donut:string;
-  circlemonitor:string;
+  donut: string;
+  circlemonitor: string;
 };
 // export type CustomizeChartPumpModel = {
 //   donut: {

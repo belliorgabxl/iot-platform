@@ -16,7 +16,7 @@ export default function DocumentSideBar() {
   const sideBarLink = [
     {
       title: "Introductions",
-      link: "/documents",
+      link: "/documents/introductions",
     },
     {
       title: "Get Started",
