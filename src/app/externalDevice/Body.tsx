@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import Link from "next/link";
-import EditExternalDevicePopUp from "@/components/popup/EditExternalDevicePopUp";
+// import EditExternalDevicePopUp from "@/components/popup/EditExternalDevicePopUp";
 
 type Props = {
   session: Session | null;
@@ -324,13 +324,14 @@ export default function Body({ session }: Props) {
         />
       )}
       {edit_popup && edit_id && edit_deviceId && (
-              <EditExternalDevicePopUp
-                id={edit_id}
-                deviceId={edit_deviceId}
-                onClosePopUp={() => {
-                  setEditPopUp(false);
-                }}
-              />
+              // <EditExternalDevicePopUp
+              //   id={edit_id}
+              //   deviceId={edit_deviceId}
+              //   onClosePopUp={() => {
+              //     setEditPopUp(false);
+              //   }}
+              // />
+              <div></div>
             )}
     </div>
   );

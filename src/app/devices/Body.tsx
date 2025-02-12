@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Session, DeviceModel } from "@/resource/model";
 import AddDevicePopUp from "@/components/popup/AddDevicePopUp";
-import EditDevicePopUp from "@/components/popup/EditDevicePopUp";
+// import EditDevicePopUp from "@/components/popup/EditDevicePopUp";
 import Link from "next/link";
 import { CirclePlus, Cpu, Settings } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -365,13 +365,14 @@ export default function Body({ session }: Props) {
         />
       )}
       {edit_popup && edit_id && edit_deviceId && (
-        <EditDevicePopUp
-          id={edit_id}
-          deviceId={edit_deviceId}
-          onClosePopUp={() => {
-            setEditPopUp(false);
-          }}
-        />
+        // <EditDevicePopUp
+        //   id={edit_id}
+        //   deviceId={edit_deviceId}
+        //   onClosePopUp={() => {
+        //     setEditPopUp(false);
+        //   }}
+        // />
+        <div></div>
       )}
     </div>
   );
