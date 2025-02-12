@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { ExternalDeviceModel, Session } from "@/resource/model";
-import { ChevronRight, Settings } from "lucide-react";
-import DeviceStatus from "@/components/statusconnect/DeviceStatus";
-import { MqttProvider } from "@/components/connect/MqttContext";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+// import { ChevronRight, Settings } from "lucide-react";
+// import DeviceStatus from "@/components/statusconnect/DeviceStatus";
+// import { MqttProvider } from "@/components/connect/MqttContext";
+// import { useRouter } from "next/navigation";
+// import Link from "next/link";
 // import EditExternalDevicePopUp from "@/components/popup/EditExternalDevicePopUp";
 interface Props {
-  session: Session| null;
+  session: Session;
 }
 // const getExternalDevice = async (userid: string) => {
 //   try {
@@ -23,7 +23,7 @@ interface Props {
 
 export default function Body({ session }: Props) {
   // const router = useRouter();
-  // const userId = session?._id || "";
+  // const userId = session
   // const [devices, setDevices] = useState<ExternalDeviceModel[] | null>([]);
 
   // const [newBroker, setNewBroker] = useState<string>("");

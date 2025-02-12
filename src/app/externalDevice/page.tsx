@@ -24,7 +24,10 @@ export default function page() {
   }, []);
   return (
     <div>
-      <Body session={session} />
+      {session && (
+        <Body session={session} />
+      )}
+      
     </div>
   );
 }
