@@ -1,22 +1,16 @@
-// import React from 'react';
-// import Form from './Form';
+import React from 'react';
+import Form from './Form';
 
-// interface PageProps {
-//   params: Promise<{ deviceId: string }>;
-// }
-
-// export default async function page({ params }: PageProps) {
-//   const { deviceId } = await params; 
-//   return (
-//     <div>
-//       <Form device_id={deviceId} />
-//     </div>
-//   );
-// }
-import React from 'react'
-
-export default function page() {
-  return (
-    <div>page</div>
-  )
+interface PageProps {
+  params: Promise<{ deviceId: string }>;
 }
+
+export default async function page({ params }: PageProps) {
+  const { deviceId } = await params; 
+  return (
+    <div>
+      <Form device_id={deviceId} />
+    </div>
+  );
+}
+
