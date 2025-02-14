@@ -5,12 +5,12 @@ import mqtt, { MqttClient } from "mqtt";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { DeviceModel, WifiModel, ChartModel } from "@/resource/model";
 import React from "react";
-import DonutChart from "@/components/chart/donutChart";
 import CircleMonitor from "@/components/chart/circleMonitor";
 import PopUpAddChart from "./AddChartPopUp";
 import CircleChartDirt from "@/components/chart/circleChartDirt";
 import WifiPopUp from "@/components/popup/WifiPopUp";
 import Panel from "./Panel";
+import DonutChartSmoke from "@/components/chart/donutChartSmoke";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 type Props = {
@@ -216,7 +216,7 @@ export default function Form({ device_id }: Props) {
                   <div key={item.id}>
                     {item.type == "donut" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
-                        {/* <DonutChart value={value1 || "0"} /> */}
+                        <DonutChartSmoke value={value1 || "0"} />
                       </div>
                     ) : item.type == "circle" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
