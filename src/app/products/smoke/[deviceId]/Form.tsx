@@ -1,9 +1,7 @@
-"use client";
+"use client"
 import { useState, useEffect } from "react";
 import mqtt, { MqttClient } from "mqtt";
-import { toast } from "react-toastify";
-import PumpJoyStick from "./Controller";
-import PumpPanel from "./Panel";
+
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { DeviceModel, WifiModel, ChartModel } from "@/resource/model";
 import React from "react";
@@ -14,18 +12,17 @@ import CircleChartDirt from "@/components/chart/circleChartDirt";
 import WifiPopUp from "@/components/popup/WifiPopUp";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
 type Props = {
   device_id: string;
 };
 
 const fetchDeviceId = async (deviceId: string) => {
-  const response = await fetch(`/api/devices/${deviceId}`);
+  const response = await fetch(`http://localhost:3000/api/devices/${deviceId}`);
   return response.json();
 };
 
 const fetchWifiId = async (wifiId: string) => {
-  const ressponse = await fetch(`/api/wifi/${wifiId}`);
+  const ressponse = await fetch(`http://localhost:3000/api/wifi/${wifiId}`);
   return ressponse.json();
 };
 
@@ -34,7 +31,7 @@ const fetchChart = async (id: string) => {
   return response.json();
 };
 
-export default function FormPage({ device_id }: Props) {
+export default function Form({ device_id }: Props) {
   const deviceId = device_id;
   const [client, setClient] = useState<MqttClient | null>(null);
   const [isConnected, setIsConnected] = useState<boolean>(false);
@@ -51,12 +48,12 @@ export default function FormPage({ device_id }: Props) {
   const [value1, setValue1] = useState<string | null>();
   const [value2, setValue2] = useState<string | null>();
   const [value3, setValue3] = useState<string | null>();
-  const [popup_chart, setPopUpChart] = useState<boolean>(false);
+
   useEffect(() => {
-    fetchDeviceId(deviceId).then((item: any) => {
+    fetchDeviceId(deviceId).then((item: DeviceModel) => {
       setDeviceData(item);
       setLoading(true);
-      setTopic(item.topic);
+      setTopic(item?.topic);
     });
     fetchChart(deviceId).then((item: any) => {
       setChart(item);
@@ -86,6 +83,7 @@ export default function FormPage({ device_id }: Props) {
       }
     };
   }, []);
+  console.log(deviceData)
 
   useEffect(() => {
     console.log("Listen Event Start...");
@@ -144,6 +142,7 @@ export default function FormPage({ device_id }: Props) {
     }
   };
 
+  const [popup_chart, setPopUpChart] = useState<boolean>(false);
   return (
     <div className={`bg-gray-700 pb-10 px-5`}>
       <div className="w-full py-2 ">
@@ -156,7 +155,7 @@ export default function FormPage({ device_id }: Props) {
                 : "px-0 text-gray-700 "
             } line-clamp-1 h-fit`}
           >
-            Auto Pump
+            Smoke Detector
           </h1>
           <button
             className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-2 text-lg rounded-3xl  shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
@@ -187,30 +186,11 @@ export default function FormPage({ device_id }: Props) {
 
         <div className=" grid gap-4 lg:gap-8 place-items-center px-2 lg:px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
           <div className="lg:flex md:flex justify-center  w-full lg:w-fit lg:py-0">
-            {topic && (
-              <PumpPanel
-                isConnected={isConnected}
-                client={client}
-                topic={topic}
-                isLoading={isLoading}
-                device_id={deviceId}
-                device_log={returnedLog}
-                device_connect={deviceConnected}
-                dirtValue={value1 || "0"}
-              />
-            )}
+            {topic && <div></div>}
           </div>
 
           <div className="grid gap-4  lg:h-fit lg:px-10 lg:py-0 w-fit">
             <div className=" grid lg:flex gap-4 items-center">
-              <PumpJoyStick
-                isConnected={isConnected}
-                client={client}
-                topic={topic}
-                isLoading={isLoading}
-                device_id={deviceId}
-                onLogReturn={getLogReturned}
-              />
               <button
                 className="lg:px-10 px-4 py-2 text-sm rounded-2xl bg-white text-blue-600 h-fit w-fit hover:bg-blue-600 hover:text-white"
                 onClick={() => {
@@ -222,7 +202,7 @@ export default function FormPage({ device_id }: Props) {
             </div>
             {charts.length > 0 ? (
               <div className="grid lg:grid-cols-2 gap-2">
-                {charts.map((item) => (
+                {charts.map((item: any) => (
                   <div key={item.id}>
                     {item.type == "donut" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
