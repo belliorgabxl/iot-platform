@@ -10,9 +10,9 @@ type DonutProps = {
   chartName: string;
 };
 
-export default function DonutChart() {
+export default function DonutChart({value , valueLabel ,bgcolor , chartName}:DonutProps) {
   ChartJS.register(ArcElement, Tooltip, Legend);
-  const [dirtValue, setDirtValue] = useState<string>("");
+
 
   const chartA = 50;
   const chartB = 0;

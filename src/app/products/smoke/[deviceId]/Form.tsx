@@ -5,11 +5,12 @@ import mqtt, { MqttClient } from "mqtt";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { DeviceModel, WifiModel, ChartModel } from "@/resource/model";
 import React from "react";
-import DonutChartDirt from "@/components/chart/donutChartDirt";
+import DonutChart from "@/components/chart/donutChart";
 import CircleMonitor from "@/components/chart/circleMonitor";
 import PopUpAddChart from "./AddChartPopUp";
 import CircleChartDirt from "@/components/chart/circleChartDirt";
 import WifiPopUp from "@/components/popup/WifiPopUp";
+import Panel from "./Panel";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 type Props = {
@@ -186,7 +187,16 @@ export default function Form({ device_id }: Props) {
 
         <div className=" grid gap-4 lg:gap-8 place-items-center px-2 lg:px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
           <div className="lg:flex md:flex justify-center  w-full lg:w-fit lg:py-0">
-            {topic && <div></div>}
+            {topic && <Panel
+            isConnected={isConnected}
+            client={client}
+            topic={topic}
+            isLoading={isLoading}
+            device_id={deviceId}
+            device_log={returnedLog}
+            device_connect={deviceConnected}
+            smokeValue={value1 || "0"}
+            />}
           </div>
 
           <div className="grid gap-4  lg:h-fit lg:px-10 lg:py-0 w-fit">
@@ -206,7 +216,7 @@ export default function Form({ device_id }: Props) {
                   <div key={item.id}>
                     {item.type == "donut" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
-                        <DonutChartDirt value={value1 || "0"} />
+                        {/* <DonutChart value={value1 || "0"} /> */}
                       </div>
                     ) : item.type == "circle" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
