@@ -20,15 +20,15 @@ export default function DocumentSideBar() {
     },
     {
       title: "Get Started",
-      link: "/documents",
+      link: "/documents/getstarted",
     },
     {
       title: "Adding Devices",
-      link: "/documents",
+      link: "/documents/addingdevices",
     },
     {
       title: "Setting Wi-fi",
-      link: "/documents",
+      link: "/documents/settingwifi",
     },
     {
       title: "Import Devices",
