@@ -152,7 +152,7 @@ export default function documentform () {
                       <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
-                        Add Device
+                        Add Devices
                         </span>
                         : When you add a device, it will be displayed on the screen.
                       </div>

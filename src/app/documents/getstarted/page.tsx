@@ -44,7 +44,7 @@ export default function getstarted () {
                         <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
                           Register
                         </span>
-                        : New users can register by filling in their information to create an account.
+                        : New user can register by filling in their information to create an account.
                          Once all required fields are completed, click 'Submit' to finalize the registration process.
                       </div>
                     </div>

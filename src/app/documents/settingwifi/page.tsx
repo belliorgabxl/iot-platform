@@ -65,7 +65,7 @@ export default function settingwifi () {
                         <br /> 
                         <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
                           <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
-                          Connect to Wi-Fi 
+                          Connect to WiFi 
                           </span>
                           : This code is used to connect the ESP32 to a WiFi network by setting 
                           your desired SSID and password. Simply replace 'yourSSID' and 'yourPassword'

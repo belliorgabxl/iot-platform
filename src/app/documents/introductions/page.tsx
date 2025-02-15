@@ -24,7 +24,7 @@ export default function introductione () {
                 : "opacity-0 px-0"
             }`}
           >
-            Introductions
+            Introduction
             
           </div>
 
