@@ -42,6 +42,7 @@ export default function addingdevices () {
                             &nbsp;&nbsp;&nbsp;&nbsp;This is the add device page :
                             <br />
                             <br />
+                            <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
                                Device IoT
