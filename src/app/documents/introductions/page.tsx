@@ -3,7 +3,7 @@
 import DocumentSideBar from "@/components/sidebar/documentSideBar";
 import React, { useState, useEffect } from "react";
 
-export default function introductione () {
+export default function Page() {
   const [isLoading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     setLoading(true);

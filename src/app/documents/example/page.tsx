@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function page() {
+export default function Page() {
   return (
     <div className="py-5 bg-gray-700">
       <div className="w-full flex justify-center">
