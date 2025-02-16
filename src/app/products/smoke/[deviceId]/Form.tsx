@@ -11,6 +11,7 @@ import CircleChartDirt from "@/components/chart/circleChartDirt";
 import WifiPopUp from "@/components/popup/WifiPopUp";
 import Panel from "./Panel";
 import DonutChartSmoke from "@/components/chart/donutChartSmoke";
+import { RefreshCw, Settings, Trash } from "lucide-react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 type Props = {
@@ -110,13 +111,14 @@ export default function Form({ device_id }: Props) {
     });
     client.on("message", (topic, message) => {
       console.log(`Received message on ${topic}: ${message}`);
-    
+
       const msgStr = message.toString();
-      
+
       // Use regex to extract values by matching "valueX:number"
-      const regex = /value1:(\d+(\.\d+)?),\s*value2:(\d+(\.\d+)?),\s*value3:(\d+(\.\d+)?),\s*value4:(\d+(\.\d+)?),\s*value5:(\d+(\.\d+)?)/;
+      const regex =
+        /value1:(\d+(\.\d+)?),\s*value2:(\d+(\.\d+)?),\s*value3:(\d+(\.\d+)?),\s*value4:(\d+(\.\d+)?),\s*value5:(\d+(\.\d+)?)/;
       const match = msgStr.match(regex);
-    
+
       if (match) {
         setValue1(match[1] || null);
         setValue2(match[3] || null);
@@ -144,7 +146,9 @@ export default function Form({ device_id }: Props) {
       });
     }
   };
-
+  const RefreshConnect = () => {
+    window.location.reload();
+  };
   const [popup_chart, setPopUpChart] = useState<boolean>(false);
   return (
     <div className={`bg-gray-700 pb-10 px-5`}>
@@ -189,6 +193,32 @@ export default function Form({ device_id }: Props) {
 
         <div className=" grid gap-4 lg:gap-8 place-items-center px-2 lg:px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
           <div className="lg:flex md:flex justify-center  w-full lg:w-fit lg:py-0">
+            <div className="px-5 grid h-fit gap-4">
+              <button
+                className="px-5 h-fit bg-green-500 hover:bg-green-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Refresh <RefreshCw className="w-5 h-5" />
+              </button>
+              <button
+                className="px-5 bg-blue-500 hover:bg-blue-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Settings <Settings className="w-5 h-5" />
+              </button>
+              <button
+                className="px-5 bg-red-400 hover:bg-red-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Delete <Trash className="w-5 h-5" />
+              </button>
+            </div>
             {topic && (
               <Panel
                 isConnected={isConnected}
@@ -198,11 +228,11 @@ export default function Form({ device_id }: Props) {
                 device_id={deviceId}
                 device_log={returnedLog}
                 device_connect={deviceConnected}
-                smokeValue={value1 || "0"}
-                value2={value2||"0"}
-                value3={value3||"0"}
-                value4={value4||"0"}
-                value5={value5||"0"}
+                smokeValue={value1 || "-"}
+                value2={value2 || "-"}
+                value3={value3 || "-"}
+                value4={value4 || "-"}
+                value5={value5 || "-"}
               />
             )}
           </div>

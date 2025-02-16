@@ -60,16 +60,6 @@ export default function Panel({
         </h1>
       </div>
       <div
-        className={`lg:my-5 grid lg:flex justify-between ${
-          isLoading ? "animate-fadeIn " : "opacity-0"
-        }`}
-      >
-        <span className="lg:text-xl text-white my-1">Action Type : </span>
-        <span className="bg-gray-600  shadow-gray-950 text-center  lg:text-xl rounded-3xl text-white h-fit line-clamp-1 px-10 py-1 ">
-          Transmitter
-        </span>
-      </div>
-      <div
         className={`my-2 lg:flex  justify-between  grid gap-2  ${
           isLoading ? "animate-fadeIn" : "opacity-0"
         }`}
@@ -105,20 +95,19 @@ export default function Panel({
           {topic}
         </span>
       </div>
-      <hr className={`my-4 ${isLoading ? "animate-fadeIn " : "opacity-0"}`} />
-      <div className={`mb-6 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
-        <div className="lg:text-xl text-white my-1">Device log</div>
-        <div className=" grid lg:text-xl rounded-sm gap-2 text-black font-semibold px-3 py-1 ">
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value1 : {smokeValue}</p>
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value2 : {value2}</p>
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value3 : {value3}</p>
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value4 : {value4}</p>
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value5 : {value5}</p>
+      <hr className={`my-2 ${isLoading ? "animate-fadeIn " : "opacity-0"}`} />
+      <div className={`mb-2 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
+        <div className=" grid place-items-center lg:text-xl rounded-sm gap-2 text-black font-semibold px-3 py-1 ">
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Temperature : {smokeValue} C</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Humidity : {value2} %RH</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">LPG : {value3} ppm</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Co : {value4} ppm</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Smoke : {value5} ppm</p>
         </div>
       </div>
       <div className={` ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
         <div className="lg:text-xl text-white my-1">Console log</div>
-        <div className="bg-black   flex   text-xl rounded-sm text-white px-3 pt-2 pb-10 text-start">
+        <div className="bg-black   flex   text-xl rounded-sm text-white px-3 py-2  text-start">
           <p className=" duration-75 animate-pulse ">&gt;_&nbsp;&nbsp;&nbsp;</p>
           {device_log}
         </div>
