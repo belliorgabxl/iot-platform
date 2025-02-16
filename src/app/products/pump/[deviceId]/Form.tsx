@@ -12,6 +12,7 @@ import CircleMonitor from "@/components/chart/circleMonitor";
 import PopUpAddChart from "./AddChartPopUp";
 import CircleChartDirt from "@/components/chart/circleChartDirt";
 import WifiPopUp from "@/components/popup/WifiPopUp";
+import { RefreshCw, Settings, Trash } from "lucide-react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -143,7 +144,9 @@ export default function FormPage({ device_id }: Props) {
       });
     }
   };
-
+  const RefreshConnect = () => {
+    window.location.reload();
+  };
   return (
     <div className={`bg-gray-700 pb-10 px-5`}>
       <div className="w-full py-2 ">
@@ -187,6 +190,32 @@ export default function FormPage({ device_id }: Props) {
 
         <div className=" grid gap-4 lg:gap-8 place-items-center px-2 lg:px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
           <div className="lg:flex md:flex justify-center  w-full lg:w-fit lg:py-0">
+          <div className="px-5 grid h-fit gap-4">
+              <button
+                className="px-5 h-fit bg-green-500 hover:bg-green-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Refresh <RefreshCw className="w-5 h-5" />
+              </button>
+              <button
+                className="px-5 bg-blue-500 hover:bg-blue-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Settings <Settings className="w-5 h-5" />
+              </button>
+              <button
+                className="px-5 bg-red-400 hover:bg-red-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Delete <Trash className="w-5 h-5" />
+              </button>
+            </div>
             {topic && (
               <PumpPanel
                 isConnected={isConnected}
