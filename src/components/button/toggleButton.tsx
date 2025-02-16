@@ -53,9 +53,7 @@ const ToggelButton = ({
       {label === "Up" || label === "Forward" ? (
         <img
           src={`${
-            toggle
-              ? "/png_icon/forwardblack.png"
-              : "/png_icon/forwardwhite.png"
+            toggle ? "/png_icon/forwardblack.png" : "/png_icon/forwardwhite.png"
           }`}
           width={50}
           height={50}
@@ -84,31 +82,25 @@ const ToggelButton = ({
           width={50}
           height={50}
         />
-      ) : label === "ON" ? (
+      ) : label == "ON" ? (
         <img
-          src={`${
-            toggle ? "/png_icon/ongreen.png" : "/png_icon/offwhite.png"
-          }`}
+          src={`${toggle ? "/png_icon/ongreen.png" : "/png_icon/offwhite.png"}`}
           width={50}
           height={50}
         />
       ) : label === "Alarm" ? (
         <img
-          src={`${
-            toggle ? "/png_icon/bellon.png" : "/png_icon/belloff.png"
-          }`}
+          src={`${toggle ? "/png_icon/bellon.png" : "/png_icon/belloff.png"}`}
           width={50}
           height={50}
         />
-      ): label === "Locked" ? (
+      ) : label == "Locked" ? (
         <img
-          src={`${
-            toggle ? "/png_icon/lock.png" : "/png_icon/unlock.png"
-          }`}
+          src={`${toggle ? "/png_icon/lock.png" : "/png_icon/unlock.png"}`}
           width={50}
           height={50}
         />
-      ): label === "Warning" ? (
+      ) : label === "Warning" ? (
         <img
           src={`${
             toggle ? "/png_icon/warning.png" : "/png_icon/warningoff.png"
@@ -116,7 +108,7 @@ const ToggelButton = ({
           width={50}
           height={50}
         />
-      ): label === "Record" ? (
+      ) : label === "Record" ? (
         <img
           src={`${
             toggle ? "/png_icon/recodeon.png" : "/png_icon/recodeoff.png"
@@ -124,16 +116,14 @@ const ToggelButton = ({
           width={50}
           height={50}
         />
-      ): label === "Sound ON" ? (
+      ) : label === "Sound ON" ? (
         <img
-          src={`${
-            toggle ? "/png_icon/soundoff.png" : "/png_icon/soundon.png"
-          }`}
+          src={`${toggle ? "/png_icon/soundoff.png" : "/png_icon/soundon.png"}`}
           width={50}
           height={50}
         />
-      ): (
-        <div>None</div>
+      ) : (
+        <div>None : {label}</div>
       )}
     </button>
   );

@@ -14,6 +14,10 @@ type Props = {
   device_log: string;
   device_connect: boolean;
   smokeValue: string | null;
+  value2: string;
+  value3: string;
+  value4: string;
+  value5: string;
 };
 export default function Panel({
   isLoading,
@@ -21,20 +25,23 @@ export default function Panel({
   device_log,
   device_connect,
   smokeValue,
+  value2,
+  value3,
+  value4,
+  value5,
 }: Props) {
   const [water, setWater] = useState<number>(0);
-      useEffect(()=>{
-        if ( smokeValue){
-          const part =  smokeValue.split(":");
-        if (part.length === 2 && part[0] === "value1" ){
-            const waterValue =  parseInt(part[1] , 10);
-            if(!isNaN(waterValue)){
-                setWater(waterValue);
-            }
+  useEffect(() => {
+    if (smokeValue) {
+      const part = smokeValue.split(":");
+      if (part.length === 2 && part[0] === "value1") {
+        const waterValue = parseInt(part[1], 10);
+        if (!isNaN(waterValue)) {
+          setWater(waterValue);
         }
-        }
-        
-      },[smokeValue]);
+      }
+    }
+  }, [smokeValue]);
   return (
     <div
       className={`duration-1000 gap-2  shadow-md bg-gradient-to-tr px-5 w-full from-blue-950 to-gray-800 rounded-lg ${
@@ -101,9 +108,12 @@ export default function Panel({
       <hr className={`my-4 ${isLoading ? "animate-fadeIn " : "opacity-0"}`} />
       <div className={`mb-6 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
         <div className="lg:text-xl text-white my-1">Device log</div>
-        <div className="bg-gray   flex  lg:text-xl rounded-sm text-black font-semibold px-3 py-4 bg-gray-200 text-start">
-          <p className=" duration-75 animate-pulse ">&gt;_&nbsp;&nbsp;&nbsp;</p>
-          Moisture {water*5} %
+        <div className=" grid lg:text-xl rounded-sm gap-2 text-black font-semibold px-3 py-1 ">
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value1 : {smokeValue}</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value2 : {value2}</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value3 : {value3}</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value4 : {value4}</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[180px] align-middle">Value5 : {value5}</p>
         </div>
       </div>
       <div className={` ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>

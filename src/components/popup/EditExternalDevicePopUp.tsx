@@ -65,22 +65,22 @@ export default function EditExternalDevicePopUp({
 
   const onEditDeviceName = async () => {
     try {
-    //   const response = await fetch(`api/deviceEditName/${id}`, {
-    //     method: "PUT",
-    //     headers: {
-    //       ContentType: "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       name,
-    //     }),
-    //   });
-    //   if (response.ok){
-    //     toast.success("Edit Name Success")
-    //     reloadPage()
+      const response = await fetch(`api/importDeviceBydeviceId/${deviceId}`, {
+        method: "PUT",
+        headers: {
+          ContentType: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+        }),
+      });
+      if (response.ok){
+        toast.success("Edit Name Success")
+        reloadPage()
 
-    //   }else{
-    //     toast.error("Edit failed");
-    //   }
+      }else{
+        toast.error("Edit failed");
+      }
       onClosePopUp(false)
     } catch (error) {
       console.error(error instanceof Error ? error.message : "Unknown error");

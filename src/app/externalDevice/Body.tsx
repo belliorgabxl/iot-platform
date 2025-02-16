@@ -227,7 +227,7 @@ export default function Body({ session }: Props) {
           </div>
           <div className="flex gap-2">
             <button
-              className="px-10 bg-blue-500 h-fit rounded-md py-1 text-white  hover:bg-blue-700"
+              className="px-10 bg-blue-500 h-fit rounded-md py-1 text-white duration-500  hover:bg-blue-700"
               disabled={
                 !newBroker || !newDeviceName || !newEndPoint || !newTopic
               }
@@ -238,7 +238,7 @@ export default function Body({ session }: Props) {
               Add
             </button>
             <button
-              className="px-10 bg-white h-fit text-gray-800 rounded-md py-1  hover:bg-gray-600 hover:text-white"
+              className="px-10 bg-white h-fit text-gray-800 rounded-md py-1 duration-500   hover:bg-gray-600 hover:text-white"
               onClick={onCancelImport}
             >
               Cancel
@@ -248,8 +248,9 @@ export default function Body({ session }: Props) {
       )}
 
       <div className="grid place-items-center lg:px-10 px-2 w-full py-2">
-        {devices && devices.length > 0 && isLoading == true ? (
-          <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-4 lg:w-full  lg:px-0 px-4 py-10 md:w-9/12 sm:w-9/12 w-full sm:px-10 bg-gray-700 border-2 border-dotted border-gray-500">
+        {devices && devices.length > 0 && isLoading == true ? (<div className="lg:w-full md:w-9/12 sm:w-9/12 w-full sm:px-10 lg:px-0 px-4 py-10 bg-gray-700 border-2 grid place-items-center border-dotted border-gray-500">
+          <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-8    w-fit">
+            
             {devices?.map((item: ExternalDeviceModel) => (
               <div
                 key={item.deviceId}
@@ -297,7 +298,7 @@ export default function Body({ session }: Props) {
                   </div>
                 </Link>
               </div>
-            ))}
+            ))}</div>
           </div>
         ) : isLoading == true ? (
           <div className="grid text-white text-3xl  place-items-center w-full  py-20 bg-gray-700 mb-20 border-2 border-dashed border-gray-500">

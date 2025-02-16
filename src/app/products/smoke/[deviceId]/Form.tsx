@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import mqtt, { MqttClient } from "mqtt";
 
@@ -46,9 +46,11 @@ export default function Form({ device_id }: Props) {
   const [deviceConnected, setDeviceConnected] = useState<boolean>(false);
   const [charts, setChart] = useState<ChartModel[]>([]);
 
-  const [value1, setValue1] = useState<string | null>();
-  const [value2, setValue2] = useState<string | null>();
-  const [value3, setValue3] = useState<string | null>();
+  const [value1, setValue1] = useState<string | null>(null);
+  const [value2, setValue2] = useState<string | null>(null);
+  const [value3, setValue3] = useState<string | null>(null);
+  const [value4, setValue4] = useState<string | null>(null);
+  const [value5, setValue5] = useState<string | null>(null);
 
   useEffect(() => {
     fetchDeviceId(deviceId).then((item: DeviceModel) => {
@@ -84,8 +86,6 @@ export default function Form({ device_id }: Props) {
       }
     };
   }, []);
-  console.log(deviceData)
-
   useEffect(() => {
     console.log("Listen Event Start...");
     const client = mqtt.connect(
@@ -110,17 +110,19 @@ export default function Form({ device_id }: Props) {
     });
     client.on("message", (topic, message) => {
       console.log(`Received message on ${topic}: ${message}`);
-      if (message.toString() == "connected") {
-        setDeviceConnected(true);
-        console.log("Device is connected. Cleaning up...");
-        client.unsubscribe(topic);
-        client.end();
-      } else if (message.toString().startsWith("value1")) {
-        setValue1(message.toString());
-      } else if (message.toString().startsWith("value2")) {
-        setValue2(message.toString());
-      } else if (message.toString().startsWith("value3")) {
-        setValue3(message.toString());
+    
+      const msgStr = message.toString();
+      
+      // Use regex to extract values by matching "valueX:number"
+      const regex = /value1:(\d+(\.\d+)?),\s*value2:(\d+(\.\d+)?),\s*value3:(\d+(\.\d+)?),\s*value4:(\d+(\.\d+)?),\s*value5:(\d+(\.\d+)?)/;
+      const match = msgStr.match(regex);
+    
+      if (match) {
+        setValue1(match[1] || null);
+        setValue2(match[3] || null);
+        setValue3(match[5] || null);
+        setValue4(match[7] || null);
+        setValue5(match[9] || null);
       }
     });
     return () => {
@@ -187,16 +189,22 @@ export default function Form({ device_id }: Props) {
 
         <div className=" grid gap-4 lg:gap-8 place-items-center px-2 lg:px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
           <div className="lg:flex md:flex justify-center  w-full lg:w-fit lg:py-0">
-            {topic && <Panel
-            isConnected={isConnected}
-            client={client}
-            topic={topic}
-            isLoading={isLoading}
-            device_id={deviceId}
-            device_log={returnedLog}
-            device_connect={deviceConnected}
-            smokeValue={value1 || "0"}
-            />}
+            {topic && (
+              <Panel
+                isConnected={isConnected}
+                client={client}
+                topic={topic}
+                isLoading={isLoading}
+                device_id={deviceId}
+                device_log={returnedLog}
+                device_connect={deviceConnected}
+                smokeValue={value1 || "0"}
+                value2={value2||"0"}
+                value3={value3||"0"}
+                value4={value4||"0"}
+                value5={value5||"0"}
+              />
+            )}
           </div>
 
           <div className="grid gap-4  lg:h-fit lg:px-10 lg:py-0 w-fit">
