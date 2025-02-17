@@ -3,7 +3,7 @@
 import DocumentSideBar from "@/components/sidebar/documentSideBar";
 import React, { useState, useEffect } from "react";
 
-export default function introductione () {
+export default function Introductione () {
   const [isLoading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     setLoading(true);
@@ -17,18 +17,36 @@ export default function introductione () {
       <div className="grid  w-full  lg:grid-cols-[15%_85%] ">
         <DocumentSideBar/>
         <div className=" grid place-items-center  px-3  pb-20">
-          <div
-            className={`flex justify-center lg:text-4xl md:text-4xl text-2xl py-6 text-center gap-4 duration-1000  ${
-              isLoading
-                ? "rounded-lg text-white lg:px-32 px-20 bg-gray-900 my-5"
-                : "opacity-0 px-0"
-            }`}
-          >
-            Introduction
-            
-          </div>
 
-          <div className="bg-gray-800 w-full lg:px-5 px-3 rounded-2xl grid place-items-center">
+          <div>
+            <div className="relative flex justify-center">
+              {/* รูปภาพ */}
+              <img src="/general/iot-image.png" alt="doc_icon" className="h-[450px] w-[1500px] rounded-3xl" />
+             {/* ข้อความที่ต้องการให้แสดง */}
+                <span className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-7xl font-bold z-10 bg-black/50 px-7 py-2 rounded-lg whitespace-nowrap">
+                  Welcome to Introduction
+                </span>
+                
+
+            </div> 
+
+
+
+            <div
+              className={`flex justify-center lg:text-4xl md:text-4xl text-2xl py-6 text-center gap-4 duration-1000  ${
+                isLoading
+                  ? "rounded-lg text-white lg:px-32 px-20 bg-gray-900 my-5"
+                  : "opacity-0 px-0"
+              }`}
+            >
+              Introduction
+            
+            </div>
+
+          </div>
+                 
+
+          <div className="bg-gray-950 w-full lg:px-5 px-3 rounded-2xl grid place-items-center">
             <div
               className={`my-10 w-full ${
                 isLoading ? "animate-fadeIn" : "opacity-0"

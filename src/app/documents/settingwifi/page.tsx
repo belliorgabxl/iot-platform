@@ -3,7 +3,7 @@
 import DocumentSideBar from "@/components/sidebar/documentSideBar";
 import React, { useState, useEffect } from "react";
 
-export default function settingwifi () {
+export default function Settingwifi () {
     const [isLoading, setLoading] = useState<boolean>(false);
       useEffect(() => {
         setLoading(true);
@@ -23,43 +23,102 @@ export default function settingwifi () {
                     }`}>
                       Setting Wi-Fi
                   </div>
-                  <div className="bg-gray-800 w-full lg:px-5 px-3 rounded-2xl grid place-items-center">
+                  <div className="bg-gray-950 w-full lg:px-5 px-3 rounded-2xl grid place-items-center">
                     <div 
                       className={`my-10 w-full ${
                         isLoading ? "animate-fadeIn" : "opacity-0"
                       }`}
                     >
-                      <li className="lg:text-3xl text-xl text-white mb-5 font-semibold">
+                      <li className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-white mb-5 font-semibold">
                         Setting Wi-Fi steps
                         <br /> 
                         <br /> 
                         <div className="flex justify-center">
-                          <img src="/general/wifisetup1.png" alt="doc_icon" className="h-50" />
+                          <img src="/general/wifisetup3.png" alt="doc_icon" className="h-50 rounded-3xl" />
+                        </div>
+                        <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
+                          <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
+                            Setting Wi-Fi
+                          </span>
+                          : When a user logs in to the system, before they can access the WiFi 
+                          settings page, they must add a device first. 
+                        </div>                       
+                        <br /> 
+
+                        <div className="flex justify-center">
+                          <img src="/general/wifisetup4.png" alt="doc_icon" className="h-50 rounded-3xl" />
                         </div>
                         <br />
                         <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
                           <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
-                            Step one
+                          Setting Wi-Fi
                           </span>
-                          : press Wi-Fi setup. The screen will display the default WiFi Name 
+                          : When the user logs in, add a device by pressing the add device button
+                           and filling out the device registration form.
+                        </div>
+                        <br />
+
+                        <div className="flex justify-center">
+                          <img src="/general/wifisetup5.png" alt="doc_icon" className="h-50 rounded-3xl " />
+                        </div>
+                        <br />
+                        <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
+                          <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
+                          Setting Wi-Fi
+                          </span>
+                          : Click to select the device that the user added.
+                        </div>
+                        <br />
+
+                        <div className="flex justify-center">
+                          <img src="/general/wifisetup6.png" alt="doc_icon" className="h-50 rounded-3xl " />
+                        </div>
+                        <br />
+                        <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
+                          <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
+                          Setting Wi-Fi
+                          </span>
+                          : When pressed, it will display the device control button screen.
+                           If you look at the top right corner of the screen, you will see the WiFi setting button.
+                        </div>
+                        <br />
+
+                        <div className="flex justify-center">
+                          <img src="/general/wifisetup1.png" alt="doc_icon" className="h-50 rounded-3xl" />
+                        </div>
+                        <br />
+                        <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
+                          <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
+                          Setting Wi-Fi
+                          </span>
+                          : Press Wi-Fi setup. The screen will display the default WiFi Name 
                           and password. 
                         </div>
                         <br />
 
                         <div className="flex justify-center">
-                          <img src="/general/wifisetup2.png" alt="doc_icon" className="h-50" />
+                          <img src="/general/wifisetup2.png" alt="doc_icon" className="h-50 rounded-3xl" />
                         </div>
                         <br />
                         <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
                           <span className="text-blue-600 px-2 lg:text-2xl font-semibold mr-1">
-                            Step two
+                          Setting Wi-Fi
                           </span>
-                          : change the WiFi name and passeord as desired , then press change. 
+                          : Change the WiFi name and passeord as desired , then press change. 
                         </div>
                         <br />
                       </li>
 
-                      <li className="lg:text-3xl text-xl text-white mb-5 font-semibold">
+                      <hr
+                        className={`w-5/6 my-5 mx-auto transition-opacity duration-1000 ${
+                        isLoading ? "opacity-100" : "opacity-0"
+                         }`}
+                      />
+                      <br />
+                      <br />
+
+
+                      <li className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-white mb-5 font-semibold">
                         Connect to Wi-Fi
                         <br /> 
                         <br /> 
@@ -76,7 +135,7 @@ export default function settingwifi () {
                            <br /> 
                            <br />
                            <div className="flex justify-center">
-                             <img src="/general/connect.png" alt="doc_icon" className="h-50" />
+                             <img src="/general/connect.png" alt="doc_icon" className="h-50 rounded-3xl" />
                            </div>
 
                         </div>
