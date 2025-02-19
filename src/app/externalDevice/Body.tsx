@@ -114,7 +114,7 @@ export default function Body({ session }: Props) {
                   />
                 </div>
                 <div className="flex gap-2 items-center">
-                  <label className="text-lg text-white ">Ada-fruite</label>
+                  <label className="text-lg text-white ">Adafruit</label>
                   <input
                     type="radio"
                     name="broker"
@@ -163,7 +163,7 @@ export default function Body({ session }: Props) {
               ) : newBroker == "adafruite" ? (
                 <div className="grid gap-2">
                   <h1 className="font-semibold text-blue-500  text-lg">
-                    Ada-Fruite Connection
+                    Adafruit Connection
                   </h1>
                   <div className="grid lg:flex gap-2 text-white">
                     <label className="w-[140px]">MQTT EndPiont :</label>
