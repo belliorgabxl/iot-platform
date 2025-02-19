@@ -9,7 +9,7 @@ const externalDeviceSchema = new Schema(
     broker: String,
     connectPath: {
       type: String,
-      default: "", 
+      default: "",
     },
     username: String,
     password: String,
