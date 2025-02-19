@@ -24,19 +24,53 @@ export default function Documentform () {
                       Documentation
                   </div>
 
-                  <div className="bg-gray-800 w-full lg:px-5 px-3 rounded-2xl grid place-items-center">
+                  <div className="bg-gray-950 w-full lg:px-5 px-3 rounded-2xl grid place-items-center">
                     <div
                       className={`my-10 w-full ${
                         isLoading ? "animate-fadeIn" : "opacity-0"
                       }`}
                     >
-                      <br />
+                      <div className=" px-5 py-10  text-white lg:text-2xl">
+                        <span className="text-blue-600 px-2 lg:text-3xl font-semibold mr-1">
+                          The Documentation page                         
+                        </span> 
+                         shows how to use the website in general, from registration to
+                         using various functions of the website, such as:
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        -add device
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        -import device
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        -add button
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        -connecting broker in case of importing device
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        It will help users understand and be able to use the 
+                        website smoothly and enjoy the functions that the developer has prepared.
+                        <br />
+                        <br />
+                        <span className="text-blue-600 px-2 lg:text-3xl font-semibold mr-1">
+                        The document page shows how to use the application with illustrationsk
+                         to help you understand the steps as follows:                        
+                        </span>
+                      </div>
+                        <br />
+
                       <li className="lg:text-3xl text-xl text-white mb-5 font-semibold">
                          Register
                           <br />
                           <br />
                           <div className="flex justify-center">
-                            <img src="/general/register.png" alt="doc_icon" className="h-50" />
+                            <img src="/general/register.png" alt="doc_icon" className="h-50 rounded-3xl" />
                           </div>
                       </li>
                       <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
@@ -68,7 +102,7 @@ export default function Documentform () {
                           <br />
                           <br />
                           <div className="flex justify-center">
-                            <img src="/general/login.png" alt="doc_icon" className="h-[50px])" />
+                            <img src="/general/login.png" alt="doc_icon"  className="h-50 rounded-3xl" />
                           </div>
                       </li>
                       <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
@@ -99,7 +133,7 @@ export default function Documentform () {
                           <br />
                           <br />
                           <div className="flex justify-center">
-                            <img src="/general/add-or-lm.png" alt="doc_icon" className="h-[700px]) w-[700px]" />
+                            <img src="/general/add-or-lm.png" alt="doc_icon" className="h-[700px]) w-[700px] rounded-3xl" />
                           </div>
                       </li>
                       <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
@@ -131,7 +165,7 @@ export default function Documentform () {
                           <br />
                           <br />
                           <div className="flex justify-center">
-                            <img src="/general/add1.png" alt="doc_icon" className="h-50" />
+                            <img src="/general/add1.png" alt="doc_icon" className="h-50 rounded-3xl" />
                           </div>
                       </li>
                       <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
@@ -145,7 +179,7 @@ export default function Documentform () {
                       <br />
                       <br />
                       <div className="flex justify-center">
-                        <img src="/general/add5.png" alt="doc_icon" className="h-50" />
+                        <img src="/general/add5.png" alt="doc_icon" className="h-50 rounded-3xl" />
                       </div>
                       <br />
                       <br />
@@ -159,7 +193,7 @@ export default function Documentform () {
                       <br />
                       <br />
                       <div className="flex justify-center">
-                        <img src="/general/control2.png" alt="doc_icon" className="h-50" />
+                        <img src="/general/control2.png" alt="doc_icon" className="h-50 rounded-3xl" />
                       </div>
                       <br />
                       <br />
@@ -174,7 +208,7 @@ export default function Documentform () {
                       <br />
                       <br />
                       <div className="flex justify-center">
-                        <img src="/general/control1.png" alt="doc_icon" className="h-50" />
+                        <img src="/general/control1.png" alt="doc_icon" className="h-50 rounded-3xl" />
                       </div>
                       <br />
                       <br />
@@ -206,7 +240,7 @@ export default function Documentform () {
                           <br />
                           <br />
                           <div className="flex justify-center">
-                            <img src="/general/broker1.png" alt="doc_icon" className="h-[400px] w-[400px]" />
+                            <img src="/general/broker1.png" alt="doc_icon" className="h-[400px] w-[400px] rounded-3xl" />
                           </div>
                       </li>
                       <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
@@ -219,7 +253,7 @@ export default function Documentform () {
                       <br />
                       <br />
                       <div className="flex justify-center">
-                        <img src="/general/broker2.png" alt="doc_icon" className="h-[50]" />
+                        <img src="/general/broker2.png" alt="doc_icon" className="h-[50] rounded-3xl" />
                       </div>
                       <br />
                       <br />
@@ -233,7 +267,7 @@ export default function Documentform () {
                       <br />
                       <br />
                       <div className="flex justify-center">
-                        <img src="/general/broker3.png" alt="doc_icon" className="h-[50]" />
+                        <img src="/general/broker3.png" alt="doc_icon" className="h-[50] rounded-3xl" />
                       </div>
                       <br />
                       <br />
@@ -247,7 +281,7 @@ export default function Documentform () {
                       <br />
                       <br />
                       <div className="flex justify-center">
-                        <img src="/general/broker4.png" alt="doc_icon" className="h-[50]" />
+                        <img src="/general/broker4.png" alt="doc_icon" className="h-[50] rounded-3xl" />
                       </div>
                       <br />
                       <br />
@@ -263,7 +297,7 @@ export default function Documentform () {
                       <br />
                       <br />
                       <div className="flex justify-center">
-                        <img src="/general/broker5.png" alt="doc_icon" className="h-[50]" />
+                        <img src="/general/broker5.png" alt="doc_icon" className="h-[50] rounded-3xl" />
                       </div>
                       <br />
                       <br />
@@ -297,7 +331,7 @@ export default function Documentform () {
                           <br />
                           <br />
                           <div className="flex justify-center">
-                            <img src="/general/import1.png" alt="doc_icon" className="h-[700px]) w-[700px]" />
+                            <img src="/general/import1.png" alt="doc_icon" className="h-[700px]) w-[700px] rounded-3xl" />
                           </div>
                       </li>
                       <div className="bg-gray-950 px-5 py-10  text-white lg:text-2xl">
@@ -310,7 +344,7 @@ export default function Documentform () {
                       <br />
                       <br />
                       <div className="flex justify-center">
-                        <img src="/general/import2.png" alt="doc_icon" className="h-[700px]) w-[700px]" />
+                        <img src="/general/import2.png" alt="doc_icon" className="h-[700px]) w-[700px] rounded-3xl" />
                       </div>
                       <br />
                       <br />
@@ -324,7 +358,7 @@ export default function Documentform () {
                       <br />
                       <br />
                       <div className="flex justify-center">
-                        <img src="/general/import4.png" alt="doc_icon" className="h-[50]" />
+                        <img src="/general/import4.png" alt="doc_icon" className="h-[50] rounded-3xl" />
                       </div>
                       <br />
                       <br />
