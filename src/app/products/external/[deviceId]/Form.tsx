@@ -8,7 +8,7 @@ import {
 import mqtt, { MqttClient } from "mqtt";
 import React, { useEffect, useState } from "react";
 import Panel from "./Panel";
-import { CirclePlus, Wrench } from "lucide-react";
+import { CirclePlus, RefreshCw, Settings, Trash, Wrench } from "lucide-react";
 import PopUpAddButton from "../../car/[deviceId]/AddButtonPopUp";
 import ToggleRecieve from "@/components/button/toggleRecieve";
 import ToggelButton from "@/components/button/toggleButton";
@@ -113,11 +113,17 @@ export default function Form({ device_id }: Props) {
         }
       };
     } else if (broker == "adafruit" && connectPath && username && password) {
-      const client = mqtt.connect(`${connectPath || "wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt"}`, {
-        username: username,
-        password: password,
-        protocol: "wss",
-      });
+      const client = mqtt.connect(
+        `${
+          connectPath ||
+          "wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt"
+        }`,
+        {
+          username: username,
+          password: password,
+          protocol: "wss",
+        }
+      );
       client.on("connect", () => {
         setIsConnected(true);
         console.log("Connected to Adafruit broker over WebSocket");
@@ -180,7 +186,7 @@ export default function Form({ device_id }: Props) {
       client.unsubscribe(topic);
       client.end();
     };
-  }, [topic,broker]);
+  }, [topic, broker]);
   const onClickPopUp = async () => {
     setPopUpClick(true);
     if (deviceData?.wifiId) {
@@ -189,7 +195,9 @@ export default function Form({ device_id }: Props) {
       });
     }
   };
-
+  const RefreshConnect = () => {
+    window.location.reload();
+  };
   const [popup_chart, setPopUpChart] = useState<boolean>(false);
 
   return (
@@ -233,8 +241,34 @@ export default function Form({ device_id }: Props) {
       </div>
       <div className="px-10">
         <div className=" grid gap-10 place-items-center  px-1 lg:px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
-          <div className="lg:flex md:flex justify-center    w-fit lg:w-fit lg:py-5">
-            {topic && deviceData?.name && (
+          <div className="lg:flex md:flex gap-8 justify-center    w-fit lg:w-fit lg:py-5">
+            <div className="px-5 grid h-fit gap-4">
+              <button
+                className="px-5 h-fit bg-green-500 hover:bg-green-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Refresh <RefreshCw className="w-5 h-5" />
+              </button>
+              <button
+                className="px-5 bg-blue-500 hover:bg-blue-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Settings <Settings className="w-5 h-5" />
+              </button>
+              <button
+                className="px-5 bg-red-400 hover:bg-red-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Delete <Trash className="w-5 h-5" />
+              </button>
+            </div>
+            {topic && deviceData?.name && connectPath && (
               <Panel
                 isConnected={isConnected}
                 client={client}
@@ -396,15 +430,14 @@ export default function Form({ device_id }: Props) {
         />
       )}
       {popUp_click && wifiData?.wifiId && (
-              <WifiPopUp
-                onClosePopUp={setPopUpClick}
-                wifiID={wifiData?.wifiId}
-                client={client}
-                isConnected={isConnected}
-                topic={topic}
-              />
-            )}
+        <WifiPopUp
+          onClosePopUp={setPopUpClick}
+          wifiID={wifiData?.wifiId}
+          client={client}
+          isConnected={isConnected}
+          topic={topic}
+        />
+      )}
     </div>
   );
 }
-

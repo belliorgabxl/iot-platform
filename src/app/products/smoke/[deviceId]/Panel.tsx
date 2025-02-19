@@ -14,6 +14,10 @@ type Props = {
   device_log: string;
   device_connect: boolean;
   smokeValue: string | null;
+  value2: string;
+  value3: string;
+  value4: string;
+  value5: string;
 };
 export default function Panel({
   isLoading,
@@ -21,20 +25,23 @@ export default function Panel({
   device_log,
   device_connect,
   smokeValue,
+  value2,
+  value3,
+  value4,
+  value5,
 }: Props) {
   const [water, setWater] = useState<number>(0);
-      useEffect(()=>{
-        if ( smokeValue){
-          const part =  smokeValue.split(":");
-        if (part.length === 2 && part[0] === "value1" ){
-            const waterValue =  parseInt(part[1] , 10);
-            if(!isNaN(waterValue)){
-                setWater(waterValue);
-            }
+  useEffect(() => {
+    if (smokeValue) {
+      const part = smokeValue.split(":");
+      if (part.length === 2 && part[0] === "value1") {
+        const waterValue = parseInt(part[1], 10);
+        if (!isNaN(waterValue)) {
+          setWater(waterValue);
         }
-        }
-        
-      },[smokeValue]);
+      }
+    }
+  }, [smokeValue]);
   return (
     <div
       className={`duration-1000 gap-2  shadow-md bg-gradient-to-tr px-5 w-full from-blue-950 to-gray-800 rounded-lg ${
@@ -51,16 +58,6 @@ export default function Panel({
             Smoke Detector
           </span>
         </h1>
-      </div>
-      <div
-        className={`lg:my-5 grid lg:flex justify-between ${
-          isLoading ? "animate-fadeIn " : "opacity-0"
-        }`}
-      >
-        <span className="lg:text-xl text-white my-1">Action Type : </span>
-        <span className="bg-gray-600  shadow-gray-950 text-center  lg:text-xl rounded-3xl text-white h-fit line-clamp-1 px-10 py-1 ">
-          Transmitter
-        </span>
       </div>
       <div
         className={`my-2 lg:flex  justify-between  grid gap-2  ${
@@ -98,17 +95,19 @@ export default function Panel({
           {topic}
         </span>
       </div>
-      <hr className={`my-4 ${isLoading ? "animate-fadeIn " : "opacity-0"}`} />
-      <div className={`mb-6 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
-        <div className="lg:text-xl text-white my-1">Device log</div>
-        <div className="bg-gray   flex  lg:text-xl rounded-sm text-black font-semibold px-3 py-4 bg-gray-200 text-start">
-          <p className=" duration-75 animate-pulse ">&gt;_&nbsp;&nbsp;&nbsp;</p>
-          Moisture {water*5} %
+      <hr className={`my-2 ${isLoading ? "animate-fadeIn " : "opacity-0"}`} />
+      <div className={`mb-2 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
+        <div className=" grid place-items-center lg:text-xl rounded-sm gap-2 text-black font-semibold px-3 py-1 ">
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Temperature : {smokeValue} C</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Humidity : {value2} %RH</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">LPG : {value3} ppm</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Co : {value4} ppm</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Smoke : {value5} ppm</p>
         </div>
       </div>
       <div className={` ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
         <div className="lg:text-xl text-white my-1">Console log</div>
-        <div className="bg-black   flex   text-xl rounded-sm text-white px-3 pt-2 pb-10 text-start">
+        <div className="bg-black   flex   text-xl rounded-sm text-white px-3 py-2  text-start">
           <p className=" duration-75 animate-pulse ">&gt;_&nbsp;&nbsp;&nbsp;</p>
           {device_log}
         </div>

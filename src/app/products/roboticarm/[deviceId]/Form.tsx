@@ -8,7 +8,7 @@ import { ButtonModel, DeviceModel, WifiModel } from "@/resource/model";
 import ToggelButton from "@/components/button/toggleButton";
 import PressButton from "@/components/button/pressButton";
 import ToggleRecieve from "@/components/button/toggleRecieve";
-import { CirclePlus, Wrench } from "lucide-react";
+import { CirclePlus, RefreshCw, Settings, Trash, Wrench } from "lucide-react";
 import PopUpAddButton from "./AddButtonPopUp";
 import WifiPopUp from "@/components/popup/WifiPopUp";
 
@@ -119,7 +119,9 @@ export default function FormPage({ device_id }: Props) {
       client.end();
     };
   }, [topic]);
-
+  const RefreshConnect = () => {
+    window.location.reload();
+  };
   const getLogReturned = (data: string) => {
     setReturnedLog(data);
   };
@@ -180,6 +182,32 @@ export default function FormPage({ device_id }: Props) {
 
         <div className=" grid gap-10 place-items-center px-1 lg:px-10 lg:flex lg:justify-center md:flex md:justify-center items-start   border-2 border-dashed border-gray-400 shadow-md shadow-gray-800 py-5 rounded-md lg:h-fit">
           <div className="lg:flex md:flex justify-center    w-full lg:w-fit lg:py-5">
+          <div className="px-5 grid h-fit gap-4">
+              <button
+                className="px-5 h-fit bg-green-500 hover:bg-green-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Refresh <RefreshCw className="w-5 h-5" />
+              </button>
+              <button
+                className="px-5 bg-blue-500 hover:bg-blue-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Settings <Settings className="w-5 h-5" />
+              </button>
+              <button
+                className="px-5 bg-red-400 hover:bg-red-600 flex justify-center items-center gap-3 py-1 text-white rounded-md "
+                onClick={() => {
+                  RefreshConnect();
+                }}
+              >
+                Delete <Trash className="w-5 h-5" />
+              </button>
+            </div>
             {topic && (
               <Panel
                 isConnected={isConnected}

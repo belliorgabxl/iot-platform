@@ -88,6 +88,16 @@ export default function Panel({ isLoading, topic, device_log ,broker , connectPa
               {topic}
             </span>
           </div>
+          <div
+            className={`my-5 w-full lg:gap-3 grid lg:flex justify-between ${
+              isLoading ? "animate-fadeIn " : "opacity-0"
+            }`}
+          >
+            <span className="lg:text-xl text-white my-1">Endpoint : </span>
+            <p className="bg-gray-600 line-clamp-1 w-[250px] flex items-center shadow-gray-950 text-center   rounded-3xl text-white  text-sm px-5 py-1">
+              {connectPath.slice(0,25)}...
+            </p>
+          </div>
           <hr className={`my-8 ${isLoading ? "animate-fadeIn " : "opacity-0"}`} />
           <div className={` ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
             <div className="lg:text-xl text-white my-1">Console log</div>
