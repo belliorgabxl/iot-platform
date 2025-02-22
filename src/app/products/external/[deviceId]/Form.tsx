@@ -212,7 +212,7 @@ export default function Form({ device_id }: Props) {
                 : "px-0 text-gray-700 "
             } line-clamp-1 h-fit `}
           >
-            <p>External Device</p>
+            <p>Your Device</p>
           </h1>
           <button
             className={`flex justify-center gap-4  mx-3 w-fit h-fit  py-1 text-sm items-center rounded-3xl shadow-sm shadow-gray-800 active:shadow-inner active:shadow-black   hover:bg-blue-400 hover:text-black ${
@@ -289,30 +289,30 @@ export default function Form({ device_id }: Props) {
             <div className="lg:flex  w-full grid place-items-center lg:justify-start gap-3">
               <button
                 className={`
-               h-fit text-xl   w-[150px] shadow-md font-semibold bg-white text-blue-800 shadow-gray-700  px-5 py-1 rounded-2xl`}
+               h-fit  w-[180px] text-sm shadow-md font-semibold bg-white text-blue-800 shadow-gray-700  px-5 py-1 rounded-2xl hover:bg-gray-500 hover:text-white`}
               >
                 <div className="flex items-center justify-center gap-2">
                   <Wrench
                     style={{ width: "1.4rem", height: "1.4rem" }}
                     className="mt-1"
                   />
-                  Custom
+                  Add Monitor
                 </div>
               </button>
               <button
-                className={`  bg-white text-blue-700 font-semibold px-5 w-[150px] h-fit line-clamp-1 overflow-hidden text-lg shadow-md shadow-gray-700  hover:bg-gray-500 hover:text-white py-1 justify-end rounded-2xl`}
+                className={`  bg-white text-blue-700 font-semibold px-5 w-[150px] h-fit line-clamp-1 overflow-hidden text-sm flex justify-center items-center shadow-md shadow-gray-700  hover:bg-gray-500 hover:text-white py-1 rounded-2xl gap-2`}
                 onClick={() => setPopUpBtn(!popup_btn)}
               >
                 <CirclePlus
                   style={{ width: "1.4rem", height: "1.4rem" }}
-                  className="absolute -translate-x-2 translate-y-[3px]"
+                  className=""
                 />
-                <div className="translate-x-3">Add Button</div>
+                <div className="">Add Button</div>
               </button>
             </div>
             {!adjust ? (
               <div className="border-2 border-dashed grid place-items-center py-5 rounded-lg text-white lg:text-[18px] text-sm w-full h-[250px]">
-                Customize you button !
+                Customize you button or Add Monitor
               </div>
             ) : (
               <div className="animate-fastFade w-full">
