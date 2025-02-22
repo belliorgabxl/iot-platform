@@ -13,6 +13,7 @@ import axios from "axios";
 import { MqttProvider } from "@/components/connect/MqttContext";
 import DeviceStatus from "@/components/statusconnect/DeviceStatus";
 import GetIPComponent from "@/components/getIP";
+import EditDevicePopUp from "@/components/popup/EditDevicePopUp";
 
 type Props = {
   session: Session;
@@ -365,14 +366,13 @@ export default function Body({ session }: Props) {
         />
       )}
       {edit_popup && edit_id && edit_deviceId && (
-        // <EditDevicePopUp
-        //   id={edit_id}
-        //   deviceId={edit_deviceId}
-        //   onClosePopUp={() => {
-        //     setEditPopUp(false);
-        //   }}
-        // />
-        <div></div>
+        <EditDevicePopUp
+          id={edit_id}
+          deviceId={edit_deviceId}
+          onClosePopUp={() => {
+            setEditPopUp(false);
+          }}
+        />
       )}
     </div>
   );

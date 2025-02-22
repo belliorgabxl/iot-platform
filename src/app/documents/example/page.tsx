@@ -13,11 +13,11 @@ const char *ssid = "Default";
 const char *password = "12345678";
 
 // MQTT Broker
-const char *mqtt_broker = "4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud";
-const char *mqtt_username = "admin";
-const char *mqtt_password = "Bam1234!";
-const int mqtt_port = 8883;
-const char *topic = "esp32/fan";
+const char *mqtt_broker = "your-broker";
+const char *mqtt_username = "your username";
+const char *mqtt_password = "your password!";
+const int mqtt_port = your port;
+const char *topic = "your topic device"
 
 // GPIO Pins
 #define RELAY_PIN 33

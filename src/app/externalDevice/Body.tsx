@@ -65,7 +65,7 @@ export default function Body({ session }: Props) {
     <div className="w-full bg-gray-700">
       <div className="w-full grid place-items-center ">
         <h1 className="py-2 bg-gray-800 px-10 text-3xl rounded-3xl text-white my-2">
-          Import External Device
+          Import New Device
         </h1>
       </div>
       <div className="w-full mt-4 flex justify-start px-2 lg:px-10 gap-5">
@@ -73,7 +73,7 @@ export default function Body({ session }: Props) {
           className="flex text-white items-center gap-2 px-8 py-2 rounded-3xl bg-blue-600 hover:bg-blue-500"
           onClick={() => setOpenImport(!openImport)}
         >
-          Import Device
+          Import New Device
           <ChevronRight
             style={{ width: "1.5rem", height: "1.5rem" }}
             className={` ${
