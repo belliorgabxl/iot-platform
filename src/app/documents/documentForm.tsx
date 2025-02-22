@@ -21,7 +21,7 @@ export default function Documentform () {
                        ? "rounded-lg text-white lg:px-32 px-20 bg-gray-900 my-5"
                        : "opacity-0 px-0"
                     }`}>
-                      Documentation
+                      Internet of thing Platform
                   </div>
 
                   <div className="bg-gray-950 w-full lg:px-5 px-3 rounded-2xl grid place-items-center">
@@ -37,21 +37,16 @@ export default function Documentform () {
                          shows how to use the website in general, from registration to
                          using various functions of the website, such as:
                         <br />
+                        <div className="py-4 pl-10">
+                          <li>Add device</li> 
+                        <li>Import device</li>
+                        <li>Add button</li>
+
+                        </div>
+                        
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        -add device
-                        <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        -import device
-                        <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        -add button
-                        <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        -connecting broker in case of importing device
+                        connecting broker in case of importing device
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         It will help users understand and be able to use the 

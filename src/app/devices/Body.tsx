@@ -271,17 +271,17 @@ export default function Body({ session }: Props) {
 
           <div className="lg:flex lg:justify-end sm:grid sm:place-items-start grid  place-items-start gap-3">
             <button
-              className="flex gap-2 justify-center bg-blue-600 rounded-3xl items-center hover:bg-slate-600  shadow-md  h-fit text-white w-[180px] px-2 text-sm lg:px-4 py-1 "
+              className="flex gap-2 justify-center bg-blue-600 rounded-3xl items-center hover:bg-slate-600  shadow-md text-sm  h-fit text-white w-[180px] px-2 text-sm lg:px-4 py-1 "
               onClick={onClickPopUp}
             >
               <CirclePlus
                 style={{ width: "1.8rem", height: "1.8rem" }}
                 className="relative  text-white"
               />
-              Add Device
+              Example Device
             </button>
             <button
-              className="flex gap-2 justify-center items-center font-semibold bg-white rounded-3xl hover:bg-slate-600 hover:text-white  shadow-md text-gray-700 w-[180px]  px-2 lg:px-4 py-1 group"
+              className="flex gap-2 justify-center items-center font-semibold bg-white rounded-3xl hover:bg-slate-600 hover:text-white  text-sm shadow-md text-gray-700 w-[230px]  px-2 lg:px-4 py-1 group"
               onClick={() => {
                 router.push("/externalDevice");
               }}
@@ -290,7 +290,7 @@ export default function Body({ session }: Props) {
                 style={{ width: "2.0rem", height: "1.8rem" }}
                 className="relative  text-gray-700 group-hover:text-white"
               />
-              Import
+              Import New Device
             </button>
           </div>
         </div>

@@ -84,7 +84,7 @@ export default function Body({ session }: Props) {
         <button
           className="flex text-white items-center gap-2 px-8 py-2 rounded-3xl bg-blue-600 hover:bg-blue-500"
           onClick={() => {
-            router.push("/documents/example");
+            router.push("/documents/src-code/ep1");
           }}
         >
           .ino Source-Code

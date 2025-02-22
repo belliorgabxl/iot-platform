@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import CodeBlock from "./code";
+import CodeBlock from "@/components/code/code";
 import DocumentSideBar from "@/components/sidebar/documentSideBar";
 
 export default function Page() {
@@ -107,10 +107,10 @@ void callback(char *topic, byte *payload, unsigned int length) {
 }`;
   return (
     <div className="py-5 bg-gray-800">
-      <DocumentSideBar/>
+      <DocumentSideBar />
       <div className="w-full flex justify-center">
         <h1 className="text-white text-3xl font-bold text-center w-fit px-10 bg-gray-900  py-2 h-fit rounded-3xl">
-          Example Code in ESP32
+          How to connect ESP-32 with Platform
         </h1>
       </div>
       <div className="flex justify-center w-full">
@@ -122,14 +122,12 @@ void callback(char *topic, byte *payload, unsigned int length) {
             <CodeBlock code={exampleCode1} language="javascript" />
           </div>
 
-
           <div className="grid w-full gap-1">
             <p className="bg-gray-700 py-2 px-5 rounded-md text-white text-sm  w-fit">
               In Void Setup configuration
             </p>
             <CodeBlock code={exampleCode2} language="javascript" />
           </div>
-
 
           <div className="grid w-full gap-1">
             <p className="bg-gray-700 py-2 px-5 rounded-md text-white text-sm  w-fit">

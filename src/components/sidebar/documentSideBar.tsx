@@ -36,7 +36,7 @@ export default function DocumentSideBar() {
     },
     {
       title: "EPS32 Source Code",
-      link: "/documents",
+      link: "/documents/src-code",
     },
     {
       title: "Waiting for Update...",
