@@ -50,3 +50,10 @@ export async function PUT(request, { params }) {
     );
   }
 }
+export async function DELETE(request, { params }) {
+  await connect();
+  const { deviceId } = await params;
+  await ExternalDevice.deleteOne({ deviceId: deviceId });
+  return NextResponse.json({ message: "Delete Success" }, { status: 200 });
+}
+

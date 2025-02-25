@@ -3,6 +3,7 @@ import Product from "../../../models/productModel";
 import { NextResponse } from "next/server";
 
 connect();
+
 export async function POST(request) {
   const { productId, type, topic, password, ownerStatus} =
     await request.json();
