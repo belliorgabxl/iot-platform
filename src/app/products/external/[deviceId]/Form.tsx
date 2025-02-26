@@ -147,6 +147,8 @@ export default function Form({ device_id }: Props) {
   const [value1, setValue1] = useState<string | null>();
   const [value2, setValue2] = useState<string | null>();
   const [value3, setValue3] = useState<string | null>();
+  const [value4, setValue4] = useState<string | null>();
+  const [value5, setValue5] = useState<string | null>();
   useEffect(() => {
     console.log("Listen Event Start...");
     const client = mqtt.connect(connectPath, {
@@ -179,6 +181,10 @@ export default function Form({ device_id }: Props) {
         setValue2(message.toString());
       } else if (message.toString().startsWith("value3")) {
         setValue3(message.toString());
+      } else if (message.toString().startsWith("value4")) {
+        setValue4(message.toString());
+      } else if (message.toString().startsWith("value5")) {
+        setValue5(message.toString());
       }
     });
     return () => {
@@ -187,14 +193,18 @@ export default function Form({ device_id }: Props) {
       client.end();
     };
   }, [topic, broker]);
+
   const onClickPopUp = async () => {
     setPopUpClick(true);
     if (deviceData?.wifiId) {
       await fetchWifiId(deviceData?.wifiId).then((item) => {
         setWifiData(item);
+        
       });
     }
+    
   };
+
   const RefreshConnect = () => {
     window.location.reload();
   };

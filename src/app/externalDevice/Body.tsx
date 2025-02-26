@@ -358,10 +358,12 @@ const ImportExternalPopup = ({
   const onSaveNewDevice = async () => {
     setSaveLoad(true);
     const deviceId = uuidv4();
-    const status = "";
+    let status = "";
     const wifiId = uuidv4();
     const wifiConnect = "none";
-    const response = await fetch(`/api/importDevice`, {
+    const wifiName = "Default"
+    const wifiPassword ="12345678"
+    const response1 = await fetch(`/api/importDevice`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -380,7 +382,20 @@ const ImportExternalPopup = ({
         wifiConnect,
       }),
     });
-    if (response.ok) {
+    status = "none"
+    const response2 = await fetch(`/api/wifi`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+      wifiId,
+      wifiName,
+      wifiPassword,
+      status
+      }),
+    });
+    if (response1.ok && response2) {
       toast.success("Import Success.");
       setSaveLoad(false);
       onClosePopUp(false);
