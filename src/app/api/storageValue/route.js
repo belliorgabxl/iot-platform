@@ -22,13 +22,13 @@ export async function POST(request) {
 }
 
 export async function GET() {
-    try {
-      const docs = await StorageValue.find();
-      return NextResponse.json(docs, { status: 200 });
-    } catch (error) {
-      return NextResponse.json({ message: error.message }, { status: 500 });
-    }
+  try {
+    const docs = await StorageValue.find();
+    return NextResponse.json(docs, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
+}
 export async function PUT(request) {
   try {
     const { id, value } = await request.json();
@@ -49,7 +49,6 @@ export async function PUT(request) {
         { status: 404 }
       );
     }
-
     return NextResponse.json(updatedDoc, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 });

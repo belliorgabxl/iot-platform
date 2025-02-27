@@ -271,7 +271,7 @@ export default function Body({ session }: Props) {
 
           <div className="lg:flex lg:justify-end sm:grid sm:place-items-start grid  place-items-start gap-3">
             <button
-              className="flex gap-2 justify-center bg-blue-600 rounded-3xl items-center hover:bg-slate-600  shadow-md text-sm  h-fit text-white w-[180px] px-2 text-sm lg:px-4 py-1 "
+              className="flex gap-2 justify-center bg-blue-600 rounded-3xl items-center hover:bg-slate-600  shadow-md h-fit text-white w-[180px] px-2 text-sm lg:px-4 py-1 "
               onClick={onClickPopUp}
             >
               <CirclePlus

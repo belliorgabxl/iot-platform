@@ -13,11 +13,13 @@ import PopUpAddButton from "../../car/[deviceId]/AddButtonPopUp";
 import ToggleRecieve from "@/components/button/toggleRecieve";
 import ToggelButton from "@/components/button/toggleButton";
 import PressButton from "@/components/button/pressButton";
-import DonutChartDirt from "@/components/chart/donutChartDirt";
 import CircleChartDirt from "@/components/chart/circleChartDirt";
 import CircleMonitor from "@/components/chart/circleMonitor";
-import PopUpAddChart from "../../pump/[deviceId]/AddChartPopUp";
+import PopUpAddChart from "./AddChartPopUp";
 import WifiPopUp from "@/components/popup/WifiPopUp";
+import DonutChart from "@/components/chart/donutChart";
+import BarChart from "@/components/chart/barChart";
+import LineChart from "@/components/chart/lineChart";
 
 type Props = {
   device_id: string;
@@ -36,8 +38,9 @@ const fetchButton = async (id: string) => {
   const response = await fetch(`/api/button/${id}`);
   return response.json();
 };
+
 const fetchChart = async (id: string) => {
-  const response = await fetch(`/api/chart/${id}`);
+  const response = await fetch(`/api/externalChart/${id}`);
   return response.json();
 };
 
@@ -199,10 +202,8 @@ export default function Form({ device_id }: Props) {
     if (deviceData?.wifiId) {
       await fetchWifiId(deviceData?.wifiId).then((item) => {
         setWifiData(item);
-        
       });
     }
-    
   };
 
   const RefreshConnect = () => {
@@ -295,20 +296,8 @@ export default function Form({ device_id }: Props) {
               />
             )}
           </div>
-          <div className="grid gap-2 lg:gap-4  place-items-center  lg:h-fit px-1 lg:px-10 lg:py-5 w-fit">
+          <div className="grid gap-2 lg:gap-4  place-items-start  lg:h-fit px-1 lg:px-10 lg:py-5 w-fit">
             <div className="lg:flex  w-full grid place-items-center lg:justify-start gap-3">
-              <button
-                className={`
-               h-fit  w-[180px] text-sm shadow-md font-semibold bg-white text-blue-800 shadow-gray-700  px-5 py-1 rounded-2xl hover:bg-gray-500 hover:text-white`}
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <Wrench
-                    style={{ width: "1.4rem", height: "1.4rem" }}
-                    className="mt-1"
-                  />
-                  Add Monitor
-                </div>
-              </button>
               <button
                 className={`  bg-white text-blue-700 font-semibold px-5 w-[150px] h-fit line-clamp-1 overflow-hidden text-sm flex justify-center items-center shadow-md shadow-gray-700  hover:bg-gray-500 hover:text-white py-1 rounded-2xl gap-2`}
                 onClick={() => setPopUpBtn(!popup_btn)}
@@ -321,8 +310,9 @@ export default function Form({ device_id }: Props) {
               </button>
             </div>
             {!adjust ? (
-              <div className="border-2 border-dashed grid place-items-center py-5 rounded-lg text-white lg:text-[18px] text-sm w-full h-[250px]">
-                Customize you button or Add Monitor
+              <div className="border-2 px-20 text-center border-dashed grid place-items-center py-5 rounded-lg text-white lg:text-[18px] text-sm w-full h-[250px]">
+                Customize you button
+                <br /> And Graph
               </div>
             ) : (
               <div className="animate-fastFade w-full">
@@ -371,7 +361,7 @@ export default function Form({ device_id }: Props) {
                   </div>
                 ) : (
                   <div className="border-2 border-dashed grid place-items-center py-5 rounded-lg text-white lg:text-[18px] text-sm w-full h-[250px]">
-                    Customize you button !
+                    Customize you button And Graph
                   </div>
                 )}
               </div>
@@ -390,9 +380,50 @@ export default function Form({ device_id }: Props) {
                   <div key={item.id}>
                     {item.type == "donut" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
-                        <DonutChartDirt value={value1 || "0"} />
+                        <DonutChart
+                          value={[
+                            Number(value1) || 10,
+                            Number(value2) || 50,
+                            Number(value3) || 10,
+                            Number(value4) || 40,
+                            Number(value5) || 30,
+                          ]}
+                          valueLabel={Array.isArray(item.label) ? item.label : []} 
+                          bgcolor={Array.isArray(item.bgcolor) ? item.bgcolor : []} 
+                          chartName="ESP32 Sensor Data"
+                        />
                       </div>
-                    ) : item.type == "circle" ? (
+                    ) :item.type == "bar" ? (
+                      <div className="animate-fastFade grid place-items-center w-full">
+                        <BarChart
+                          value={[
+                            Number(value1) || 10,
+                            Number(value2) || 50,
+                            Number(value3) || 10,
+                            Number(value4) || 40,
+                            Number(value5) || 30,
+                          ]}
+                          valueLabel={Array.isArray(item.label) ? item.label : []} 
+                          bgcolor={Array.isArray(item.bgcolor) ? item.bgcolor : []} 
+                          chartName="ESP32 Sensor Data"
+                        />
+                      </div>
+                    ) :item.type == "line" ? (
+                      <div className="animate-fastFade grid place-items-center w-full">
+                        <LineChart
+                          value={[
+                            Number(value1) || 10,
+                            Number(value2) || 50,
+                            Number(value3) || 10,
+                            Number(value4) || 40,
+                            Number(value5) || 30,
+                          ]}
+                          valueLabel={Array.isArray(item.label) ? item.label : []} 
+                          bgcolor={Array.isArray(item.bgcolor) && item.bgcolor.length > 0 ? item.bgcolor[0] : "#FF6384"}
+                          chartName="ESP32 Sensor Data"
+                        />
+                      </div>
+                    ):  item.type == "circle" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
                         <CircleChartDirt value={value1 || "0"} />
                       </div>
@@ -412,10 +443,8 @@ export default function Form({ device_id }: Props) {
                 ))}
               </div>
             ) : (
-              <div className="border-dashed border-2 border-white grid place-items-center px-0 py-10 text-2xl text-white">
-                <p className="line-clamp-2 w-[50%] text-center">
-                  Create Your Graph to monitor!
-                </p>
+              <div className="border-dashed border-2 w-full border-white grid place-items-center px-0 py-10 text-2xl text-white">
+                <p className="line-clamp-2 w-full text-center">Empty</p>
               </div>
             )}
           </div>
