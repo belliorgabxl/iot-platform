@@ -1,6 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import "leaflet/dist/leaflet.css";
+import PMMarker from "@/components/map/PMMark"; 
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -10,16 +12,6 @@ const TileLayer = dynamic(
   () => import("react-leaflet").then((mod) => mod.TileLayer),
   { ssr: false }
 );
-const Marker = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Marker),
-  { ssr: false }
-);
-const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
-  ssr: false,
-});
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-import Link from "next/link";
 
 export default function Main() {
   const [devices, setDevices] = useState([
@@ -59,32 +51,7 @@ export default function Main() {
 
   const [icons, setIcons] = useState<{ [key: number]: L.DivIcon }>({});
   
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const newIcons: { [key: number]: L.DivIcon } = {};
-      devices.forEach((device) => {
-        newIcons[device.id] = L.divIcon({
-          html: `<div style="
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: ${Number(device.pm) > 100 ? "red" : "green"};
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-          ">${device.pm}</div>`,
-          className: "custom-icon",
-          iconSize: [40, 40],
-        });
-      });
-      setIcons(newIcons);
-    }
-  }, [devices]);
+
 
   return (
     <div className="py-5 px-10 bg-gray-700">
@@ -100,7 +67,7 @@ export default function Main() {
       </div>
       <div className="flex justify-center py-5">
         <div className="w-[1100px] rounded-lg overflow-hidden h-[500px]">
-          <MapContainer
+        <MapContainer
             center={[13.72768, 100.7761]}
             zoom={18}
             className="h-full w-full"
@@ -109,30 +76,15 @@ export default function Main() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             />
-
             {devices.map((device) => (
-              <Marker
+              <PMMarker
                 key={device.id}
-                position={[device.lat, device.lng]}
-                icon={icons[device.id] || L.divIcon({ html: "<div>Loading...</div>" })}
-              >
-                <Popup>
-                  <Link
-                    href={`/products/pm-detect/${device.deviceId}`}
-                    className="text-center grid hover:scale-110 duration-500"
-                  >
-                    <div className="font-bold bg-gray-600 text-white px-4 rounded-md text-xl">
-                      IoT Device {device.id}
-                    </div>
-                    {device.deviceId}
-                    <div className="flex gap-2 justify-center">
-                      <p className="text-[16px] bg-blue-500 text-white font-semibold px-2 py-1 rounded-sm">
-                        PM : {device.pm}
-                      </p>
-                    </div>
-                  </Link>
-                </Popup>
-              </Marker>
+                id={device.id}
+                lat={device.lat}
+                lng={device.lng}
+                pm={device.pm}
+                deviceId={device.deviceId}
+              />
             ))}
           </MapContainer>
         </div>
