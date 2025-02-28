@@ -17,7 +17,7 @@ export default function Main() {
         <div className="w-fit grid gap-2">
           <Link
             className="px-10 rounded-md w-fit hover:bg-blue-700 bg-blue-500 text-white py-1 text-lg"
-            href="/dashboard/pm-detect"
+            href="/dashboardforUser/pm-detect"
           >
             PM-Detecter Dashboard
           </Link>
@@ -46,7 +46,7 @@ export default function Main() {
         <div className="w-fit grid gap-2">
           <Link
             className="px-10 w-fit rounded-md  hover:bg-blue-700 bg-blue-500 text-white py-1 text-lg"
-            href="/dashboard/fire-detect"
+            href="/dashboardforUser/fire-detect"
           >
             Fire-Detecter Dashboard
           </Link>

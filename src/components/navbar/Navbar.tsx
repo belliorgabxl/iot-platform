@@ -98,9 +98,9 @@ export default function Navbar() {
             isActive={pathname === "/aboutus"}
           />
           <NavLink
-           href="/dashboard"
+           href="/dashboardforUser"
            label="DashBoard"
-           isActive={pathname === "/dashboard"}
+           isActive={pathname === "/dashboardforUser"}
           />
         </div>
 
