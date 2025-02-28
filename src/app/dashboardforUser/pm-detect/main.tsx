@@ -21,30 +21,6 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import Link from "next/link";
 
-const createCustomIcon = (pmValue: number) => {
-  if (typeof window === "undefined")
-    return L.divIcon({ html: "<div>Loading...</div>" });
-
-  return L.divIcon({
-    html: `<div style="
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: ${pmValue > 100 ? "red" : "green"};
-        color: white;
-        font-size: 14px;
-        font-weight: bold;
-        border-radius: 50%;
-        border: 2px solid white;
-        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-      ">${pmValue}</div>`,
-    className: "custom-icon",
-    iconSize: [40, 40],
-  });
-};
-
 export default function Main() {
   const [devices, setDevices] = useState([
     {
@@ -81,6 +57,34 @@ export default function Main() {
     },
   ]);
 
+  const [icons, setIcons] = useState<{ [key: number]: L.DivIcon }>({});
+  
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const newIcons: { [key: number]: L.DivIcon } = {};
+      devices.forEach((device) => {
+        newIcons[device.id] = L.divIcon({
+          html: `<div style="
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: ${Number(device.pm) > 100 ? "red" : "green"};
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+          ">${device.pm}</div>`,
+          className: "custom-icon",
+          iconSize: [40, 40],
+        });
+      });
+      setIcons(newIcons);
+    }
+  }, [devices]);
 
   return (
     <div className="py-5 px-10 bg-gray-700">
@@ -110,7 +114,7 @@ export default function Main() {
               <Marker
                 key={device.id}
                 position={[device.lat, device.lng]}
-                icon={createCustomIcon(Number(device.pm))}
+                icon={icons[device.id] || L.divIcon({ html: "<div>Loading...</div>" })}
               >
                 <Popup>
                   <Link
@@ -138,9 +142,8 @@ export default function Main() {
           <p className="text-xl font-semibold py-2 text-white text-start">
             Applications of IoT-Enabled PM Detectors
           </p>
-          <p className="  text-start text-white text-[16px] ">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The
-            integration of IoT technology in PM detectors is transforming
+          <p className="text-start text-white text-[16px]">
+            The integration of IoT technology in PM detectors is transforming
             environmental monitoring by offering smarter, real-time, and more
             reliable air quality assessments. With continuous innovation, these
             devices will play a critical role in mitigating pollution-related
