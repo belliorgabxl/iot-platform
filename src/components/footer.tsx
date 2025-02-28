@@ -16,11 +16,11 @@ export default function Footer() {
             <div>
               <h1 className="text-4xl font-bold">IoT</h1>
               <p className="text-sm">
-                Web Application for IoT Device Management.
+                IoT Device Management Platform
               </p>
             </div>
           </div>
-          <div className="mt-6">
+          <div className="mt-6 pb-2">
             <h2 className="text-2xl font-bold">Contact</h2>
             <p>King Mongkut's Institute of Technology Ladkrabang.</p>
             <p>1 Chalong Krung 1 Alley, Lat Krabang, Bangkok 10520, Thailand</p>
@@ -30,7 +30,7 @@ export default function Footer() {
               About Us
             </a>
             <a
-              href="https://github.com/belliorgabxl/project_esp"
+              href="https://github.com/belliorgabxl/iot-platform"
               className="flex items-center gap-2 text-sm hover:text-gray-300"
             >
               <img
@@ -45,7 +45,9 @@ export default function Footer() {
               <img src="/assets/mail.png" alt="Mail" width={50} height={50} />
               64010153@kmitl.ac.th
             </a>
-            <a className="flex items-center gap-2 text-sm hover:text-gray-300">
+            <a 
+              href="https://discord.gg/spWZACKg" 
+              className="flex items-center gap-2 text-sm hover:text-gray-300 pb-5">
               <img
                 src="/assets/discord.png"
                 alt="Discord"
@@ -57,7 +59,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="pb-5">
           <h1 className="text-2xl font-bold">Get Started</h1>
           <ul className="mt-2 space-y-2">
             <li>
@@ -72,32 +74,34 @@ export default function Footer() {
             </li>
           </ul>
           <div>
-            <h2 className="mt-6 text-2xl font-bold">Product</h2>
-            <ul className="mt-4 space-y-2">
-              <li>Robot Car</li>
-              <li>Robotic Arm</li>
-              <li>Plant Watering Devices</li>
-              <li>Smoke detector</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="mt-6 text-2xl font-bold">Device Control</h3>
-            <ul className="mt-4 space-y-2">
-              <li>Robot Car</li>
-              <li>Robotic Arm</li>
-              <li>Plant Watering Devices</li>
-              <li>Smoke detector</li>
-            </ul>
-          </div>
+          <h2 className="mt-6 text-2xl font-bold">Product</h2>
+          <ul className="mt-4 space-y-2">
+            <a href="/production" className="hover:text-gray-300 block">Robot Car</a>
+            <a href="/production" className="hover:text-gray-300 block">Robotic Arm</a>
+            <a href="/production" className="hover:text-gray-300 block">Plant Watering Devices</a>
+            <a href="/production" className="hover:text-gray-300 block">Smoke detector</a>
+          </ul>
+        </div>
+        <div>
+          <h3 className="mt-6 text-2xl font-bold">Device Control</h3>
+          <ul className="mt-4 space-y-2">
+            <a href="/devices" className="hover:text-gray-300 block">Robot Car</a>
+            <a href="/devices" className="hover:text-gray-300 block">Robotic Arm</a>
+            <a href="/devices" className="hover:text-gray-300 block">Plant Watering Devices</a>
+            <a href="/devices" className="hover:text-gray-300 block">Smoke detector</a>
+          </ul>
+        </div>
         </div>
 
         <div className="flex flex-col">
           <h1 className="text-2xl font-bold">Main Features</h1>
           <ul className="mt-4 space-y-2">
-            <li>IoT device connectivity</li>
             <li>IoT device management</li>
-            <li>Real-time control and operation</li>
+            <li>Support for Importing External Devices using MQTT Protocal</li>
+            <li>Customize Buttons and Monitor display</li>
+            <li>Remote control and operation</li>
             <li>Wi-Fi connection configuration</li>
+            <li>Control and Manage Multiple IoT Devices</li>
           </ul>
           <div>
             <h2 className="mt-6 text-2xl font-bold">Help</h2>
