@@ -1,10 +1,8 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
-import L from "leaflet";
+// import dynamic from "next/dynamic";
 
-const Map = dynamic(() => import("../../components/map/Map"), { ssr: false });
+// const Map = dynamic(() => import("../../components/map/Map"), { ssr: false });
 
 export default function Main() {
   return (
@@ -40,7 +38,7 @@ export default function Main() {
               <p>IoT-powered PM detectors find applications across various domains, including:</p>
             </div>
             <div className="w-full lg:w-[600px] h-fit rounded-md">
-              <Map />
+              {/* <Map /> */}
             </div>
           </div>
         </div>
