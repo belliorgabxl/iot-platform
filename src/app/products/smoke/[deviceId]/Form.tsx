@@ -14,6 +14,7 @@ import DonutChartSmoke from "@/components/chart/donutChartSmoke";
 import { RefreshCw, Settings, Trash } from "lucide-react";
 import DonutChart from "@/components/chart/donutChart";
 import BarChart from "@/components/chart/barChart";
+import CircleChart from "@/components/chart/circleChart";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 type Props = {
@@ -263,7 +264,7 @@ export default function Form({ device_id }: Props) {
                           Number(value4) || 40,
                           Number(value5) || 30,
                         ]}
-                        valueLabel={Array.isArray(item.label) ? item.label : []}
+                        valueLabel={["LPG", "CO", "Smoke", "Temp", "Humidity"]}
                         bgcolor={[
                           "#FF6384",
                           "#36A2EB",
@@ -283,18 +284,49 @@ export default function Form({ device_id }: Props) {
                             Number(value4) || 40,
                             Number(value5) || 30,
                           ]}
-                          valueLabel={
-                            Array.isArray(item.label) ? item.label : []
-                          }
-                          bgcolor={
-                            Array.isArray(item.bgcolor) ? item.bgcolor : []
-                          }
+                          valueLabel={[
+                            "LPG",
+                            "CO",
+                            "Smoke",
+                            "Temp",
+                            "Humidity",
+                          ]}
+                          bgcolor={[
+                            "#FF6384",
+                            "#36A2EB",
+                            "#FFCE56",
+                            "#4BC0C0",
+                            "#9966FF",
+                          ]}
                           chartName="ESP32 Sensor Data"
                         />
                       </div>
                     ) : item.type == "circle" ? (
                       <div className="animate-fastFade grid place-items-center w-full">
-                        <CircleChartDirt value={value1 || "0"} />
+                        <CircleChart
+                          value={[
+                            Number(value1) || 10,
+                            Number(value2) || 50,
+                            Number(value3) || 10,
+                            Number(value4) || 40,
+                            Number(value5) || 30,
+                          ]}
+                          valueLabel={[
+                            "LPG",
+                            "CO",
+                            "Smoke",
+                            "Temp",
+                            "Humidity",
+                          ]}
+                          bgcolor={[
+                            "#FF6384",
+                            "#36A2EB",
+                            "#FFCE56",
+                            "#4BC0C0",
+                            "#9966FF",
+                          ]}
+                          chartName="ESP32 Sensor Data"
+                        />
                       </div>
                     ) : item.type == "monitorcircle" ? (
                       <div className="grid place-items-center">

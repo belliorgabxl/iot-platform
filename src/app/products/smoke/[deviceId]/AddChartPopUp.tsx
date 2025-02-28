@@ -72,6 +72,14 @@ const PopUpAddChart = ({
         </div>
         <div className="py-5 px-5">
           <div className="flex gap-5">
+          <button
+              className={` ${
+                customizeType == "bar" ? "bg-green-400" : "bg-gray-500"
+              } px-4 py-1 text-white  rounded-2xl hover:opacity-75`}
+              onClick={() => setCustomizeType("bar")}
+            >
+              Bar Chart
+            </button>
             <button
               className={` ${
                 customizeType == "donut" ? "bg-green-400" : "bg-gray-500"
@@ -100,6 +108,25 @@ const PopUpAddChart = ({
             </button>
           </div>
           {customizeType == "donut" ? (
+            <div className="py-2 px-10 text-white">
+              <div className="flex items-center lg:gap-4">
+                <button
+                  className="text-lg text-white lg:px-10 px-4 py-1 rounded-md enabled:bg-blue-500 disabled:bg-blue-400 enabled:hover:opacity-75 "
+                  onClick={() => {
+                    onSaveChart();
+                  }}
+                >
+                  Save
+                </button>
+                <button
+                  className="text-lg text-white lg:px-10 px-4 py-1 rounded-md bg-gray-500 hover:opacity-75 "
+                  onClick={() => setPopUpChart(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          ):customizeType == "bar" ? (
             <div className="py-2 px-10 text-white">
               <div className="flex items-center lg:gap-4">
                 <button

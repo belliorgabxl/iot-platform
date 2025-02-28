@@ -10,6 +10,7 @@ import Link from "next/link";
 import EditExternalDevicePopUp from "@/components/popup/EditExternalDevicePopUp";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import { ExternalMqttProvider } from "@/components/connect/ExternalContext";
 interface Props {
   session: Session;
 }
@@ -248,57 +249,64 @@ export default function Body({ session }: Props) {
       )}
 
       <div className="grid place-items-center lg:px-10 px-2 w-full py-2">
-        {devices && devices.length > 0 && isLoading == true ? (<div className="lg:w-full md:w-9/12 sm:w-9/12 w-full sm:px-10 lg:px-0 px-4 py-10 bg-gray-700 border-2 grid place-items-center border-dotted border-gray-500">
-          <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-8    w-fit">
-            
-            {devices?.map((item: ExternalDeviceModel) => (
-              <div
-                key={item.deviceId}
-                className="flex justify-center lg:px-0 lg:py-6 py-5 bg-gradient-to-tl from-gray-800 via-indigo-900 to-blue-600 text-white rounded-3xl px-6 shadow-lg shadow-gray-800 duration-500  hover:bg-blue-800 hover:shadow-gray-900 hover:shadow-xl hover:scale-[101%] lg:w-[320px] md:w-full sm:w-[300px] w-[280px] h-fit group "
-              >
+        {devices && devices.length > 0 && isLoading == true ? (
+          <div className="lg:w-full md:w-9/12 sm:w-9/12 w-full sm:px-10 lg:px-0 px-4 py-10 bg-gray-700 border-2 grid place-items-center border-dotted border-gray-500">
+            <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 gap-8    w-fit">
+              {devices?.map((item: ExternalDeviceModel) => (
                 <div
-                  className="absolute w-12 h-12 rounded-full z-10 right-0 -top-5 shadow-md shadow-black bg-gray-300 animate-fastFade hidden group-hover:block hover:bg-gray-500 "
-                  onClick={() => {
-                    onClickEditPopUp(item._id, item.deviceId);
-                  }}
+                  key={item.deviceId}
+                  className="flex justify-center lg:px-0 lg:py-6 py-5 bg-gradient-to-tl from-gray-800 via-indigo-900 to-blue-600 text-white rounded-3xl px-6 shadow-lg shadow-gray-800 duration-500  hover:bg-blue-800 hover:shadow-gray-900 hover:shadow-xl hover:scale-[101%] lg:w-[320px] md:w-full sm:w-[300px] w-[280px] h-fit group "
                 >
-                  <button className=" w-full h-full grid place-items-center ">
-                    <Settings
-                      style={{ width: "2.0rem", height: "2.5rem" }}
-                      className="text-black hover:scale-[105%] hover:text-white transition-colors"
-                    />
-                  </button>
-                </div>
-                <Link
-                  className="grid gap-2 h-fit"
-                  href={"/products/" + "external" + "/" + item.deviceId}
-                >
-                  <div className="w-full flex justify-center">
-                    <div className="text-xl  font-bold bg-gray-800 rounded-xl shadow-sm px-5 py-1 w-4/5 text-center h-fit text-slate-300">
-                      {item.broker.toUpperCase()}
+                  <div
+                    className="absolute w-12 h-12 rounded-full z-10 right-0 -top-5 shadow-md shadow-black bg-gray-300 animate-fastFade hidden group-hover:block hover:bg-gray-500 "
+                    onClick={() => {
+                      onClickEditPopUp(item._id, item.deviceId);
+                    }}
+                  >
+                    <button className=" w-full h-full grid place-items-center ">
+                      <Settings
+                        style={{ width: "2.0rem", height: "2.5rem" }}
+                        className="text-black hover:scale-[105%] hover:text-white transition-colors"
+                      />
+                    </button>
+                  </div>
+                  <Link
+                    className="grid gap-2 h-fit"
+                    href={"/products/" + "external" + "/" + item.deviceId}
+                  >
+                    <div className="w-full flex justify-center">
+                      <div className="text-xl  font-bold bg-gray-800 rounded-xl shadow-sm px-5 py-1 w-4/5 text-center h-fit text-slate-300">
+                        {item.broker.toUpperCase()}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className=" lg:gap-4 flex">
-                    <span className="w-[80px] font-semibold lg:text-xl text-lg text-white">
-                      Name :
-                    </span>
-                    <span className="text-white  bg-gray-500 rounded-md py-1 lg:text-lg  text-sm px-6">
-                      {item.name ?? "Loading..."}
-                    </span>
-                  </div>
+                    <div className=" lg:gap-4 flex">
+                      <span className="w-[80px] font-semibold lg:text-xl text-lg text-white">
+                        Name :
+                      </span>
+                      <span className="text-white  bg-gray-500 rounded-md py-1 lg:text-lg  text-sm px-6">
+                        {item.name ?? "Loading..."}
+                      </span>
+                    </div>
 
-                  <div className=" flex items-center  ">
-                    <span className="font-semibold lg:text-xl w-[100px] text-white ">
-                      Status :
-                    </span>
-                    <MqttProvider topic_device={item.topic}>
-                      <DeviceStatus />
-                    </MqttProvider>
-                  </div>
-                </Link>
-              </div>
-            ))}</div>
+                    <div className=" flex items-center  ">
+                      <span className="font-semibold lg:text-xl w-[100px] text-white ">
+                        Status :
+                      </span>
+                      <ExternalMqttProvider
+                        topic_device={item.topic}
+                        broker={item.broker}
+                        connectPath={item.endPiont}
+                        username={item.username}
+                        password={item.password}
+                      >
+                        <DeviceStatus />
+                      </ExternalMqttProvider>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         ) : isLoading == true ? (
           <div className="grid text-white text-3xl  place-items-center w-full  py-20 bg-gray-700 mb-20 border-2 border-dashed border-gray-500">
@@ -361,8 +369,8 @@ const ImportExternalPopup = ({
     let status = "";
     const wifiId = uuidv4();
     const wifiConnect = "none";
-    const wifiName = "Default"
-    const wifiPassword ="12345678"
+    const wifiName = "Default";
+    const wifiPassword = "12345678";
     const response1 = await fetch(`/api/importDevice`, {
       method: "POST",
       headers: {
@@ -382,17 +390,17 @@ const ImportExternalPopup = ({
         wifiConnect,
       }),
     });
-    status = "none"
+    status = "none";
     const response2 = await fetch(`/api/wifi`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-      wifiId,
-      wifiName,
-      wifiPassword,
-      status
+        wifiId,
+        wifiName,
+        wifiPassword,
+        status,
       }),
     });
     if (response1.ok && response2) {
@@ -440,4 +448,3 @@ const ImportExternalPopup = ({
     </div>
   );
 };
-
