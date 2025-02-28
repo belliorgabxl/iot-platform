@@ -7,26 +7,24 @@ type DonutProps = {
   value: string;
 };
 
-export default function CircleChartDirt(props:DonutProps) {
+export default function CircleChartDirt(props: DonutProps) {
   ChartJS.register(ArcElement, Tooltip, Legend);
 
-
-
   const [water, setWater] = useState<number>(0);
-  const [waterRGB , setWaterRGB] = useState<string>('')
+  const [waterRGB, setWaterRGB] = useState<string>("");
   const air = 25;
   const dirt = 45;
   const minerals = 5;
 
-  useEffect(()=>{
-    const part =  props.value.split(":");
-    if (part.length === 2 && part[0] === "value1" ){
-        const waterValue =  parseInt(part[1] , 10) * 5;
-        if(!isNaN(waterValue)){
-            setWater(waterValue);
-        }
+  useEffect(() => {
+    const part = props.value.split(":");
+    if (part.length === 2 && part[0] === "value1") {
+      const waterValue = parseInt(part[1], 10);
+      if (!isNaN(waterValue)) {
+        setWater(waterValue);
+      }
     }
-  },[props.value]);
+  }, [props.value]);
 
   useEffect(() => {
     if (water <= 25) {
