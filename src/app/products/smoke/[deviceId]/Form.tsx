@@ -7,10 +7,8 @@ import { DeviceModel, WifiModel, ChartModel } from "@/resource/model";
 import React from "react";
 import CircleMonitor from "@/components/chart/circleMonitor";
 import PopUpAddChart from "./AddChartPopUp";
-import CircleChartDirt from "@/components/chart/circleChartDirt";
 import WifiPopUp from "@/components/popup/WifiPopUp";
 import Panel from "./Panel";
-import DonutChartSmoke from "@/components/chart/donutChartSmoke";
 import { RefreshCw, Settings, Trash } from "lucide-react";
 import DonutChart from "@/components/chart/donutChart";
 import BarChart from "@/components/chart/barChart";
@@ -117,7 +115,7 @@ export default function Form({ device_id }: Props) {
 
       const msgStr = message.toString();
 
-      // Use regex to extract values by matching "valueX:number"
+  
       const regex =
         /value1:(\d+(\.\d+)?),\s*value2:(\d+(\.\d+)?),\s*value3:(\d+(\.\d+)?),\s*value4:(\d+(\.\d+)?),\s*value5:(\d+(\.\d+)?)/;
       const match = msgStr.match(regex);
