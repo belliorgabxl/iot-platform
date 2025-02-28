@@ -97,6 +97,11 @@ export default function Navbar() {
             label="About Us"
             isActive={pathname === "/aboutus"}
           />
+          <NavLink
+           href="/dashboard"
+           label="DashBoard"
+           isActive={pathname === "/dashboard"}
+          />
         </div>
 
         {session === null && pathname !== "/devices" ? (
