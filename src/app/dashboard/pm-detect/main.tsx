@@ -19,7 +19,6 @@ const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
 });
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import mqtt from "mqtt";
 import Link from "next/link";
 
 const createCustomIcon = (pmValue: number) => {
@@ -82,38 +81,6 @@ export default function Main() {
     },
   ]);
 
-  useEffect(() => {
-    const client = mqtt.connect(
-      "wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt",
-      {
-        username: "admin",
-        password: "Bam1234!",
-        protocol: "wss",
-      }
-    );
-
-    client.on("connect", () => {
-      console.log("Connected to MQTT Broker");
-      devices.forEach((device) => {
-        client.subscribe(`iot/pm/${device.id}`);
-      });
-    });
-
-    client.on("message", (topic, message) => {
-      const pmValue = message.toString();
-      const deviceId = parseInt(topic.split("/")[2]);
-
-      setDevices((prevDevices) =>
-        prevDevices.map((device) =>
-          device.id === deviceId ? { ...device, pm: pmValue } : device
-        )
-      );
-    });
-
-    return () => {
-      client.end();
-    };
-  }, []);
 
   return (
     <div className="py-5 px-10 bg-gray-700">
@@ -123,7 +90,7 @@ export default function Main() {
         </div>
       </div>
       <div className="px-40 pt-4">
-        <p className="px-10 py-1 rounded-md bg-gray-500 w-fit text-white">
+        <p className="px-10 text-xl py-1 rounded-md bg-gray-500 w-fit text-white">
           The area around KMITL
         </p>
       </div>

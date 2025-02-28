@@ -62,7 +62,7 @@ export default function Main() {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The integration of IoT technology in fire detection systems is transforming safety measures by providing real-time monitoring, early warning mechanisms, and automated response systems. Traditional fire detectors rely on smoke or heat detection, but IoT-enabled fire detection systems enhance accuracy, reduce false alarms, and enable remote monitoring. These advancements significantly improve fire safety across residential, commercial, and industrial settings.
               </p>
             </div>
-            <div className="w-[400px] bg-white rounded-md">test</div>
+            <div className="w-[600px] bg-white rounded-md overflow-hidden"><img src="/general/fire.jpeg" className="w-full h-full"/></div>
           </div>
         </div>
       </div>
