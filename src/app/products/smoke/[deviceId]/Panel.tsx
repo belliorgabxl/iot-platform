@@ -98,11 +98,11 @@ export default function Panel({
       <hr className={`my-2 ${isLoading ? "animate-fadeIn " : "opacity-0"}`} />
       <div className={`mb-2 ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>
         <div className=" grid place-items-center lg:text-xl rounded-sm gap-2 text-black font-semibold px-3 py-1 ">
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Temperature : {smokeValue} C</p>
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Humidity : {value2} %RH</p>
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">LPG : {value3} ppm</p>
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Co : {value4} ppm</p>
-          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Smoke : {value5} ppm</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">LPG : {smokeValue} ppm</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">CO : {value2} ppm</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Smoke : {value3} ppm</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Temperature : {value4} C</p>
+          <p  className="py-1 bg-white rounded-3xl px-4 text-blue-700 line-clamp-1 w-[250px] align-middle">Humidity : {value5} %RH</p>
         </div>
       </div>
       <div className={` ${isLoading ? "animate-fadeIn " : "opacity-0"}`}>

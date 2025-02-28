@@ -92,7 +92,7 @@ export default function Form({ device_id }: Props) {
 
   useEffect(() => {
     if (broker == "hivemq" && username && password) {
-      const client = mqtt.connect(connectPath, {
+      const client = mqtt.connect(`${connectPath || "wss://4cff082ff4a746da91e5ff64e35e8674.s1.eu.hivemq.cloud:8884/mqtt"}`, {
         username: `${username || "admin"}`,
         password: `${password || "Bam1234"}`,
         protocol: "wss",

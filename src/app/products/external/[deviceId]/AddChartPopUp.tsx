@@ -67,6 +67,7 @@ const PopUpAddChart = ({
         setFGcolor("");
         setPopUpChart(false);
         toast.success("Create Success");
+        window.location.reload()
       } else {
         toast.error("Failed");
       }

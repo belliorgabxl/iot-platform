@@ -136,6 +136,7 @@ const PopUpAddButton = ({
     });
     if (resAddButton.ok) {
       toast.success("Add buttom success");
+      window.location.reload()
     } else {
       toast.error("Failed");
     }
