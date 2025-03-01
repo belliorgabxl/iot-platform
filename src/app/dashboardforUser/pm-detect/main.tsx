@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
-// import PMMarker from "@/components/map/PMMark"; 
+import PMMarker from "@/components/map/PMMark"; 
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -76,7 +76,7 @@ export default function Main() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             />
-            {/* {devices.map((device) => (
+            {devices.map((device) => (
               <PMMarker
                 key={device.id}
                 id={device.id}
@@ -85,7 +85,7 @@ export default function Main() {
                 pm={device.pm}
                 deviceId={device.deviceId}
               />
-            ))} */}
+            ))}
           </MapContainer>
         </div>
       </div>
