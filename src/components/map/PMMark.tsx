@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { useRouter } from "next/navigation";
+
 interface PMMarkerProps {
   id: number;
   lat: number;
@@ -10,31 +11,40 @@ interface PMMarkerProps {
   pm: string;
   deviceId: string;
 }
-const createCustomIcon = (pmValue: number) => {
-  return L.divIcon({
-    html: `<div style="
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: ${pmValue > 100 ? "red" : "green"};
-      color: white;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 50%;
-      border: 2px solid white;
-      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-    ">${pmValue}</div>`,
-    className: "custom-icon",
-    iconSize: [40, 40],
-  });
-};
 
 const PMMarker: React.FC<PMMarkerProps> = ({ id, lat, lng, pm, deviceId }) => {
   const router = useRouter();
+  const [icon, setIcon] = useState<L.DivIcon | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIcon(
+        L.divIcon({
+          html: `<div style="
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: ${Number(pm) > 100 ? "red" : "green"};
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+          ">${pm}</div>`,
+          className: "custom-icon",
+          iconSize: [40, 40],
+        })
+      );
+    }
+  }, [pm]); // Re-run effect when `pm` changes
+
+  if (!icon) return null; // Prevent rendering on server
+
   return (
-    <Marker position={[lat, lng]} icon={createCustomIcon(Number(pm))}>
+    <Marker position={[lat, lng]} icon={icon}>
       <Popup>
         <button
           onClick={() => {
