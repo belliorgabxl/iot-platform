@@ -1,17 +1,17 @@
 "use client";
 import React, { useState } from "react";
-// import dynamic from "next/dynamic";
-// import "leaflet/dist/leaflet.css";
+import dynamic from "next/dynamic";
+import "leaflet/dist/leaflet.css";
 // import PMMarker from "@/components/map/PMMark"; 
 
-// const MapContainer = dynamic(
-//   () => import("react-leaflet").then((mod) => mod.MapContainer),
-//   { ssr: false }
-// );
-// const TileLayer = dynamic(
-//   () => import("react-leaflet").then((mod) => mod.TileLayer),
-//   { ssr: false }
-// );
+const MapContainer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.MapContainer),
+  { ssr: false }
+);
+const TileLayer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.TileLayer),
+  { ssr: false }
+);
 
 export default function Main() {
   const [devices, setDevices] = useState([
@@ -67,7 +67,7 @@ export default function Main() {
       </div>
       <div className="flex justify-center py-5">
         <div className="w-[1100px] rounded-lg overflow-hidden h-[500px]">
-        {/* <MapContainer
+        <MapContainer
             center={[13.72768, 100.7761]}
             zoom={18}
             className="h-full w-full"
@@ -76,7 +76,7 @@ export default function Main() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             />
-            {devices.map((device) => (
+            {/* {devices.map((device) => (
               <PMMarker
                 key={device.id}
                 id={device.id}
@@ -85,8 +85,8 @@ export default function Main() {
                 pm={device.pm}
                 deviceId={device.deviceId}
               />
-            ))}
-          </MapContainer> */}
+            ))} */}
+          </MapContainer>
         </div>
       </div>
       <div className="pb-5 lg:flex justify-center gap-5">
