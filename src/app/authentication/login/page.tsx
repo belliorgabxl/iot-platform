@@ -32,7 +32,6 @@ export default function Page() {
         await getUserSession();
 
         window.location.reload();
-
       } else {
         toast.error("Login failed");
       }
@@ -103,7 +102,28 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </div>
+
+        
+      </div><GuestMode/>
     </div>
   );
+}
+
+
+const GuestMode  =() =>{
+  return(
+    <div className="inset-0 bg-white/40 lg:-translate-y-12 rounded-md backdrop-blur-sm py-2 px-10 grid place-items-center">
+      <div className="grid  place-items-center">
+        <p className="text-lg text-white">*** For visitors ***</p>
+        <p className="text-white text-sm">Here are the username and password for testing.</p>
+      </div>
+
+      <div className="grid">
+        <p className="text-lg text-blue-800">User : patara1919@gmail.com</p>
+        <p className="text-lg text-blue-800">Password : 111111</p>
+      </div>
+      
+
+    </div>
+  )
 }
