@@ -185,7 +185,7 @@ const PopUpAddChart = ({
       onClick={() => setPopUpChart(false)}
     >
       <div
-        className="z-100 w-2/5  rounded-lg bg-gray-600  grid place-items-start"
+        className="z-100 w-3/5  rounded-lg bg-gray-600  grid place-items-start"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="w-full text-center py-2 lg:text-xl font-semibold bg-gray-900 text-white rounded-t-lg">

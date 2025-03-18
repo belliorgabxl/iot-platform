@@ -40,6 +40,7 @@ export type ExternalDeviceModel = {
   status: string;
   wifiId: string;
   wifiConnect: string;
+  connectPath:string;
 };
 
 export type WifiModel = {

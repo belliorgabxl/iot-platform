@@ -11,6 +11,7 @@ import EditExternalDevicePopUp from "@/components/popup/EditExternalDevicePopUp"
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 import { ExternalMqttProvider } from "@/components/connect/ExternalContext";
+import ExternalDeviceStatus from "@/components/statusconnect/ExternalDeviceStatus";
 interface Props {
   session: Session;
 }
@@ -296,11 +297,11 @@ export default function Body({ session }: Props) {
                       <ExternalMqttProvider
                         topic_device={item.topic}
                         broker={item.broker}
-                        connectPath={item.endPiont}
+                        connectPath={item.connectPath}
                         username={item.username}
                         password={item.password}
                       >
-                        <DeviceStatus />
+                        <ExternalDeviceStatus />
                       </ExternalMqttProvider>
                     </div>
                   </Link>

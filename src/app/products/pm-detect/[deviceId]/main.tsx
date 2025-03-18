@@ -33,19 +33,19 @@ type Props = {
 };
 
 const fetchDeviceId = async (deviceId: string) => {
-  const response = await fetch(`http://localhost:3000/api/devices/${deviceId}`);
+  const response = await fetch(`/api/devices/${deviceId}`);
   return response.json();
 };
 
 const fetchWifiId = async (wifiId: string) => {
-  const ressponse = await fetch(`http://localhost:3000/api/wifi/${wifiId}`);
+  const ressponse = await fetch(`/api/wifi/${wifiId}`);
   return ressponse.json();
 };
 
 const fetchStorageValue = async (deviceId: string) => {
   try {
     const ressponse = await fetch(
-      `http://localhost:3000/api/storageValue/${deviceId}`
+      `/api/storageValue/${deviceId}`
     );
     return ressponse.json();
   } catch (err) {}

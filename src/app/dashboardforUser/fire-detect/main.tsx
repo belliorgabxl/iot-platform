@@ -97,7 +97,7 @@ export default function Main() {
             {devices.map((item) => (
               <Link
                 key={item.name}
-                href="test"
+                href="/products/pm-detect/d256bf5b-d85c-459d-8f69-f691dbb71141"
                 className={`${
                   Number(item.value) > 80
                     ? "bg-red-700"

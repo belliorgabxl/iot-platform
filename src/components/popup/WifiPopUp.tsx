@@ -48,7 +48,7 @@ export default function WifiPopUp({
         const newWifiPassword = "12345678";
         const newStatus = "none";
         const response = await fetch(
-          `http://localhost:3000/api/wifi/${wifis?._id}`,
+          `/api/wifi/${wifis?._id}`,
           {
             method: "PUT",
             headers: {

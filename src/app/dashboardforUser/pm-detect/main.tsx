@@ -57,7 +57,7 @@ export default function Main() {
     <div className="py-5 px-10 bg-gray-700">
       <div className="w-full flex justify-center">
         <div className="px-10 text-white lg:text-3xl py-2 font-bold rounded-3xl bg-gray-800">
-          PM - Detector
+          PM2.5 - Detector
         </div>
       </div>
       <div className="px-40 pt-4">

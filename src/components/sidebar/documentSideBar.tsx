@@ -41,7 +41,7 @@ export default function DocumentSideBar() {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative border-4 border-red-500">
       <motion.div
         animate={isVisible ? { x: 250, opacity: 1 } : { x: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
